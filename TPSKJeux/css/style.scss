@@ -1,0 +1,54 @@
+@import "variables.scss";
+
+
+body{
+  width: 100%;
+  background-color: $color-1;
+}
+
+nav div div ul li{
+  display:inline-block;
+  margin-left: 1.5em;
+}
+
+header{
+  color:white;
+}
+
+.navbar, .footer1{
+  background-color: $color-2 !important;
+}
+
+nav div a{
+  font-size: 1.3rem;
+}
+
+nav div a:hover{
+  align-items: center;
+  color: $color-3 !important;
+  font-weight: bold;
+  //font-size: 1.5em;
+}
+
+.logo {
+  width: 9.7rem;
+  margin-left: 1.2rem;
+}
+
+.navitem{
+  width:max-content;
+  color: white !important;
+  text-decoration: none;
+}
+
+.logof{
+  width: 150px;
+}
+
+footer{
+  color: white;
+}
+
+content{
+  border: ;
+}

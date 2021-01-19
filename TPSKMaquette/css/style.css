@@ -1,0 +1,67 @@
+body {
+  width: 100%;
+  background-color: #E6E0DB;
+}
+
+nav div div ul li {
+  display: inline-block;
+  margin-left: 1.5em;
+}
+
+header {
+  color: white;
+}
+
+.navbar, .footer1 {
+  background-color: #0c3121 !important;
+}
+
+nav div a {
+  font-size: 1.3rem;
+}
+
+nav div a:hover {
+  align-items: center;
+  color: #388863 !important;
+  font-weight: bold;
+}
+
+.logo {
+  width: 9.7rem;
+  margin-left: 1.2rem;
+}
+
+.navitem {
+  width: max-content;
+  color: white !important;
+  text-decoration: none;
+}
+
+.imgcarou {
+  height: 33rem;
+}
+
+.bodyborder {
+  border: 2px solid;
+  border-radius: 15px;
+  align-items: center;
+  height: 18em;
+}
+
+p {
+  margin-top: auto;
+}
+
+.para {
+  height: 10em !important;
+}
+
+.logof {
+  width: 150px;
+}
+
+footer {
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */
