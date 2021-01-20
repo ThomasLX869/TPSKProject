@@ -8,6 +8,7 @@
 }
 body {
   background-color: #e6f3e2;
+  top: 100px;
 }
 
 /* CARDS */
@@ -61,6 +62,15 @@ header {
 .burger {
   border: 2px solid #afafaf !important;
   margin-right: 1.2rem;
+}
+
+.navbar {
+  top: 0px;
+  z-index: 3;
+}
+
+.list-to-move {
+  margin-left: 19vw;
 }
 
 .navbar,
