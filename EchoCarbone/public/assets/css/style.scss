@@ -5,6 +5,17 @@ body {
   background-color: $color-1;
 }
 
+/* cards */
+.cardradius {
+  border: 2px solid;
+  border-radius: 15px;
+  align-items: center;
+  height: auto;
+  border-color: $color-2;
+  background-color: $color-3;
+  box-shadow: -2px -2px 12px 12px $color-3;
+}
+
 h1{
   font-family: $font-1;
 }
