@@ -1,7 +1,6 @@
 @import "variables.scss";
 
-
-body{
+body {
   width: 100%;
   background-color: $color-1;
 }
@@ -15,10 +14,6 @@ nav div div ul li{
   margin-left: 1.5em;
 }
 
-header{
-  color:white;
-}
-
 .navbar, .footer1{
   background-color: $color-2 !important;
 }
@@ -27,7 +22,17 @@ nav div a{
   font-size: 1.3rem;
 }
 
-nav div a:hover{
+header {
+  color: white;
+}
+
+.burger {
+  border: 2px solid #afafaf !important;
+  margin-right: 1.2rem;
+}
+
+nav div a:hover {
+
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
@@ -39,22 +44,21 @@ nav div a:hover{
   margin-left: 1.2rem;
 }
 
-.navitem{
-  width:max-content;
+
+.link-nav {
+  width: max-content;
   color: white !important;
   text-decoration: none;
 }
 
-.imgcarou{
-  height: 33rem;
-}
+.bodyborder {
 
-.bodyborder{
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: 18em;
 }
+
 
 p{
   margin-top: auto;
