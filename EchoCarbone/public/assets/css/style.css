@@ -31,7 +31,8 @@ nav div div ul li {
   margin-left: 1.5em;
 }
 
-.navbar, .footer1 {
+.navbar,
+.footer1 {
   background-color: #0c3121 !important;
 }
 
@@ -86,6 +87,16 @@ p {
 
 footer {
   color: white;
+}
+
+footer a,
+li {
+  color: black;
+}
+
+span {
+  display: flex;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -16,20 +16,21 @@ body {
   box-shadow: -2px -2px 12px 12px $color-3;
 }
 
-h1{
+h1 {
   font-family: $font-1;
 }
 
-nav div div ul li{
-  display:inline-block;
+nav div div ul li {
+  display: inline-block;
   margin-left: 1.5em;
 }
 
-.navbar, .footer1{
+.navbar,
+.footer1 {
   background-color: $color-2 !important;
 }
 
-nav div a{
+nav div a {
   font-size: 1.3rem;
 }
 
@@ -43,7 +44,6 @@ header {
 }
 
 nav div a:hover {
-
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
@@ -55,7 +55,6 @@ nav div a:hover {
   margin-left: 1.2rem;
 }
 
-
 .link-nav {
   width: max-content;
   color: white !important;
@@ -63,26 +62,34 @@ nav div a:hover {
 }
 
 .bodyborder {
-
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: 18em;
 }
 
-
-p{
+p {
   margin-top: auto;
 }
 
-.para{
+.para {
   height: 10em !important;
 }
 
-.logof{
+.logof {
   width: 150px;
 }
 
-footer{
+footer {
   color: white;
+}
+
+footer a,
+li {
+  color: black;
+}
+
+span {
+  display: flex;
+  justify-content: center;
 }
