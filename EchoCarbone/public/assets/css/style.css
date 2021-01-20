@@ -1,17 +1,91 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 1 | @import "variables.scss";
- *   |         ^^^^^^^^^^^^^^^^
- *   '
- *   style.scss 1:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 1 \2502  @import \"variables.scss\";\d\a   \2502          ^^^^^^^^^^^^^^^^\a   \2575 \a   style.scss 1:9  root stylesheet";
+@font-face {
+  font-family: "learningCurve";
+  src: url("../fonts/learningcurve/learningcurve-webfont.woff2") format("woff2"), url("../fonts/learningcurve/learningcurve-webfont.woff2") format("woff");
 }
+@font-face {
+  font-family: "cursive";
+  src: url("../fonts/cursive/cursive_standard-webfont.woff2") format("woff2"), url("../fonts/cursive/cursive_standard-webfont.woff") format("woff");
+}
+body {
+  width: 100%;
+  background-color: #e6f3e2;
+}
+
+/* cards */
+.cardradius {
+  border: 2px solid;
+  border-radius: 15px;
+  align-items: center;
+  height: auto;
+  border-color: #0c3121;
+  background-color: #388863;
+  box-shadow: -2px -2px 12px 12px #388863;
+}
+
+h1 {
+  font-family: "Nom-font", sans-serif;
+}
+
+nav div div ul li {
+  display: inline-block;
+  margin-left: 1.5em;
+}
+
+.navbar, .footer1 {
+  background-color: #0c3121 !important;
+}
+
+nav div a {
+  font-size: 1.3rem;
+}
+
+header {
+  color: white;
+}
+
+.burger {
+  border: 2px solid #afafaf !important;
+  margin-right: 1.2rem;
+}
+
+nav div a:hover {
+  align-items: center;
+  color: #388863 !important;
+  font-weight: bold;
+}
+
+.logo {
+  width: 9.7rem;
+  margin-left: 1.2rem;
+}
+
+.link-nav {
+  width: max-content;
+  color: white !important;
+  text-decoration: none;
+}
+
+.bodyborder {
+  border: 2px solid;
+  border-radius: 15px;
+  align-items: center;
+  height: 18em;
+}
+
+p {
+  margin-top: auto;
+}
+
+.para {
+  height: 10em !important;
+}
+
+.logof {
+  width: 150px;
+}
+
+footer {
+  color: white;
+}
+
+/*# sourceMappingURL=style.css.map */
