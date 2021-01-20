@@ -1,0 +1,25 @@
+{# squelette d'une card #}
+<div class="container-fluid my-5 px-5">
+	<div class="row text-center mb-4">
+		<div class="col-12 offset-md-2 col-md-10 card-body cardradius">
+			<div class="cardhead">
+				<h3 class="text-center cart-title">Titre de l'article</h3>
+				<hr>
+				<img width="80%" class="imgcard" src="./image/marty-2020.jpg" alt="Card image"/>
+			</div>
+			<div class="cardbody">
+				<p class="card-text">cet article a une intro</p>
+				<div class="my-3">
+					<a href="#" class="card-link">author_name
+					</a>
+				</div>
+			</div>
+			<div
+				class="cardfooter">
+				<!-- {% if article.createdAt %} {{ article.createdAt|date('d/m/Y à H:i') }} {%
+				      endif %} -->
+				<p>date de rédaction - date de modification</p>
+			</div>
+		</div>
+	</div>
+</div>
