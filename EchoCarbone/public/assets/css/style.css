@@ -10,7 +10,7 @@ body {
   background-color: #e6f3e2;
 }
 
-/* cards */
+/* CARDS */
 .cardradius {
   border: 2px solid;
   border-radius: 15px;
@@ -52,14 +52,15 @@ body {
   text-indent: 50px;
 }
 
-/* fin de cards */
-h1 {
-  font-family: "Nom-font", sans-serif;
+/* CARDS END */
+header {
+  color: white;
+  margin-top: 0;
 }
 
-nav div div ul li {
-  display: inline-block;
-  margin-left: 1.5em;
+.burger {
+  border: 2px solid #afafaf !important;
+  margin-right: 1.2rem;
 }
 
 .navbar,
@@ -71,13 +72,10 @@ nav div a {
   font-size: 1.3rem;
 }
 
-header {
-  color: white;
-}
-
-.burger {
-  border: 2px solid #afafaf !important;
-  margin-right: 1.2rem;
+.link-nav {
+  width: max-content;
+  color: white !important;
+  text-decoration: none;
 }
 
 nav div a:hover {
@@ -85,16 +83,22 @@ nav div a:hover {
   color: #388863 !important;
   font-weight: bold;
 }
+nav div a:hover nav div div ul li {
+  display: inline-block;
+  margin-left: 1.5em;
+}
 
 .logo {
   width: 9.7rem;
   margin-left: 1.2rem;
 }
 
-.link-nav {
-  width: max-content;
-  color: white !important;
-  text-decoration: none;
+.logof {
+  width: 150px;
+}
+
+h1 {
+  font-family: "Nom-font", sans-serif;
 }
 
 .bodyborder {
@@ -104,7 +108,7 @@ nav div a:hover {
   height: 18em;
 }
 
-BREADCRUMB .breadcrumb {
+.breadcrumb {
   background-color: #e6f3e2;
 }
 
@@ -147,10 +151,6 @@ a[class=active] {
   height: 50vh;
   margin-top: 0.5rem;
   overflow: auto;
-}
-
-.logof {
-  width: 150px;
 }
 
 /*# sourceMappingURL=style.css.map */
