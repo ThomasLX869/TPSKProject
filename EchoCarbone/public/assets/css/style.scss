@@ -42,6 +42,7 @@ body {
   font-weight: bold;
 }
 
+
 // mise en forme de l'image
 .imgcard {
   border-radius: 15px;
@@ -60,10 +61,19 @@ h1 {
   font-family: $font-1;
 }
 
-nav div div ul li {
-  display: inline-block;
-  margin-left: 1.5em;
+
+// HEADER
+
+header {
+  color: white;
+  margin-top: 0;
 }
+
+.burger {
+  border: 2px solid #afafaf !important;
+  margin-right: 1.2rem;
+}
+
 
 .navbar,
 .footer1 {
@@ -74,32 +84,35 @@ nav div a {
   font-size: 1.3rem;
 }
 
-header {
-  color: white;
-}
-
-.burger {
-  border: 2px solid #afafaf !important;
-  margin-right: 1.2rem;
+.link-nav {
+  width: max-content;
+  color: white !important;
+  text-decoration: none;
 }
 
 nav div a:hover {
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
-  //font-size: 1.5em;
+
+  nav div div ul li {
+    display: inline-block;
+    margin-left: 1.5em;
+  }
 }
 
+//LOGO
 .logo {
   width: 9.7rem;
   margin-left: 1.2rem;
 }
 
-.link-nav {
-  width: max-content;
-  color: white !important;
-  text-decoration: none;
+
+.logof {
+  width: 150px;
 }
+
+//AUTRE
 
 .bodyborder {
   border: 2px solid;
@@ -114,10 +127,6 @@ p {
 
 .para {
   height: 10em !important;
-}
-
-.logof {
-  width: 150px;
 }
 
 footer {
