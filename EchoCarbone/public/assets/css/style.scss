@@ -16,25 +16,15 @@ body {
   box-shadow: -2px -2px 12px 12px $color-3;
 }
 
-h1{
+h1 {
   font-family: $font-1;
 }
 
-nav div div ul li{
-  display:inline-block;
-  margin-left: 1.5em;
-}
-
-.navbar, .footer1{
-  background-color: $color-2 !important;
-}
-
-nav div a{
-  font-size: 1.3rem;
-}
+// HEADER
 
 header {
   color: white;
+  margin-top: 0;
 }
 
 .burger {
@@ -42,47 +32,58 @@ header {
   margin-right: 1.2rem;
 }
 
-nav div a:hover {
-
-  align-items: center;
-  color: $color-3 !important;
-  font-weight: bold;
-  //font-size: 1.5em;
+.navbar,
+.footer1 {
+  background-color: $color-2 !important;
 }
 
-.logo {
-  width: 9.7rem;
-  margin-left: 1.2rem;
+nav div a {
+  font-size: 1.3rem;
 }
-
 
 .link-nav {
   width: max-content;
   color: white !important;
   text-decoration: none;
 }
+nav div a:hover {
+  align-items: center;
+  color: $color-3 !important;
+  font-weight: bold;
+
+  nav div div ul li {
+    display: inline-block;
+    margin-left: 1.5em;
+  }
+}
+
+//LOGO
+.logo {
+  width: 9.7rem;
+  margin-left: 1.2rem;
+}
+
+.logof {
+  width: 150px;
+}
+
+//AUTRE
 
 .bodyborder {
-
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: 18em;
 }
 
-
-p{
+p {
   margin-top: auto;
 }
 
-.para{
+.para {
   height: 10em !important;
 }
 
-.logof{
-  width: 150px;
-}
-
-footer{
+footer {
   color: white;
 }
