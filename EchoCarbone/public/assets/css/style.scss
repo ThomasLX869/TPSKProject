@@ -1,7 +1,6 @@
 @import "variables.scss";
 
 body {
-  width: 100%;
   background-color: $color-1;
 }
 
@@ -11,6 +10,7 @@ body {
   border-radius: 15px;
   align-items: center;
   height: auto;
+
   border-color: $color-2;
   background-color: $color-3;
   box-shadow: -2px -2px 12px 12px $color-3;
@@ -43,7 +43,6 @@ header {
 }
 
 nav div a:hover {
-
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
@@ -63,26 +62,56 @@ nav div a:hover {
 }
 
 .bodyborder {
-
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: 18em;
 }
 
-
-p{
-  margin-top: auto;
+ BREADCRUMB
+ .breadcrumb{
+   background-color: $color-1;
+ }
+.breadcrumb-item{
+  margin-left: 1.5em;
 }
 
-.para{
-  height: 10em !important;
+.breadcrumb-item a{
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.breadcrumb-item:hover {
+  align-items: center;
+  color: $color-3 !important;
+  font-weight: bold;
+}
+
+// SCROLLSPY
+.maintest{
+  position: relative;
+}
+.list-group-item{
+  max-width: 70% !important;
+}
+a[class="active"]{
+  background-color: $color-3 !important;
+}
+.scrollcont{
+  position: fixed;
+  top : 25vh;
+  left : 3vw;
+  min-height: 100% !important;
+}
+
+.scrollspy-example {
+  position: relative;
+  height: 50vh;
+  margin-top: .5rem;
+  overflow: auto;
 }
 
 .logof{
   width: 150px;
 }
 
-footer{
-  color: white;
-}

@@ -1,25 +1,114 @@
 {# squelette d'une card #}
-<div class="container-fluid my-5 px-5">
-	<div class="row text-center mb-4">
-		<div class="col-12 offset-md-2 col-md-10 card-body cardradius">
-			<div class="cardhead">
-				<h3 class="text-center cart-title">Titre de l'article</h3>
-				<hr>
-				<img width="80%" class="imgcard" src="./image/marty-2020.jpg" alt="Card image"/>
-			</div>
-			<div class="cardbody">
-				<p class="card-text">cet article a une intro</p>
-				<div class="my-3">
-					<a href="#" class="card-link">author_name
-					</a>
-				</div>
-			</div>
-			<div
-				class="cardfooter">
-				<!-- {% if article.createdAt %} {{ article.createdAt|date('d/m/Y à H:i') }} {%
-				      endif %} -->
-				<p>date de rédaction - date de modification</p>
-			</div>
+
+<div class="col-12 offset-md-2 col-md-10 card-body cardradius my-5" id="list-item-1">
+	<div class="cardhead text-center">
+		<h3 class="text-center cardtitle"></h3>
+		<hr class="cardline">
+		<p class="cardsorting text-start">
+			Catégories:
+			<span class="cardlink">
+{#				{{article.article_category}}#}
+			</span>
+			ages:
+			<span class="cardlink">
+				9-11 ans</span>
+		</p>
+		<p class="cardintro">cet article a une intro</p>
+		<img class="imgcard" src="assets/img/marty-2020.jpg" alt="Card image"/>
+	</div>
+	<div class="cardbody">
+		<p class="my-4 cardtext">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi laudantium illo aut expedita neque natus maiores sequi, id voluptatem repudiandae, distinctio mollitia adipisci ratione sit? Pariatur magni consequuntur ab maiores nisi nostrum iusto soluta delectus, eveniet officiis ipsum sunt, nemo quia aperiam similique voluptatibus quas ea dolorum eligendi. Similique ex consectetur, quam cumque iusto in esse voluptatem deleniti rem aspernatur sapiente saepe? Expedita molestiae animi omnis, quae, nemo vel vero quod quos sequi veritatis nobis blanditiis soluta dolore ea quasi libero ratione debitis voluptatibus aliquam neque error saepe laboriosam! Laborum impedit beatae aspernatur laboriosam perferendis rem odit, illo totam doloribus mollitia? Asperiores nam doloribus aspernatur ipsam nulla, distinctio veritatis pariatur perferendis earum, obcaecati commodi numquam. Atque necessitatibus corporis aut aliquam dolore eum minus quibusdam quia explicabo, dolorem, sunt labore. Explicabo, beatae eaque quaerat doloribus amet iste asperiores esse atque excepturi est quos itaque veniam officia hic quia unde id commodi dolor vitae modi ab. Nihil reiciendis quo at. Itaque, laborum earum autem debitis tenetur culpa adipisci labore odit sint, voluptatem ab aut in hic! Ullam quos vitae facere illum neque illo, natus sunt voluptates officiis nihil doloremque eaque ipsum quod sit. Dignissimos amet aspernatur rem doloribus tempora excepturi blanditiis iste, similique dicta minima et molestias velit sed, esse soluta voluptas corrupti sapiente? Unde fugiat aut praesentium autem eius ut deleniti expedita impedit sit dolore at esse, iure nulla rem exercitationem ipsam ipsum asperiores pariatur doloribus eligendi? Ab architecto corporis, aliquid dicta alias laborum voluptates nihil numquam explicabo magnam magni minus sed quisquam! Alias impedit ipsam perferendis facilis reiciendis quasi et mollitia molestiae nam! Aperiam qui veniam sed assumenda doloremque iusto vel ad. Consequuntur inventore tempora eaque sapiente. Saepe vel veniam voluptatem laborum recusandae earum, quis dolore aliquid culpa sapiente quae. Nihil nemo eum, vero repudiandae reprehenderit obcaecati omnis at. Culpa?</p>
+		<div class="my-3 cardfooter">
+
+			<p class="text-center">écrit le: date de rédaction - mise à jour le : date de modification par:
+				<a href="#" class="cardlink">author_name</a>
+			</p>
+
 		</div>
 	</div>
 </div>
+
+<div class="col-12 offset-md-2 col-md-10 card-body cardradius my-5" id="list-item-2">
+	<div class="cardhead text-center">
+		<h3 class="text-center cardtitle"></h3>
+		<hr class="cardline">
+		<p class="cardsorting text-start">
+			Catégories:
+			<span class="cardlink">
+{#				{{article.article_category}}#}
+			</span>
+			ages:
+			<span class="cardlink">
+				9-11 ans</span>
+		</p>
+		<p class="cardintro">cet article a une intro</p>
+		<img class="imgcard" src="assets/img/marty-2020.jpg" alt="Card image"/>
+	</div>
+	<div class="cardbody">
+		<p class="my-4 cardtext">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi laudantium illo aut expedita neque natus maiores sequi, id voluptatem repudiandae, distinctio mollitia adipisci ratione sit? Pariatur magni consequuntur ab maiores nisi nostrum iusto soluta delectus, eveniet officiis ipsum sunt, nemo quia aperiam similique voluptatibus quas ea dolorum eligendi. Similique ex consectetur, quam cumque iusto in esse voluptatem deleniti rem aspernatur sapiente saepe? Expedita molestiae animi omnis, quae, nemo vel vero quod quos sequi veritatis nobis blanditiis soluta dolore ea quasi libero ratione debitis voluptatibus aliquam neque error saepe laboriosam! Laborum impedit beatae aspernatur laboriosam perferendis rem odit, illo totam doloribus mollitia? Asperiores nam doloribus aspernatur ipsam nulla, distinctio veritatis pariatur perferendis earum, obcaecati commodi numquam. Atque necessitatibus corporis aut aliquam dolore eum minus quibusdam quia explicabo, dolorem, sunt labore. Explicabo, beatae eaque quaerat doloribus amet iste asperiores esse atque excepturi est quos itaque veniam officia hic quia unde id commodi dolor vitae modi ab. Nihil reiciendis quo at. Itaque, laborum earum autem debitis tenetur culpa adipisci labore odit sint, voluptatem ab aut in hic! Ullam quos vitae facere illum neque illo, natus sunt voluptates officiis nihil doloremque eaque ipsum quod sit. Dignissimos amet aspernatur rem doloribus tempora excepturi blanditiis iste, similique dicta minima et molestias velit sed, esse soluta voluptas corrupti sapiente? Unde fugiat aut praesentium autem eius ut deleniti expedita impedit sit dolore at esse, iure nulla rem exercitationem ipsam ipsum asperiores pariatur doloribus eligendi? Ab architecto corporis, aliquid dicta alias laborum voluptates nihil numquam explicabo magnam magni minus sed quisquam! Alias impedit ipsam perferendis facilis reiciendis quasi et mollitia molestiae nam! Aperiam qui veniam sed assumenda doloremque iusto vel ad. Consequuntur inventore tempora eaque sapiente. Saepe vel veniam voluptatem laborum recusandae earum, quis dolore aliquid culpa sapiente quae. Nihil nemo eum, vero repudiandae reprehenderit obcaecati omnis at. Culpa?</p>
+		<div class="my-3 cardfooter">
+
+			<p class="text-center">écrit le: date de rédaction - mise à jour le : date de modification par:
+				<a href="#" class="cardlink">author_name</a>
+			</p>
+
+		</div>
+	</div>
+</div>
+
+<div class="col-12 offset-md-2 col-md-10 card-body cardradius my-5" id="list-item-3">
+	<div class="cardhead text-center">
+		<h3 class="text-center cardtitle"></h3>
+		<hr class="cardline">
+		<p class="cardsorting text-start">
+			Catégories:
+			<span class="cardlink">
+{#				{{article.article_category}}#}
+			</span>
+			ages:
+			<span class="cardlink">
+				9-11 ans</span>
+		</p>
+		<p class="cardintro">cet article a une intro</p>
+		<img class="imgcard" src="assets/img/marty-2020.jpg" alt="Card image"/>
+	</div>
+	<div class="cardbody">
+		<p class="my-4 cardtext">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi laudantium illo aut expedita neque natus maiores sequi, id voluptatem repudiandae, distinctio mollitia adipisci ratione sit? Pariatur magni consequuntur ab maiores nisi nostrum iusto soluta delectus, eveniet officiis ipsum sunt, nemo quia aperiam similique voluptatibus quas ea dolorum eligendi. Similique ex consectetur, quam cumque iusto in esse voluptatem deleniti rem aspernatur sapiente saepe? Expedita molestiae animi omnis, quae, nemo vel vero quod quos sequi veritatis nobis blanditiis soluta dolore ea quasi libero ratione debitis voluptatibus aliquam neque error saepe laboriosam! Laborum impedit beatae aspernatur laboriosam perferendis rem odit, illo totam doloribus mollitia? Asperiores nam doloribus aspernatur ipsam nulla, distinctio veritatis pariatur perferendis earum, obcaecati commodi numquam. Atque necessitatibus corporis aut aliquam dolore eum minus quibusdam quia explicabo, dolorem, sunt labore. Explicabo, beatae eaque quaerat doloribus amet iste asperiores esse atque excepturi est quos itaque veniam officia hic quia unde id commodi dolor vitae modi ab. Nihil reiciendis quo at. Itaque, laborum earum autem debitis tenetur culpa adipisci labore odit sint, voluptatem ab aut in hic! Ullam quos vitae facere illum neque illo, natus sunt voluptates officiis nihil doloremque eaque ipsum quod sit. Dignissimos amet aspernatur rem doloribus tempora excepturi blanditiis iste, similique dicta minima et molestias velit sed, esse soluta voluptas corrupti sapiente? Unde fugiat aut praesentium autem eius ut deleniti expedita impedit sit dolore at esse, iure nulla rem exercitationem ipsam ipsum asperiores pariatur doloribus eligendi? Ab architecto corporis, aliquid dicta alias laborum voluptates nihil numquam explicabo magnam magni minus sed quisquam! Alias impedit ipsam perferendis facilis reiciendis quasi et mollitia molestiae nam! Aperiam qui veniam sed assumenda doloremque iusto vel ad. Consequuntur inventore tempora eaque sapiente. Saepe vel veniam voluptatem laborum recusandae earum, quis dolore aliquid culpa sapiente quae. Nihil nemo eum, vero repudiandae reprehenderit obcaecati omnis at. Culpa?</p>
+		<div class="my-3 cardfooter">
+
+			<p class="text-center">écrit le: date de rédaction - mise à jour le : date de modification par:
+				<a href="#" class="cardlink">author_name</a>
+			</p>
+
+		</div>
+	</div>
+</div>
+
+<div class="col-12 offset-md-2 col-md-10 card-body cardradius my-5" id="list-item-4">
+	<div class="cardhead text-center">
+		<h3 class="text-center cardtitle"></h3>
+		<hr class="cardline">
+		<p class="cardsorting text-start">
+			Catégories:
+			<span class="cardlink">
+{#				{{article.article_category}}#}
+			</span>
+			ages:
+			<span class="cardlink">
+				9-11 ans</span>
+		</p>
+		<p class="cardintro">cet article a une intro</p>
+		<img class="imgcard" src="assets/img/marty-2020.jpg" alt="Card image"/>
+	</div>
+	<div class="cardbody">
+		<p class="my-4 cardtext">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi laudantium illo aut expedita neque natus maiores sequi, id voluptatem repudiandae, distinctio mollitia adipisci ratione sit? Pariatur magni consequuntur ab maiores nisi nostrum iusto soluta delectus, eveniet officiis ipsum sunt, nemo quia aperiam similique voluptatibus quas ea dolorum eligendi. Similique ex consectetur, quam cumque iusto in esse voluptatem deleniti rem aspernatur sapiente saepe? Expedita molestiae animi omnis, quae, nemo vel vero quod quos sequi veritatis nobis blanditiis soluta dolore ea quasi libero ratione debitis voluptatibus aliquam neque error saepe laboriosam! Laborum impedit beatae aspernatur laboriosam perferendis rem odit, illo totam doloribus mollitia? Asperiores nam doloribus aspernatur ipsam nulla, distinctio veritatis pariatur perferendis earum, obcaecati commodi numquam. Atque necessitatibus corporis aut aliquam dolore eum minus quibusdam quia explicabo, dolorem, sunt labore. Explicabo, beatae eaque quaerat doloribus amet iste asperiores esse atque excepturi est quos itaque veniam officia hic quia unde id commodi dolor vitae modi ab. Nihil reiciendis quo at. Itaque, laborum earum autem debitis tenetur culpa adipisci labore odit sint, voluptatem ab aut in hic! Ullam quos vitae facere illum neque illo, natus sunt voluptates officiis nihil doloremque eaque ipsum quod sit. Dignissimos amet aspernatur rem doloribus tempora excepturi blanditiis iste, similique dicta minima et molestias velit sed, esse soluta voluptas corrupti sapiente? Unde fugiat aut praesentium autem eius ut deleniti expedita impedit sit dolore at esse, iure nulla rem exercitationem ipsam ipsum asperiores pariatur doloribus eligendi? Ab architecto corporis, aliquid dicta alias laborum voluptates nihil numquam explicabo magnam magni minus sed quisquam! Alias impedit ipsam perferendis facilis reiciendis quasi et mollitia molestiae nam! Aperiam qui veniam sed assumenda doloremque iusto vel ad. Consequuntur inventore tempora eaque sapiente. Saepe vel veniam voluptatem laborum recusandae earum, quis dolore aliquid culpa sapiente quae. Nihil nemo eum, vero repudiandae reprehenderit obcaecati omnis at. Culpa?</p>
+		<div class="my-3 cardfooter">
+
+			<p class="text-center">écrit le: date de rédaction - mise à jour le : date de modification par:
+				<a href="#" class="cardlink">author_name</a>
+			</p>
+
+		</div>
+	</div>
+</div>
+

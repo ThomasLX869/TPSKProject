@@ -7,7 +7,6 @@
   src: url("../fonts/cursive/cursive_standard-webfont.woff2") format("woff2"), url("../fonts/cursive/cursive_standard-webfont.woff") format("woff");
 }
 body {
-  width: 100%;
   background-color: #e6f3e2;
 }
 
@@ -72,20 +71,53 @@ nav div a:hover {
   height: 18em;
 }
 
-p {
-  margin-top: auto;
+BREADCRUMB .breadcrumb {
+  background-color: #e6f3e2;
 }
 
-.para {
-  height: 10em !important;
+.breadcrumb-item {
+  margin-left: 1.5em;
+}
+
+.breadcrumb-item a {
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.breadcrumb-item:hover {
+  align-items: center;
+  color: #388863 !important;
+  font-weight: bold;
+}
+
+.maintest {
+  position: relative;
+}
+
+.list-group-item {
+  max-width: 70% !important;
+}
+
+a[class=active] {
+  background-color: #388863 !important;
+}
+
+.scrollcont {
+  position: fixed;
+  top: 25vh;
+  left: 3vw;
+  min-height: 100% !important;
+}
+
+.scrollspy-example {
+  position: relative;
+  height: 50vh;
+  margin-top: 0.5rem;
+  overflow: auto;
 }
 
 .logof {
   width: 150px;
-}
-
-footer {
-  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
