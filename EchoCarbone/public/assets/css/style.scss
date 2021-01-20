@@ -1,11 +1,10 @@
 @import "variables.scss";
 
 body {
-  width: 100%;
   background-color: $color-1;
 }
 
-/* cards */
+/* CARDS */
 
 // bordure des cards
 .cardradius {
@@ -13,6 +12,7 @@ body {
   border-radius: 15px;
   align-items: center;
   height: auto;
+
   border-color: $color-2;
   background-color: $color-1;
   box-shadow: 0px 0px 15px 7px rgba($color-3, $alpha: 0.2);
@@ -42,7 +42,6 @@ body {
   font-weight: bold;
 }
 
-
 // mise en forme de l'image
 .imgcard {
   border-radius: 15px;
@@ -55,11 +54,9 @@ body {
   text-indent: 50px;
 }
 
-/* fin de cards */
+/* CARDS END */
 
-h1 {
-  font-family: $font-1;
-}
+
 
 
 // HEADER
@@ -73,7 +70,6 @@ header {
   border: 2px solid #afafaf !important;
   margin-right: 1.2rem;
 }
-
 
 .navbar,
 .footer1 {
@@ -101,18 +97,28 @@ nav div a:hover {
   }
 }
 
+// HEADER END
+
+
+
 //LOGO
 .logo {
   width: 9.7rem;
   margin-left: 1.2rem;
 }
 
-
 .logof {
   width: 150px;
 }
 
-//AUTRE
+// LOGO END
+
+
+// OTHERS
+
+h1 {
+  font-family: $font-1;
+}
 
 .bodyborder {
   border: 2px solid;
@@ -121,14 +127,56 @@ nav div a:hover {
   height: 18em;
 }
 
-p {
-  margin-top: auto;
+// OTHERS END
+
+
+// BREADCRUMB
+ .breadcrumb{
+   background-color: $color-1;
+ }
+.breadcrumb-item{
+  margin-left: 1.5em;
 }
 
-.para {
-  height: 10em !important;
+.breadcrumb-item a{
+  text-decoration: none;
+  font-size: 1.3rem;
 }
 
-footer {
-  color: white;
+.breadcrumb-item:hover {
+  align-items: center;
+  color: $color-3 !important;
+  font-weight: bold;
 }
+
+// BREADCRUMB END
+
+
+
+// SCROLLSPY
+
+.maintest{
+  position: relative;
+}
+.list-group-item{
+  max-width: 70% !important;
+}
+a[class="active"]{
+  background-color: $color-3 !important;
+}
+.scrollcont{
+  position: fixed;
+  top : 25vh;
+  left : 3vw;
+  min-height: 100% !important;
+}
+
+.scrollspy-example {
+  position: relative;
+  height: 50vh;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+// SCROLLSPY END
+
