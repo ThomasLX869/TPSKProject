@@ -5,31 +5,34 @@ body {
   background-color: $color-1;
 }
 
-nav div div ul li {
-  display: inline-block;
+h1{
+  font-family: $font-1;
+}
+
+nav div div ul li{
+  display:inline-block;
   margin-left: 1.5em;
+}
+
+.navbar, .footer1{
+  background-color: $color-2 !important;
+}
+
+nav div a{
+  font-size: 1.3rem;
 }
 
 header {
   color: white;
 }
 
-.navbar,
-.footer1 {
-  background-color: $color-2 !important;
-}
-
 .burger {
-  // border-color: #afafaf !important;
   border: 2px solid #afafaf !important;
   margin-right: 1.2rem;
 }
 
-nav div a {
-  font-size: 1.3rem;
-}
-
 nav div a:hover {
+
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
@@ -41,35 +44,34 @@ nav div a:hover {
   margin-left: 1.2rem;
 }
 
+
 .link-nav {
   width: max-content;
   color: white !important;
   text-decoration: none;
 }
 
-.imgcarou {
-  height: 33rem;
-}
-
 .bodyborder {
+
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: 18em;
 }
 
-p {
+
+p{
   margin-top: auto;
 }
 
-.para {
+.para{
   height: 10em !important;
 }
 
-.logof {
+.logof{
   width: 150px;
 }
 
-footer {
+footer{
   color: white;
 }
