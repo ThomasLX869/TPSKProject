@@ -20,11 +20,6 @@ class Game
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
     private $title;
 
     /**
@@ -45,12 +40,12 @@ class Game
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $game_category;
+    private $gameCategory;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $game_age_range;
+    private $gameAgeRange;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -60,17 +55,17 @@ class Game
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $update_date;
+    private $updateDate;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $creation_date;
+    private $creationDate;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $game_author;
+    private $gameAuthor;
 
     /**
      * @ORM\Column(type="text")
@@ -80,28 +75,16 @@ class Game
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $nb_like;
+    private $nbLike;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $nb_dislike;
+    private $nbDislike;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     public function getTitle(): ?string
@@ -154,24 +137,24 @@ class Game
 
     public function getGameCategory(): ?string
     {
-        return $this->game_category;
+        return $this->gameCategory;
     }
 
-    public function setGameCategory(string $game_category): self
+    public function setGameCategory(string $gameCategory): self
     {
-        $this->game_category = $game_category;
+        $this->gameCategory = $gameCategory;
 
         return $this;
     }
 
     public function getGameAgeRange(): ?int
     {
-        return $this->game_age_range;
+        return $this->gameAgeRange;
     }
 
-    public function setGameAgeRange(int $game_age_range): self
+    public function setGameAgeRange(int $gameAgeRange): self
     {
-        $this->game_age_range = $game_age_range;
+        $this->gameAgeRange = $gameAgeRange;
 
         return $this;
     }
@@ -190,36 +173,36 @@ class Game
 
     public function getUpdateDate(): ?\DateTimeInterface
     {
-        return $this->update_date;
+        return $this->updateDate;
     }
 
-    public function setUpdateDate(?\DateTimeInterface $update_date): self
+    public function setUpdateDate(?\DateTimeInterface $updateDate): self
     {
-        $this->update_date = $update_date;
+        $this->updateDate = $updateDate;
 
         return $this;
     }
 
     public function getCreationDate(): ?\DateTimeInterface
     {
-        return $this->creation_date;
+        return $this->creationDate;
     }
 
-    public function setCreationDate(\DateTimeInterface $creation_date): self
+    public function setCreationDate(\DateTimeInterface $creationDate): self
     {
-        $this->creation_date = $creation_date;
+        $this->creationDate = $creationDate;
 
         return $this;
     }
 
     public function getGameAuthor(): ?string
     {
-        return $this->game_author;
+        return $this->gameAuthor;
     }
 
-    public function setGameAuthor(string $game_author): self
+    public function setGameAuthor(string $gameAuthor): self
     {
-        $this->game_author = $game_author;
+        $this->gameAuthor = $gameAuthor;
 
         return $this;
     }
@@ -238,24 +221,24 @@ class Game
 
     public function getNbLike(): ?int
     {
-        return $this->nb_like;
+        return $this->nbLike;
     }
 
-    public function setNbLike(?int $nb_like): self
+    public function setNbLike(?int $nbLike): self
     {
-        $this->nb_like = $nb_like;
+        $this->nbLike = $nbLike;
 
         return $this;
     }
 
     public function getNbDislike(): ?int
     {
-        return $this->nb_dislike;
+        return $this->nbDislike;
     }
 
-    public function setNbDislike(?int $nb_dislike): self
+    public function setNbDislike(?int $nbDislike): self
     {
-        $this->nb_dislike = $nb_dislike;
+        $this->nbDislike = $nbDislike;
 
         return $this;
     }
