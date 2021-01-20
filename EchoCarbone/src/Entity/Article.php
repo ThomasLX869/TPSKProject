@@ -28,7 +28,7 @@ class Article
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      */
     private $url;
 
@@ -40,12 +40,12 @@ class Article
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $article_category;
+    private $articleCategory;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $article_age_range;
+    private $articleAgeRange;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -55,17 +55,17 @@ class Article
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private $update_date;
+    private $updateDate;
 
     /**
      * @ORM\Column(type="datetime")
      */
-    private $creation_date;
+    private $creationDate;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $article_author;
+    private $articleAuthor;
 
     /**
      * @ORM\Column(type="text")
@@ -75,12 +75,12 @@ class Article
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $nb_like;
+    private $nbLike;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $nb_dislike;
+    private $nbDislike;
 
     public function getId(): ?int
     {
@@ -116,7 +116,7 @@ class Article
         return $this->url;
     }
 
-    public function setUrl(?string $url): self
+    public function setUrl(string $url): self
     {
         $this->url = $url;
 
@@ -137,24 +137,24 @@ class Article
 
     public function getArticleCategory(): ?string
     {
-        return $this->article_category;
+        return $this->articleCategory;
     }
 
-    public function setArticleCategory(string $article_category): self
+    public function setArticleCategory(string $articleCategory): self
     {
-        $this->article_category = $article_category;
+        $this->articleCategory = $articleCategory;
 
         return $this;
     }
 
-    public function getArticleAgeRange(): ?int
+    public function getArticleAgeRange(): ?string
     {
-        return $this->article_age_range;
+        return $this->articleAgeRange;
     }
 
-    public function setArticleAgeRange(int $article_age_range): self
+    public function setArticleAgeRange(string $articleAgeRange): self
     {
-        $this->article_age_range = $article_age_range;
+        $this->articleAgeRange = $articleAgeRange;
 
         return $this;
     }
@@ -173,36 +173,36 @@ class Article
 
     public function getUpdateDate(): ?\DateTimeInterface
     {
-        return $this->update_date;
+        return $this->updateDate;
     }
 
-    public function setUpdateDate(?\DateTimeInterface $update_date): self
+    public function setUpdateDate(?\DateTimeInterface $updateDate): self
     {
-        $this->update_date = $update_date;
+        $this->updateDate = $updateDate;
 
         return $this;
     }
 
     public function getCreationDate(): ?\DateTimeInterface
     {
-        return $this->creation_date;
+        return $this->creationDate;
     }
 
-    public function setCreationDate(\DateTimeInterface $creation_date): self
+    public function setCreationDate(\DateTimeInterface $creationDate): self
     {
-        $this->creation_date = $creation_date;
+        $this->creationDate = $creationDate;
 
         return $this;
     }
 
     public function getArticleAuthor(): ?string
     {
-        return $this->article_author;
+        return $this->articleAuthor;
     }
 
-    public function setArticleAuthor(string $article_author): self
+    public function setArticleAuthor(string $articleAuthor): self
     {
-        $this->article_author = $article_author;
+        $this->articleAuthor = $articleAuthor;
 
         return $this;
     }
@@ -221,24 +221,24 @@ class Article
 
     public function getNbLike(): ?int
     {
-        return $this->nb_like;
+        return $this->nbLike;
     }
 
-    public function setNbLike(?int $nb_like): self
+    public function setNbLike(?int $nbLike): self
     {
-        $this->nb_like = $nb_like;
+        $this->nbLike = $nbLike;
 
         return $this;
     }
 
     public function getNbDislike(): ?int
     {
-        return $this->nb_dislike;
+        return $this->nbDislike;
     }
 
-    public function setNbDislike(?int $nb_dislike): self
+    public function setNbDislike(?int $nbDislike): self
     {
-        $this->nb_dislike = $nb_dislike;
+        $this->nbDislike = $nbDislike;
 
         return $this;
     }
