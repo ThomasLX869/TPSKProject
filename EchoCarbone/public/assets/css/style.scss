@@ -6,30 +6,71 @@ body {
 }
 
 /* cards */
+
+// bordure des cards
 .cardradius {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: auto;
   border-color: $color-2;
-  background-color: $color-3;
-  box-shadow: -2px -2px 12px 12px $color-3;
+  background-color: $color-1;
+  box-shadow: 0px 0px 15px 7px rgba($color-3, $alpha: 0.2);
 }
 
-h1{
+// mise en forme de barre sous le titre
+.cardline {
+  color: $color-2;
+  border-radius: 2px;
+  height: 2px !important;
+  opacity: 1;
+}
+
+//mise en forme des critères de trie (catégories et ages)
+.cardsorting {
+  font-style: italic;
+}
+
+// Mise en forme des liens
+.cardlink {
+  text-decoration: none;
+  color: black;
+}
+
+.cardlink:hover {
+  color: $color-3;
+  font-weight: bold;
+}
+
+// mise en forme de l'image
+.imgcard {
+  border-radius: 15px;
+  width: 80%;
+}
+
+// mise en forme du texte
+.cardtext {
+  text-align: justify;
+  text-indent: 50px;
+}
+
+/* fin de cards */
+
+h1 {
   font-family: $font-1;
 }
 
-nav div div ul li{
-  display:inline-block;
+nav div div ul li {
+  display: inline-block;
   margin-left: 1.5em;
 }
 
-.navbar, .footer1{
+.navbar,
+.footer1 {
   background-color: $color-2 !important;
 }
 
-nav div a{
+nav div a {
   font-size: 1.3rem;
 }
 
@@ -43,7 +84,6 @@ header {
 }
 
 nav div a:hover {
-
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
@@ -55,7 +95,6 @@ nav div a:hover {
   margin-left: 1.2rem;
 }
 
-
 .link-nav {
   width: max-content;
   color: white !important;
@@ -63,26 +102,24 @@ nav div a:hover {
 }
 
 .bodyborder {
-
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: 18em;
 }
 
-
-p{
+p {
   margin-top: auto;
 }
 
-.para{
+.para {
   height: 10em !important;
 }
 
-.logof{
+.logof {
   width: 150px;
 }
 
-footer{
+footer {
   color: white;
 }
