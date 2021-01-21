@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\VideoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,16 +40,6 @@ class Video
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $videoCategory;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $videoAgeRange;
-
-    /**
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $description;
@@ -63,11 +55,6 @@ class Video
     private $creationDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $videoAuthor;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -81,6 +68,28 @@ class Video
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nbDislike;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="videos")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
+     */
+    private $ageRange;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="videos")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+        $this->AgeRange = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -239,6 +248,66 @@ class Video
     public function setNbDislike(?int $nbDislike): self
     {
         $this->nbDislike = $nbDislike;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AgeRange[]
+     */
+    public function getAgeRange(): Collection
+    {
+        return $this->AgeRange;
+    }
+
+    public function addAgeRange(AgeRange $ageRange): self
+    {
+        if (!$this->AgeRange->contains($ageRange)) {
+            $this->AgeRange[] = $ageRange;
+        }
+
+        return $this;
+    }
+
+    public function removeAgeRange(AgeRange $ageRange): self
+    {
+        $this->AgeRange->removeElement($ageRange);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Admin
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Admin $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
