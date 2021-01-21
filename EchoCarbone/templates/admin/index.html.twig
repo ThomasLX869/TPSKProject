@@ -5,45 +5,15 @@
 {% block body %}
     <h1>Admin index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Role</th>
-                <th>Image</th>
-                <th>Pseudo</th>
-                <th>Presentation</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for admin in admins %}
-            <tr>
-                <td>{{ admin.id }}</td>
-                <td>{{ admin.firstname }}</td>
-                <td>{{ admin.lastname }}</td>
-                <td>{{ admin.email }}</td>
-                <td>{{ admin.password }}</td>
-                <td>{{ admin.role }}</td>
-                <td>{{ admin.image }}</td>
-                <td>{{ admin.pseudo }}</td>
-                <td>{{ admin.presentation }}</td>
-                <td>
-{#                    <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>#}
-{#                    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>#}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-{#    <a href="{{ path('admin_new') }}">Create new</a>#}
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    git fetch origin
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/thoma/OneDrive/Bureau/projecttpksk/TPSKProject/EchoCarbone/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/thoma/OneDrive/Bureau/projecttpksk/TPSKProject/EchoCarbone/templates/admin/index.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
+    </ul>
+</div>
+
 {% endblock %}
