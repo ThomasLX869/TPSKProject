@@ -58,8 +58,6 @@ body {
 /* CARDS END */
 
 
-
-
 // HEADER
 
 header {
@@ -137,7 +135,33 @@ h1 {
   height: 18em;
 }
 
+p {
+  margin-top: auto;
+}
+
+.para {
+  height: 10em !important;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+}
+
 // OTHERS END
+
+// FOOTER
+
+footer {
+  color: white;
+}
+
+footer a,
+li {
+  color: black;
+}
+
+// FOOTER END
 
 
 // BREADCRUMB
@@ -189,4 +213,3 @@ a[class="active"]{
 }
 
 // SCROLLSPY END
-

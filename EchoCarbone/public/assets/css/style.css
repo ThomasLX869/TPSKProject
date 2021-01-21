@@ -1,59 +1,65 @@
-@font-face {
-  font-family: "learningCurve";
-  src: url("../fonts/learningcurve/learningcurve-webfont.woff2") format("woff2"), url("../fonts/learningcurve/learningcurve-webfont.woff2") format("woff");
-}
-@font-face {
-  font-family: "cursive";
-  src: url("../fonts/cursive/cursive_standard-webfont.woff2") format("woff2"), url("../fonts/cursive/cursive_standard-webfont.woff") format("woff");
-}
+@import "variables.scss";
+
 body {
-  background-color: #e6f3e2;
-  top: 100px;
+  background-color: $color-1;
+  top:100px;
 }
 
 /* CARDS */
+
+// bordure des cards
 .cardradius {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: auto;
-  border-color: #0c3121;
-  background-color: #e6f3e2;
-  box-shadow: 0px 0px 15px 7px rgba(56, 136, 99, 0.2);
+
+  border-color: $color-2;
+  background-color: $color-1;
+  box-shadow: 0px 0px 15px 7px rgba($color-3, $alpha: 0.2);
 }
 
+// mise en forme de barre sous le titre
 .cardline {
-  color: #0c3121;
+  color: $color-2;
   border-radius: 2px;
   height: 2px !important;
   opacity: 1;
 }
 
+//mise en forme des critères de trie (catégories et ages)
 .cardsorting {
   font-style: italic;
 }
 
+// Mise en forme des liens
 .cardlink {
   text-decoration: none;
   color: black;
 }
 
 .cardlink:hover {
-  color: #388863;
+  color: $color-3;
   font-weight: bold;
 }
 
+// mise en forme de l'image
 .imgcard {
   border-radius: 15px;
   width: 80%;
 }
 
+// mise en forme du texte
 .cardtext {
   text-align: justify;
   text-indent: 50px;
 }
 
 /* CARDS END */
+
+
+// HEADER
+
 header {
   color: white;
   margin-top: 0;
@@ -64,18 +70,18 @@ header {
   margin-right: 1.2rem;
 }
 
-.navbar {
-  top: 0px;
+.navbar{
+  top : 0px;
   z-index: 3;
 }
 
-.list-to-move {
+.list-to-move{
   margin-left: 19vw;
 }
 
 .navbar,
 .footer1 {
-  background-color: #0c3121 !important;
+  background-color: $color-2 !important;
 }
 
 nav div a {
@@ -90,14 +96,20 @@ nav div a {
 
 nav div a:hover {
   align-items: center;
-  color: #388863 !important;
+  color: $color-3 !important;
   font-weight: bold;
-}
-nav div a:hover nav div div ul li {
-  display: inline-block;
-  margin-left: 1.5em;
+
+  nav div div ul li {
+    display: inline-block;
+    margin-left: 1.5em;
+  }
 }
 
+// HEADER END
+
+
+
+//LOGO
 .logo {
   width: 9.7rem;
   margin-left: 1.2rem;
@@ -107,8 +119,13 @@ nav div a:hover nav div div ul li {
   width: 150px;
 }
 
+// LOGO END
+
+
+// OTHERS
+
 h1 {
-  font-family: "Nom-font", sans-serif;
+  font-family: $font-1;
 }
 
 .bodyborder {
@@ -118,49 +135,81 @@ h1 {
   height: 18em;
 }
 
-.breadcrumb {
-  background-color: #e6f3e2;
+p {
+  margin-top: auto;
 }
 
-.breadcrumb-item {
+.para {
+  height: 10em !important;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+}
+
+// OTHERS END
+
+// FOOTER
+
+footer {
+  color: white;
+}
+
+footer a,
+li {
+  color: black;
+}
+
+// FOOTER END
+
+
+// BREADCRUMB
+ .breadcrumb{
+   background-color: $color-1;
+ }
+.breadcrumb-item{
   margin-left: 1.5em;
 }
 
-.breadcrumb-item a {
+.breadcrumb-item a{
   text-decoration: none;
   font-size: 1.3rem;
 }
 
 .breadcrumb-item:hover {
   align-items: center;
-  color: #388863 !important;
+  color: $color-3 !important;
   font-weight: bold;
 }
 
-.maintest {
+// BREADCRUMB END
+
+
+
+// SCROLLSPY
+
+.maintest{
   position: relative;
 }
-
-.list-group-item {
+.list-group-item{
   max-width: 70% !important;
 }
-
-a[class=active] {
-  background-color: #388863 !important;
+a[class="active"]{
+  background-color: $color-3 !important;
 }
-
-.scrollcont {
+.scrollcont{
   position: fixed;
-  top: 25vh;
-  left: 3vw;
+  top : 25vh;
+  left : 3vw;
   min-height: 100% !important;
 }
 
 .scrollspy-example {
   position: relative;
   height: 50vh;
-  margin-top: 0.5rem;
+  margin-top: .5rem;
   overflow: auto;
 }
 
-/*# sourceMappingURL=style.css.map */
+// SCROLLSPY END
