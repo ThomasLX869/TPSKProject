@@ -1,28 +1,82 @@
 @import "variables.scss";
 
 body {
-  width: 100%;
   background-color: $color-1;
+  top:100px;
 }
 
-/* cards */
+/* CARDS */
+
+// bordure des cards
 .cardradius {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
   height: auto;
+
   border-color: $color-2;
-  background-color: $color-3;
-  box-shadow: -2px -2px 12px 12px $color-3;
+  background-color: $color-1;
+  box-shadow: 0px 0px 15px 7px rgba($color-3, $alpha: 0.2);
 }
 
-h1 {
-  font-family: $font-1;
+// mise en forme de barre sous le titre
+.cardline {
+  color: $color-2;
+  border-radius: 2px;
+  height: 2px !important;
+  opacity: 1;
 }
 
-nav div div ul li {
-  display: inline-block;
-  margin-left: 1.5em;
+//mise en forme des critères de trie (catégories et ages)
+.cardsorting {
+  font-style: italic;
+}
+
+// Mise en forme des liens
+.cardlink {
+  text-decoration: none;
+  color: black;
+}
+
+.cardlink:hover {
+  color: $color-3;
+  font-weight: bold;
+}
+
+// mise en forme de l'image
+.imgcard {
+  border-radius: 15px;
+  width: 80%;
+}
+
+// mise en forme du texte
+.cardtext {
+  text-align: justify;
+  text-indent: 50px;
+}
+
+/* CARDS END */
+
+
+// HEADER
+
+header {
+  color: white;
+  margin-top: 0;
+}
+
+.burger {
+  border: 2px solid #afafaf !important;
+  margin-right: 1.2rem;
+}
+
+.navbar{
+  top : 0px;
+  z-index: 3;
+}
+
+.list-to-move{
+  margin-left: 19vw;
 }
 
 .navbar,
@@ -34,31 +88,44 @@ nav div a {
   font-size: 1.3rem;
 }
 
-header {
-  color: white;
-}
-
-.burger {
-  border: 2px solid #afafaf !important;
-  margin-right: 1.2rem;
+.link-nav {
+  width: max-content;
+  color: white !important;
+  text-decoration: none;
 }
 
 nav div a:hover {
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
-  //font-size: 1.5em;
+
+  nav div div ul li {
+    display: inline-block;
+    margin-left: 1.5em;
+  }
 }
 
+// HEADER END
+
+
+
+//LOGO
 .logo {
   width: 9.7rem;
   margin-left: 1.2rem;
 }
 
-.link-nav {
-  width: max-content;
-  color: white !important;
-  text-decoration: none;
+.logof {
+  width: 150px;
+}
+
+// LOGO END
+
+
+// OTHERS
+
+h1 {
+  font-family: $font-1;
 }
 
 .bodyborder {
@@ -76,9 +143,14 @@ p {
   height: 10em !important;
 }
 
-.logof {
-  width: 150px;
+span {
+  display: flex;
+  justify-content: center;
 }
+
+// OTHERS END
+
+// FOOTER
 
 footer {
   color: white;
@@ -89,7 +161,55 @@ li {
   color: black;
 }
 
-span {
-  display: flex;
-  justify-content: center;
+// FOOTER END
+
+
+// BREADCRUMB
+ .breadcrumb{
+   background-color: $color-1;
+ }
+.breadcrumb-item{
+  margin-left: 1.5em;
 }
+
+.breadcrumb-item a{
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.breadcrumb-item:hover {
+  align-items: center;
+  color: $color-3 !important;
+  font-weight: bold;
+}
+
+// BREADCRUMB END
+
+
+
+// SCROLLSPY
+
+.maintest{
+  position: relative;
+}
+.list-group-item{
+  max-width: 70% !important;
+}
+a[class="active"]{
+  background-color: $color-3 !important;
+}
+.scrollcont{
+  position: fixed;
+  top : 25vh;
+  left : 3vw;
+  min-height: 100% !important;
+}
+
+.scrollspy-example {
+  position: relative;
+  height: 50vh;
+  margin-top: .5rem;
+  overflow: auto;
+}
+
+// SCROLLSPY END
