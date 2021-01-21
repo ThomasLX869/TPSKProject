@@ -1,0 +1,21 @@
+<?php
+
+namespace App\Controller;
+
+
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+class VideoController extends AbstractController
+{
+    /**
+     * @Route("/video", name="video_index")
+     */
+    public function index(): Response
+    {
+        return $this->render('video/index.html.twig', [
+            'controller_name' => 'VideoController',
+        ]);
+    }
+}
