@@ -144,29 +144,6 @@ class Game
         return $this;
     }
 
-    public function getGameCategory(): ?string
-    {
-        return $this->gameCategory;
-    }
-
-    public function setGameCategory(string $gameCategory): self
-    {
-        $this->gameCategory = $gameCategory;
-
-        return $this;
-    }
-
-    public function getGameAgeRange(): ?int
-    {
-        return $this->gameAgeRange;
-    }
-
-    public function setGameAgeRange(int $gameAgeRange): self
-    {
-        $this->gameAgeRange = $gameAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -204,17 +181,6 @@ class Game
         return $this;
     }
 
-    public function getGameAuthor(): ?string
-    {
-        return $this->gameAuthor;
-    }
-
-    public function setGameAuthor(string $gameAuthor): self
-    {
-        $this->gameAuthor = $gameAuthor;
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {
