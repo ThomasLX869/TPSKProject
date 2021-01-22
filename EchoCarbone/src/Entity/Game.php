@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GameRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -38,16 +40,6 @@ class Game
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $gameCategory;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $gameAgeRange;
-
-    /**
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $description;
@@ -63,11 +55,6 @@ class Game
     private $creationDate;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $gameAuthor;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $content;
@@ -81,6 +68,28 @@ class Game
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nbDislike;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="games")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="games")
+     */
+    private $ageRange;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="games")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+        $this->ageRange = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,29 +144,6 @@ class Game
         return $this;
     }
 
-    public function getGameCategory(): ?string
-    {
-        return $this->gameCategory;
-    }
-
-    public function setGameCategory(string $gameCategory): self
-    {
-        $this->gameCategory = $gameCategory;
-
-        return $this;
-    }
-
-    public function getGameAgeRange(): ?int
-    {
-        return $this->gameAgeRange;
-    }
-
-    public function setGameAgeRange(int $gameAgeRange): self
-    {
-        $this->gameAgeRange = $gameAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -195,17 +181,6 @@ class Game
         return $this;
     }
 
-    public function getGameAuthor(): ?string
-    {
-        return $this->gameAuthor;
-    }
-
-    public function setGameAuthor(string $gameAuthor): self
-    {
-        $this->gameAuthor = $gameAuthor;
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {
@@ -239,6 +214,66 @@ class Game
     public function setNbDislike(?int $nbDislike): self
     {
         $this->nbDislike = $nbDislike;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AgeRange[]
+     */
+    public function getAgeRange(): Collection
+    {
+        return $this->ageRange;
+    }
+
+    public function addAgeRange(AgeRange $ageRange): self
+    {
+        if (!$this->ageRange->contains($ageRange)) {
+            $this->ageRange[] = $ageRange;
+        }
+
+        return $this;
+    }
+
+    public function removeAgeRange(AgeRange $ageRange): self
+    {
+        $this->ageRange->removeElement($ageRange);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Admin
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Admin $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

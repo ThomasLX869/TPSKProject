@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\QuizzRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,15 +39,6 @@ class Quizz
      */
     private $image;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $quizzCategory;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $quizzAgeRange;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -61,11 +54,6 @@ class Quizz
      * @ORM\Column(type="datetime")
      */
     private $creationDate;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $quizzAuthor;
 
     /**
      * @ORM\Column(type="string", length=1000)
@@ -86,6 +74,28 @@ class Quizz
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nbDislike;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="quizzs")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="quizzs")
+     */
+    private $ageRange;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="quizzs")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+        $this->ageRange = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -140,29 +150,6 @@ class Quizz
         return $this;
     }
 
-    public function getQuizzCategory(): ?string
-    {
-        return $this->quizzCategory;
-    }
-
-    public function setQuizzCategory(string $quizzCategory): self
-    {
-        $this->quizzCategory = $quizzCategory;
-
-        return $this;
-    }
-
-    public function getQuizzAgeRange(): ?string
-    {
-        return $this->quizzAgeRange;
-    }
-
-    public function setQuizzAgeRange(string $quizzAgeRange): self
-    {
-        $this->quizzAgeRange = $quizzAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -200,17 +187,6 @@ class Quizz
         return $this;
     }
 
-    public function getQuizzAuthor(): ?string
-    {
-        return $this->quizzAuthor;
-    }
-
-    public function setQuizzAuthor(string $quizzAuthor): self
-    {
-        $this->quizzAuthor = $quizzAuthor;
-
-        return $this;
-    }
 
     public function getQuestion(): ?string
     {
@@ -256,6 +232,66 @@ class Quizz
     public function setNbDislike(?int $nbDislike): self
     {
         $this->nbDislike = $nbDislike;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AgeRange[]
+     */
+    public function getAgeRange(): Collection
+    {
+        return $this->ageRange;
+    }
+
+    public function addAgeRange(AgeRange $ageRange): self
+    {
+        if (!$this->ageRange->contains($ageRange)) {
+            $this->ageRange[] = $ageRange;
+        }
+
+        return $this;
+    }
+
+    public function removeAgeRange(AgeRange $ageRange): self
+    {
+        $this->ageRange->removeElement($ageRange);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Admin
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Admin $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,7 +30,7 @@ class Article
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $url;
 
@@ -37,15 +39,6 @@ class Article
      */
     private $image;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $articleCategory;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $articleAgeRange;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -62,10 +55,6 @@ class Article
      */
     private $creationDate;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $articleAuthor;
 
     /**
      * @ORM\Column(type="text")
@@ -81,6 +70,28 @@ class Article
      * @ORM\Column(type="integer", nullable=true)
      */
     private $nbDislike;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="articles")
+     */
+    private $ageRange;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="articles")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $author;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+        $this->ageRange = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -135,29 +146,6 @@ class Article
         return $this;
     }
 
-    public function getArticleCategory(): ?string
-    {
-        return $this->articleCategory;
-    }
-
-    public function setArticleCategory(string $articleCategory): self
-    {
-        $this->articleCategory = $articleCategory;
-
-        return $this;
-    }
-
-    public function getArticleAgeRange(): ?string
-    {
-        return $this->articleAgeRange;
-    }
-
-    public function setArticleAgeRange(string $articleAgeRange): self
-    {
-        $this->articleAgeRange = $articleAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -195,18 +183,6 @@ class Article
         return $this;
     }
 
-    public function getArticleAuthor(): ?string
-    {
-        return $this->articleAuthor;
-    }
-
-    public function setArticleAuthor(string $articleAuthor): self
-    {
-        $this->articleAuthor = $articleAuthor;
-
-        return $this;
-    }
-
     public function getContent(): ?string
     {
         return $this->content;
@@ -239,6 +215,66 @@ class Article
     public function setNbDislike(?int $nbDislike): self
     {
         $this->nbDislike = $nbDislike;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
+    {
+        return $this->category;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AgeRange[]
+     */
+    public function getAgeRange(): Collection
+    {
+        return $this->ageRange;
+    }
+
+    public function addAgeRange(AgeRange $ageRange): self
+    {
+        if (!$this->ageRange->contains($ageRange)) {
+            $this->ageRange[] = $ageRange;
+        }
+
+        return $this;
+    }
+
+    public function removeAgeRange(AgeRange $ageRange): self
+    {
+        $this->ageRange->removeElement($ageRange);
+
+        return $this;
+    }
+
+    public function getAuthor(): ?Admin
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?Admin $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
