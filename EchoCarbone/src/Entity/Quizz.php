@@ -150,29 +150,6 @@ class Quizz
         return $this;
     }
 
-    public function getQuizzCategory(): ?string
-    {
-        return $this->quizzCategory;
-    }
-
-    public function setQuizzCategory(string $quizzCategory): self
-    {
-        $this->quizzCategory = $quizzCategory;
-
-        return $this;
-    }
-
-    public function getQuizzAgeRange(): ?string
-    {
-        return $this->quizzAgeRange;
-    }
-
-    public function setQuizzAgeRange(string $quizzAgeRange): self
-    {
-        $this->quizzAgeRange = $quizzAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -210,17 +187,6 @@ class Quizz
         return $this;
     }
 
-    public function getQuizzAuthor(): ?string
-    {
-        return $this->quizzAuthor;
-    }
-
-    public function setQuizzAuthor(string $quizzAuthor): self
-    {
-        $this->quizzAuthor = $quizzAuthor;
-
-        return $this;
-    }
 
     public function getQuestion(): ?string
     {

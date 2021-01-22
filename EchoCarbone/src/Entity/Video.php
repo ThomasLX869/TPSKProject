@@ -144,29 +144,6 @@ class Video
         return $this;
     }
 
-    public function getVideoCategory(): ?string
-    {
-        return $this->videoCategory;
-    }
-
-    public function setVideoCategory(string $videoCategory): self
-    {
-        $this->videoCategory = $videoCategory;
-
-        return $this;
-    }
-
-    public function getVideoAgeRange(): ?string
-    {
-        return $this->videoAgeRange;
-    }
-
-    public function setVideoAgeRange(string $videoAgeRange): self
-    {
-        $this->videoAgeRange = $videoAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -204,17 +181,6 @@ class Video
         return $this;
     }
 
-    public function getVideoAuthor(): ?string
-    {
-        return $this->videoAuthor;
-    }
-
-    public function setVideoAuthor(string $videoAuthor): self
-    {
-        $this->videoAuthor = $videoAuthor;
-
-        return $this;
-    }
 
     public function getContent(): ?string
     {
