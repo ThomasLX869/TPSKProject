@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use App\Repository\QuizzRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\Entity(repositoryClass=QuizzRepository::class)
  */
-class Article
+class Quizz
 {
     /**
      * @ORM\Id
@@ -30,7 +30,7 @@ class Article
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      */
     private $url;
 
@@ -55,11 +55,15 @@ class Article
      */
     private $creationDate;
 
+    /**
+     * @ORM\Column(type="string", length=1000)
+     */
+    private $question;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="string", length=1000)
      */
-    private $content;
+    private $answer;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -72,17 +76,17 @@ class Article
     private $nbDislike;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="quizzs")
      */
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="quizzs")
      */
     private $ageRange;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="quizzs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -183,14 +187,27 @@ class Article
         return $this;
     }
 
-    public function getContent(): ?string
+
+    public function getQuestion(): ?string
     {
-        return $this->content;
+        return $this->question;
     }
 
-    public function setContent(string $content): self
+    public function setQuestion(string $question): self
     {
-        $this->content = $content;
+        $this->question = $question;
+
+        return $this;
+    }
+
+    public function getAnswer(): ?string
+    {
+        return $this->answer;
+    }
+
+    public function setAnswer(string $answer): self
+    {
+        $this->answer = $answer;
 
         return $this;
     }

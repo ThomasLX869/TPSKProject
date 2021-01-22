@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use App\Repository\GameRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\Entity(repositoryClass=GameRepository::class)
  */
-class Article
+class Game
 {
     /**
      * @ORM\Id
@@ -30,7 +30,7 @@ class Article
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      */
     private $url;
 
@@ -38,7 +38,6 @@ class Article
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $image;
-
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -54,7 +53,6 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $creationDate;
-
 
     /**
      * @ORM\Column(type="text")
@@ -72,17 +70,17 @@ class Article
     private $nbDislike;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="games")
      */
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="games")
      */
     private $ageRange;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="games")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -182,6 +180,7 @@ class Article
 
         return $this;
     }
+
 
     public function getContent(): ?string
     {

@@ -118,6 +118,28 @@ h1 {
   height: 18em;
 }
 
+p {
+  margin-top: auto;
+}
+
+.para {
+  height: 10em !important;
+}
+
+span {
+  display: flex;
+  justify-content: center;
+}
+
+footer {
+  color: white;
+}
+
+footer a,
+li {
+  color: white;
+}
+
 .breadcrumb {
   background-color: #e6f3e2;
 }
@@ -161,6 +183,33 @@ a[class=active] {
   height: 50vh;
   margin-top: 0.5rem;
   overflow: auto;
+}
+
+.youthContent h3 {
+  font-family: cursive;
+  display: flex;
+  justify-content: center;
+  border: 2px black solid;
+  border-radius: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding: 30px;
+}
+
+.rubrique {
+  font-family: cursive;
+  width: 400px;
+  margin: 30px;
+  margin-right: 100px;
+  margin-left: 150px;
+  border: 2px black solid;
+  border-radius: 15px;
+  display: inline-block;
+  padding: 50px;
+}
+
+.rubrique p {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

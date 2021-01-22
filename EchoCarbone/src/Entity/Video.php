@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
+use App\Repository\VideoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\Entity(repositoryClass=VideoRepository::class)
  */
-class Article
+class Video
 {
     /**
      * @ORM\Id
@@ -30,7 +30,7 @@ class Article
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      */
     private $url;
 
@@ -38,7 +38,6 @@ class Article
      * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $image;
-
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
@@ -54,7 +53,6 @@ class Article
      * @ORM\Column(type="datetime")
      */
     private $creationDate;
-
 
     /**
      * @ORM\Column(type="text")
@@ -72,17 +70,17 @@ class Article
     private $nbDislike;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="videos")
      */
     private $category;
 
     /**
-     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="articles")
+     * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
      */
     private $ageRange;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="videos")
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
@@ -90,7 +88,7 @@ class Article
     public function __construct()
     {
         $this->category = new ArrayCollection();
-        $this->ageRange = new ArrayCollection();
+        $this->AgeRange = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -183,6 +181,7 @@ class Article
         return $this;
     }
 
+
     public function getContent(): ?string
     {
         return $this->content;
@@ -248,13 +247,13 @@ class Article
      */
     public function getAgeRange(): Collection
     {
-        return $this->ageRange;
+        return $this->AgeRange;
     }
 
     public function addAgeRange(AgeRange $ageRange): self
     {
-        if (!$this->ageRange->contains($ageRange)) {
-            $this->ageRange[] = $ageRange;
+        if (!$this->AgeRange->contains($ageRange)) {
+            $this->AgeRange[] = $ageRange;
         }
 
         return $this;
@@ -262,7 +261,7 @@ class Article
 
     public function removeAgeRange(AgeRange $ageRange): self
     {
-        $this->ageRange->removeElement($ageRange);
+        $this->AgeRange->removeElement($ageRange);
 
         return $this;
     }
