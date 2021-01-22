@@ -209,29 +209,18 @@ a[class="active"] {
 
 // YOUTH PAGE
 
-.youthContent h3 {
-  font-family: cursive;
+.h3 {
+  font-family: $font-1-youth;
   display: flex;
   justify-content: center;
   border: 2px black solid;
   border-radius: 15px;
-  margin-left: 40px;
-  margin-right: 40px;
   padding: 30px;
+  font-weight: bolder;
 }
-
-.rubrique {
-  font-family: cursive;
-  width: 400px;
-  margin: 30px;
-  margin-right: 100px;
-  margin-left: 150px;
-  border: 2px black solid;
-  border-radius: 15px;
-  display: inline-block;
-  padding: 50px;
-}
-
-.rubrique p {
-  text-align: center;
+.card-text {
+  font-family: $font-2-youth;
+  font-size: 2em;
+  font-weight: bolder;
+  background: $color-3;
 }
