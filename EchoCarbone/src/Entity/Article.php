@@ -146,29 +146,6 @@ class Article
         return $this;
     }
 
-    public function getArticleCategory(): ?string
-    {
-        return $this->articleCategory;
-    }
-
-    public function setArticleCategory(string $articleCategory): self
-    {
-        $this->articleCategory = $articleCategory;
-
-        return $this;
-    }
-
-    public function getArticleAgeRange(): ?string
-    {
-        return $this->articleAgeRange;
-    }
-
-    public function setArticleAgeRange(string $articleAgeRange): self
-    {
-        $this->articleAgeRange = $articleAgeRange;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -202,18 +179,6 @@ class Article
     public function setCreationDate(\DateTimeInterface $creationDate): self
     {
         $this->creationDate = $creationDate;
-
-        return $this;
-    }
-
-    public function getArticleAuthor(): ?string
-    {
-        return $this->articleAuthor;
-    }
-
-    public function setArticleAuthor(string $articleAuthor): self
-    {
-        $this->articleAuthor = $articleAuthor;
 
         return $this;
     }
