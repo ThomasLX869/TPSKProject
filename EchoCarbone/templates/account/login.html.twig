@@ -7,6 +7,12 @@
     <div class="container">
         <h1 class="my-5 text-center">Se connecter</h1>
 
+        {% if hasError %}
+            <div class="col-4 alert alert-danger m-auto">
+                Email ou mot de passe invalide
+            </div>
+        {% endif %}
+
         <form action="{{ path('account_login')}}" class="m-auto col-6" method="POST">
             <div class="form-group">
                 <label for="email">Email</label>
