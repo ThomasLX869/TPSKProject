@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\GameRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Admin;
+use App\Entity\AgeRange;
+use App\Entity\Category;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\GameRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=GameRepository::class)
+ * @ORM\HasLifecycleCallbacks // utilisé pour gérer les dates de création 
  */
 class Game
 {
@@ -21,11 +26,22 @@ class Game
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 4,
+     * max = 255,
+     * minMessage = "Un titre aussi court?Minimum {{ limit }} caractères requis",
+     * maxMessage = "Un titre de moins de  {{ limit }} caractères est requis",
+     * allowEmptyString = false
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 255,
+     * maxMessage = "Un titre de moins de  {{ limit }} caractères est requis",
+     * ) 
      */
     private $source;
 
@@ -40,7 +56,7 @@ class Game
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      */
     private $description;
 
@@ -55,7 +71,8 @@ class Game
     private $creationDate;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text"
+     * , nullable=true)
      */
     private $content;
 
