@@ -3,13 +3,20 @@
 namespace App\Entity;
 
 use App\Repository\AdminRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ *  fields ={"email"},
+ *  message="Adresse email déjà utilisée, merci d'en utiliser une autre"
+ * )
  */
 class Admin implements UserInterface
 {
@@ -95,6 +102,11 @@ class Admin implements UserInterface
      */
     private $categories;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -104,6 +116,21 @@ class Admin implements UserInterface
         $this->glossaries = new ArrayCollection();
         $this->ageRanges = new ArrayCollection();
         $this->categories = new ArrayCollection();
+    }
+
+    /**
+     * Génére un slug automatiquement
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initSlug(){
+        if(empty($this->slug) ){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->getFirstname().time().hash("sha1", $this->getLastname()) );
+        }
     }
 
     public function getId(): ?int
@@ -419,21 +446,25 @@ class Admin implements UserInterface
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return['ROLE_USER'];
     }
 
-    public function getSalt()
+    public function getSalt(){}
+
+    public function getUsername(){return $this->password;}
+
+
+    public function eraseCredentials(){}
+
+    public function getSlug(): ?string
     {
-        // TODO: Implement getSalt() method.
+        return $this->slug;
     }
 
-    public function getUsername()
+    public function setSlug(string $slug): self
     {
-        // TODO: Implement getUsername() method.
-    }
+        $this->slug = $slug;
 
-    public function eraseCredentials()
-    {
-        // TODO: Implement eraseCredentials() method.
+        return $this;
     }
 }
