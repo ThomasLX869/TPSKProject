@@ -3,14 +3,22 @@
 namespace App\Entity;
 
 use App\Repository\AdminRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
+ * @ORM\HasLifecycleCallbacks
+ * @UniqueEntity(
+ *  fields ={"email"},
+ *  message="Adresse email déjà utilisée, merci d'en utiliser une autre"
+ * )
  */
-class Admin
+class Admin implements UserInterface
 {
     /**
      * @ORM\Id
@@ -94,6 +102,11 @@ class Admin
      */
     private $categories;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -103,6 +116,21 @@ class Admin
         $this->glossaries = new ArrayCollection();
         $this->ageRanges = new ArrayCollection();
         $this->categories = new ArrayCollection();
+    }
+
+    /**
+     * Génére un slug automatiquement
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function initSlug(){
+        if(empty($this->slug) ){
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->getFirstname().time().hash("sha1", $this->getLastname()) );
+        }
     }
 
     public function getId(): ?int
@@ -412,6 +440,30 @@ class Admin
                 $category->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRoles()
+    {
+        return['ROLE_USER'];
+    }
+
+    public function getSalt(){}
+
+    public function getUsername(){return $this->password;}
+
+
+    public function eraseCredentials(){}
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

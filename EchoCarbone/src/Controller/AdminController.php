@@ -5,28 +5,30 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Form\AdminType;
 use App\Repository\AdminRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("/users")
+ * @Route("/admin")
  */
 class AdminController extends AbstractController
 {
-    /**
-     * @Route("/", name="admin_index", methods={"GET"})
-     */
-    public function index(AdminRepository $adminRepository): Response
-    {
-        return $this->render('admin/index.html.twig', [
-            'admins' => $adminRepository->findAll(),
-        ]);
-    }
-
 //    /**
-//     * @Route("/admin/new", name="admin_new", methods={"GET","POST"})
+//     * @Route("/", name="admin_index", methods={"GET"})
+//     */
+//    public function index(AdminRepository $adminRepository): Response
+//    {
+//        return $this->render('admin/index.html.twig', [
+//            'admins' => $adminRepository->findAll(),
+//        ]);
+//    }
+//
+//    /**
+//     * @Route("/new", name="admin_new", methods={"GET","POST"})
 //     */
 //    public function new(Request $request): Response
 //    {
@@ -91,4 +93,10 @@ class AdminController extends AbstractController
 //
 //        return $this->redirectToRoute('admin_index');
 //    }
+
+
+
+
+
+
 }

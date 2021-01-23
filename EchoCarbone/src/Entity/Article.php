@@ -61,6 +61,7 @@ class Article
      *      max = 255,
      *      maxMessage = "Max {{ limit }} caractères",
      * )
+
      */
     private $description;
 

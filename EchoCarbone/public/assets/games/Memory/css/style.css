@@ -1,0 +1,18 @@
+h1{
+    color: rgb(46, 80, 46);
+    font-family:'Trebuchet MS',sans-serif;
+}
+
+h2{
+    color:rgb(82, 128, 14);
+}
+
+span{
+    
+    font-weight: bold;
+    color: honeydew;
+    font-size: xx-large;
+}
+.btn-vert{
+    background-color: rgb(121, 175, 40);
+}
