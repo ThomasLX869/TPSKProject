@@ -40,11 +40,6 @@ class Glossary
     private $url;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $glossary_Category;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="glossaries")
      */
     private $category;
@@ -109,18 +104,6 @@ class Glossary
     public function setUrl(?string $url): self
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    public function getGlossaryCategory(): ?string
-    {
-        return $this->glossary_Category;
-    }
-
-    public function setGlossaryCategory(?string $glossary_Category): self
-    {
-        $this->glossary_Category = $glossary_Category;
 
         return $this;
     }

@@ -131,6 +131,11 @@ span {
   justify-content: center;
 }
 
+.btn-ecogreen {
+  background-color: #0c3121;
+  color: white;
+}
+
 footer {
   color: white;
 }
