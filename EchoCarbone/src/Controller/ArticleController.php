@@ -4,11 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Article;
 use App\Form\ArticleType;
+use App\Repository\GameRepository;
 use App\Repository\ArticleRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/article")
@@ -18,12 +19,15 @@ class ArticleController extends AbstractController
     /**
      * @Route("/", name="article_index", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository): Response
-    {
-        $article = $articleRepository->findOneByTitle("Test de Category");
-        dump($article->getCategory()[0]->getLabel());
+    public function index(ArticleRepository $articleRepository, GameRepository $gameRepository): Response
+    {   
+        //debug pour récupérer le label de category
+        // $article = $articleRepository->findOneByTitle("Test de Category"); 
+        // dump($article->getCategory()[0]->getLabel());                      
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
+            'games' => $gameRepository->findAll(),
+        
         ]);
     }
 
