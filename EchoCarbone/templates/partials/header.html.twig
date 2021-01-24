@@ -7,6 +7,37 @@
 			</button>
 			<div class="collapse navbar-collapse justify-content-end mx-4" id="navbarScroll">
 				<ul class="list-to-move navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll align-items-center align-middle" style="max-height: 100px;">
+
+
+					{#TEST LOGIN#}
+
+
+					{% if app.user %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-user"></i>
+								{{ app.user.firstname | title }}
+							</a>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="#">Mon Profil</a>
+								<a class="dropdown-item" href="#">Ecrire un article</a>
+								<a class="dropdown-item" href="#">Mes articles</a>
+{#								{% if app.user.role == "admin" %}#}
+									<a class="dropdown-item" href="#">Espace Admin</a>
+{#								{% endif %}#}
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+							</div>
+						</li>
+					{% endif %}
+
+
+					{#FIN TEST LOGIN#}
+
+
+
+
+
 					<li class="nav-item">
 						<a class="nav-link text-nowrap" href="#">Eco-gestes</a>
 					</li>
@@ -33,3 +64,14 @@
 		</div>
 	</nav>
 </header>
+
+
+{% for label,messages in app.flashes %}
+	<div class="container text-center my-5">
+		<div class="alert alert-{{ label }}">
+			{% for message in messages %}
+				<p>{{ message | raw }}</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endfor %}

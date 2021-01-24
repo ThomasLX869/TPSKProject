@@ -106,6 +106,7 @@
       <excludeFolder url="file://$MODULE_DIR$/EchoCarbone/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/EchoCarbone/vendor/symfony/web-profiler-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/EchoCarbone/vendor/symfony/http-kernel" />
+      <excludeFolder url="file://$MODULE_DIR$/EchoCarbone/vendor/cocur/slugify" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
