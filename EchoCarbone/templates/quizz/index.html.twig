@@ -1,20 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizzController!{% endblock %}
+{% block title %}Quizz index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Quizz index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Source</th>
+                <th>Url</th>
+                <th>Image</th>
+                <th>Description</th>
+                <th>UpdateDate</th>
+                <th>CreationDate</th>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>NbLike</th>
+                <th>NbDislike</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quizz in quizzs %}
+            <tr>
+                <td>{{ quizz.id }}</td>
+                <td>{{ quizz.title }}</td>
+                <td>{{ quizz.source }}</td>
+                <td>{{ quizz.url }}</td>
+                <td>{{ quizz.image }}</td>
+                <td>{{ quizz.description }}</td>
+                <td>{{ quizz.updateDate ? quizz.updateDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ quizz.creationDate ? quizz.creationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ quizz.question }}</td>
+                <td>{{ quizz.answer }}</td>
+                <td>{{ quizz.nbLike }}</td>
+                <td>{{ quizz.nbDislike }}</td>
+                <td>
+                    <a href="{{ path('quizz_show', {'id': quizz.id}) }}">show</a>
+                    <a href="{{ path('quizz_edit', {'id': quizz.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Sonia/Desktop/projet_soutenance/TPSKProject/EchoCarbone/src/Controller/QuizzController.php'|file_link(0) }}">src/Controller/QuizzController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Sonia/Desktop/projet_soutenance/TPSKProject/EchoCarbone/templates/quizz/index.html.twig'|file_link(0) }}">templates/quizz/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('quizz_new') }}">Create new</a>
 {% endblock %}
