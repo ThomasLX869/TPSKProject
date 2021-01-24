@@ -5,6 +5,17 @@
 {% set a5 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
 {% set articles = {a1, a2, a3, a4, a5}%} #}
 
+{% set medias = [] %}
+
+{% for article in articles %}
+	{% set medias = medias | merge ([article])  %}
+{% endfor %}
+
+
+{% for game in games %}
+	{% set medias = medias | merge ([game])  %}
+{% endfor %}
+
 
 {% extends 'base.html.twig' %}
 
@@ -13,6 +24,9 @@
 
 {% block body %}
 
+	{# <pre>
+			{{ dump(medias) }}
+		</pre> #}
 
 	<div class="container mb-5 px-5">
 		<nav aria-label="breadcrumb row" class="my-3 ">
@@ -33,32 +47,37 @@
 
 
 			<div>
-				{% for article in articles %}
-					{% include "partials/card.content.html.twig" %}
-				{% endfor %}
+				{# {% for article in articles %} #}
+				{# {% include "partials/card.content.html.twig" %}
+																																																																																																								{% endfor %}
+																																																																																																				
+																																																																																																								{# {% for game in games %} #}
+				{# {% include "partials/game.card.content.html.twig" %}
+																																																																																																								{% endfor %} #}
 
 
-				{% for game in games %}
-					{% include "partials/game.card.content.html.twig" %}
-				{% endfor %}
+					{% for media in medias %}
+
+				{% include "partials/card.content.html.twig" %}
+
+			{% endfor %}
+
 
 			</div>
 
 
-			<style>
-				.example-wrapper {
-					margin: 1em auto;
-					max-width: 800px;
-					width: 95%;
-					font: 18px / 1.5 sans-serif;
-				}
-				.example-wrapper code {
-					background: #F5F5F5;
-					padding: 2px 6px;
-				}
-			</style>
+				<style>
+.example-wrapper {
+	margin: 1em auto;
+	max-width: 800px;
+	width: 95%;
+	font: 18px / 1.5 sans-serif;
+}
+.example-wrapper code {
+	background: #F5F5F5;
+	padding: 2px 6px;
+}
+		</style>
 
-		</div>
 	</div>
-
-{% endblock %}
+</div>{% endblock %}
