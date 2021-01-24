@@ -2,10 +2,16 @@ security:
     encoders:
         App\Entity\Admin:
             algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         users_in_memory: { memory: null }
         in_database :
+            entity:
+                class: App\Entity\Admin
+                property: email
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
             entity:
                 class: App\Entity\Admin
                 property: email
@@ -20,10 +26,15 @@ security:
             form_login:
                 login_path: account_login
                 check_path: account_login
-
+                default_target_path: home_index
+                always_use_default_target_path: true
             logout:
-                path: account_logout
+                path: app_logout
                 target: home_index
+            guard:
+                authenticators:
+                    - App\Security\LoginFormAuthentificatorAuthenticator
+
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

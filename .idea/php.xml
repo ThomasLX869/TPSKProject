@@ -102,6 +102,7 @@
       <path value="$PROJECT_DIR$/EchoCarbone/vendor/symfony/filesystem" />
       <path value="$PROJECT_DIR$/EchoCarbone/vendor/symfony/web-profiler-bundle" />
       <path value="$PROJECT_DIR$/EchoCarbone/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/EchoCarbone/vendor/cocur/slugify" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1">
