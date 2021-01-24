@@ -18,7 +18,7 @@ class AccountController extends AbstractController
 {
     /**
      * @Route("/account", name="account_index")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     public function index(AdminRepository $adminRepository): Response
     {
@@ -26,31 +26,6 @@ class AccountController extends AbstractController
             'admins' => $adminRepository->findAll()
         ]);
     }
-
-
-//    /**
-//     * @Route("/login", name="account_login")
-//     * @return Response
-//     */
-//    public function login(AuthenticationUtils $utils): Response
-//    {
-//
-//        $error = $utils->getLastAuthenticationError();
-//        $username = $utils->getLastUsername();
-//
-//
-//        return $this->render('account/login.html.twig', [
-//            'hasError' => $error !== null,
-//            'username' => $username,
-//            'error'=> $utils->getLastAuthenticationError()
-//        ]);
-//
-//    }
-//        public function login(): Response
-//        {
-//            return $this->render("account/login.html.twig");
-//        }
-
 
     /**
      * @Route("/account/new", name="account_create")
