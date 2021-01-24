@@ -1,20 +1,64 @@
+{# {% set a1 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
+{% set a2 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
+{% set a3 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
+{% set a4 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
+{% set a5 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
+{% set articles = {a1, a2, a3, a4, a5}%} #}
+
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ArticleController!{% endblock %}
+{% block title %}Eco-gestes
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'E:/karine/Cours_webforce3/projet/Echo_carbone/TPSK/TPSKProject/EchoCarbone/src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'E:/karine/Cours_webforce3/projet/Echo_carbone/TPSK/TPSKProject/EchoCarbone/templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
-    </ul>
-</div>
+	<div class="container mb-5 px-5">
+		<nav aria-label="breadcrumb row" class="my-3 ">
+			<ol class="breadcrumb col-12 col-md-10 offset-md-2">
+				<li class="breadcrumb-item active" aria-current="page">Eco-gestes</li>
+			</ol>
+		</nav>
+
+
+		<div class="row mb-4">
+
+			<div id="list-example" class="scrollcont list-group col-2">
+				<a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+			</div>
+
+
+			<div>
+				{% for article in articles %}
+					{% include "partials/card.content.html.twig" %}
+				{% endfor %}
+
+
+				{% for game in games %}
+					{% include "partials/game.card.content.html.twig" %}
+				{% endfor %}
+
+			</div>
+
+
+			<style>
+				.example-wrapper {
+					margin: 1em auto;
+					max-width: 800px;
+					width: 95%;
+					font: 18px / 1.5 sans-serif;
+				}
+				.example-wrapper code {
+					background: #F5F5F5;
+					padding: 2px 6px;
+				}
+			</style>
+
+		</div>
+	</div>
+
 {% endblock %}

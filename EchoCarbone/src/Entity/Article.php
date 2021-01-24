@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Article
 {
@@ -21,27 +23,45 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     *      min = 4,
+     *      max = 255,
+     *      minMessage = "Pour ce titre il faut au moins {{ limit }} caractères",
+     *      maxMessage = "Max {{ limit }} caractères",
+     *      allowEmptyString = false
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     *      max = 1000,
+     *      maxMessage = "Max {{ limit }} caractères",
+     * )
      */
     private $source;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $image;
 
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Max {{ limit }} caractères",
+     * )
+
      */
     private $description;
 
@@ -58,6 +78,11 @@ class Article
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      min = 10,
+     *      minMessage = "L'intro doit faire au moins {{ limit }} caractères",
+     *      allowEmptyString = false
+     * )
      */
     private $content;
 
@@ -86,6 +111,22 @@ class Article
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    /**
+     * Génère la date automatiquement
+     * 
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     * 
+     * @return void
+     */
+
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
 
     public function __construct()
     {

@@ -29,8 +29,8 @@
                 <td>{{ admin.image }}</td>
                 <td>{{ admin.pseudo }}</td>
                 <td>
-                    <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>
-                    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>
+{#                    <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>#}
+{#                    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>#}
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_new') }}">Create new</a>
+{#    <a href="{{ path('admin_new') }}">Create new</a>#}
 {% endblock %}
