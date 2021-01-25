@@ -77,7 +77,6 @@ class Video
     /**
      * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
      */
-    
     private $ageRange;
 
     /**
@@ -89,7 +88,7 @@ class Video
     public function __construct()
     {
         $this->category = new ArrayCollection();
-        $this->AgeRange = new ArrayCollection();
+        $this->ageRange = new ArrayCollection();
     }
 
     public function getId(): ?int

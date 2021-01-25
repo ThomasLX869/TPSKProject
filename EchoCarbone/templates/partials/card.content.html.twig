@@ -46,11 +46,12 @@
 				</iframe>
 			{% endif %}
 
-			<p class="text-center">écrit le:
+			<p class="text-center">écrit le :
 				{{media.creationDate|date('d/m/Y à H:i')}}
 				- mise à jour le :
 				{{media.updateDate|date('d/m/Y à H:i')}}
-				par:
+				par :
+
 				<a href="#" class="cardlink">{{media.author.pseudo}}
 				</a>
 			</p>
