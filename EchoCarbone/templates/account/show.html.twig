@@ -3,8 +3,8 @@
 {% block title %}Admin{% endblock %}
 
 {% block body %}
-    <h1>Admin</h1>
-
+<div class="container bodycontent">
+    <h1 class="my-5 text-center">Utilisateur {{ admin.pseudo }}</h1>
     <table class="table">
         <tbody>
             <tr>
@@ -29,11 +29,15 @@
             </tr>
             <tr>
                 <th>Role</th>
-                <td>{{ admin.role }}</td>
+                <td>
+                    {% for roles in admin.roles %}
+                        <p>{{roles}}</p>
+                    {% endfor %}
+                </td>
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ admin.image }}</td>
+                <td><img src="{{ admin.image }}" alt="avatar de {{ admin.pseudo }}"></td>
             </tr>
             <tr>
                 <th>Pseudo</th>
@@ -51,6 +55,8 @@
     <a href="{{ path('account_edit', {'slug': admin.slug}) }}">edit</a>
 
     {{ include('account/_delete_form.html.twig') }}
+
+</div>
 {% endblock %}
 
 

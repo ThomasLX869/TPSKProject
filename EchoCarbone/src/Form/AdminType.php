@@ -4,6 +4,8 @@ namespace App\Form;
 
 use App\Entity\Admin;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -28,6 +30,19 @@ class AdminType extends AbstractType
             ->add('image')
             ->add('pseudo')
             ->add('presentation')
+            ->add('roles', ChoiceType::class, array(
+                    'attr'  =>  array('class' => 'form'),
+                    'choices' =>
+                        array
+                        (
+                            'Administrateur' => 'ROLE_ADMIN',
+                            'Auteur' => 'ROLE_AUTHOR',
+                        )
+                ,
+                    'multiple' => true,
+                    'required' => true,
+                )
+            )
             ->add('Inscription', SubmitType::class)
         ;
     }
