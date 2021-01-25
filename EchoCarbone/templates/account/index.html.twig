@@ -4,9 +4,10 @@
 
 {% block body %}
 
-    <div class="container bodycontent">
+    <div class="container bodyContent">
         <h1 class="my-5 text-center">Liste des utilisateurs</h1>
-        <table class="table">
+        <a class="btn btn-lg" id="buttonAdd" href="{{ path('account_create') }}">Ajouter un utilisateur</a>
+        <table class="table my-5">
             <thead>
                 <tr>
                     <th>Id</th>
@@ -26,25 +27,25 @@
             <tbody>
             {% for admin in admins %}
                 <tr>
-                    <td>{{ admin.id }}</td>
-                    <td>{{ admin.firstname }}</td>
-                    <td>{{ admin.lastname }}</td>
-                    <td>{{ admin.email }}</td>
-                    <td>
+                    <td class="align-middle">{{ admin.id }}</td>
+                    <td class="align-middle">{{ admin.firstname }}</td>
+                    <td class="align-middle">{{ admin.lastname }}</td>
+                    <td class="align-middle">{{ admin.email }}</td>
+                    <td class="align-middle">
                         {% for roles in admin.roles %}
                             <p>{{roles}}</p>
                         {% endfor %}
                     </td>
-                    <td><img src="{{ admin.image }}" alt="avatar {{ admin.pseudo }}"></td>
-                    <td>{{ admin.pseudo }}</td>
+                    <td class="align-middle"><img class="avatar" src="{{ admin.image }}" alt="avatar {{ admin.pseudo }}"></td>
+                    <td class="align-middle">{{ admin.pseudo }}</td>
 
                     {% if is_granted('ROLE_ADMIN') %}
-                        <td>
-                            <a href="{{ path('account_profil' , {'slug': admin.slug } ) }}" class="btn btn-sm btn-primary">
-                                <i class="fas fa-eye"></i>
+                        <td class="align-middle">
+                            <a href="{{ path('account_profil' , {'slug': admin.slug } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pen align-middle"></i>
                             </a>
                             <form class="d-inline" action="{{ path('account_delete' , {'slug': admin.slug } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette utilisateur ?');">
-                                <button class="btn btn-sm btn-danger">
+                                <button class="btn btn-sm btn-danger align-middle">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </form>
@@ -61,6 +62,6 @@
             </tbody>
         </table>
     </div>
-{#    <a href="{{ path('admin_new') }}">Create new</a>#}
+
 {% endblock %}
 
