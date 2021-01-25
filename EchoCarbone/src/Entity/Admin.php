@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
@@ -107,6 +108,11 @@ class Admin implements UserInterface
      */
     private $slug;
 
+    /**
+     * @Assert\EqualTo(propertyPath="password", message="Les deux mots de passe doivent être identiques")
+     */
+    private $passwordConfirm;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -178,8 +184,7 @@ class Admin implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-//        $roles[] = 'ROLE_USER';
+
 
         return array_unique($roles);
     }
@@ -279,6 +284,18 @@ class Admin implements UserInterface
     public function setPresentation(?string $presentation): self
     {
         $this->presentation = $presentation;
+
+        return $this;
+    }
+
+    public function getPasswordConfirm(): ?string
+    {
+        return $this->passwordConfirm;
+    }
+
+    public function setPasswordConfirm(string $passwordConfirm): self
+    {
+        $this->passwordConfirm = $passwordConfirm;
 
         return $this;
     }

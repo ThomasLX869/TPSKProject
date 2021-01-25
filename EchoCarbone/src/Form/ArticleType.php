@@ -41,13 +41,6 @@ class ArticleType extends AbstractType
                     'expanded' => true,
                     'multiple' => true
                 ]
-            )
-            ->add(
-                'author',
-                EntityType::class,
-                [
-                    'class' => Admin::class, 'choice_label' => 'pseudo'
-                ]
             );
     }
 
