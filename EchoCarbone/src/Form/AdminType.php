@@ -36,7 +36,7 @@ class AdminType extends AbstractType
                         array
                         (
                             'Administrateur' => 'ROLE_ADMIN',
-                            'Auteur' => 'ROLE_USER',
+                            'Auteur' => 'ROLE_AUTHOR',
                         )
                 ,
                     'multiple' => true,
