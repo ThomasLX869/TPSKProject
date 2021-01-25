@@ -19,7 +19,7 @@
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="{{ path('account_profil' , {'slug': app.user.slug } ) }}">Mon Profil</a>
 								<a class="dropdown-item" href="{{ path('article_new') }}">Ecrire un article</a>
-								<a class="dropdown-item" href="">Mes articles</a>
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% if is_granted('ROLE_ADMIN') %}
 									<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
 								{% endif %}
@@ -30,17 +30,11 @@
 					{% endif %}
 
 
-					{#FIN TEST LOGIN#}
-
-
-
-
-
 					<li class="nav-item">
 						<a class="nav-link text-nowrap" href="#">Eco-gestes</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Jeunesse</a>
+						<a class="nav-link" href="{{ path('home_youth')}}">Jeunesse</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Calculateur</a>

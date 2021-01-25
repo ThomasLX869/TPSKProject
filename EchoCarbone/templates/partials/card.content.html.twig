@@ -47,7 +47,7 @@
 			{% endif %}
 			<div class="my-3 cardfooter">
 				{% if media.source is defined and media.source is not null %}
-					Source:
+					Source :
 					<p>{{media.source}}</p>
 				{% endif %}
 				{% if media.url is defined and media.url is not null and media.url != "" %}
@@ -56,22 +56,21 @@
 					</div>
 				{% endif %}
 				{% if media.question is defined and media.question is not null %}
-					Question:
+					Question :
 					<p>{{media.question|raw}}</p>
 				{% endif %}
 				{% if media.answer is defined and media.answer is not null %}
-					Réponse:
+					Réponse :
 					<p>{{media.answer|raw}}</p>
 				{% endif %}
 
-				<p class="text-center">écrit le:
+				<p class="text-center">écrit le :
 					{{media.creationDate|date('d/m/Y à H:i')}}
 					- mise à jour le :
 					{{media.updateDate|date('d/m/Y à H:i')}}
-					par:
-					<a href="#" class="cardlink">{{media.author.pseudo}}
+					par :
+					<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}
 					</a>
-					{# {{ dump(media) }} #}
 				</p>
 			</div>
 		</details>

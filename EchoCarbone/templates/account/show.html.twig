@@ -4,23 +4,39 @@
 
 {% block body %}
 <div class="container bodyContent">
-    <h1 class="my-5 text-center">Utilisateur {{ admin.pseudo }}</h1>
+    <h1 class="my-5 text-center">
+{#        Test the roles of the showed user#}
+        {% for roles in admin.roles %}
+            {% if roles == ('ROLE_AUTHOR') %}
+                Auteur
+            {% elseif roles == ('ROLE_ADMIN') %}
+                Admin
+            {% endif %}
+        {% endfor %}
+        {{ admin.pseudo }}
+    </h1>
 
+
+{#    Can update the showed author/admin if the logged user is admin or the showed user#}
+    {% if is_granted('ROLE_ADMIN') or (admin.slug == app.user.slug) %}
     <a class="btn btn-primary btn-lg buttonUpdate" id="buttonUpdate" href="{{ path('account_edit', {'slug': admin.slug}) }}">Modifier</a>
+    {% endif %}
+
+{#    Can delete the showed author/admin if the logged user is admin#}
+    {% if is_granted('ROLE_ADMIN')%}
     {{ include('account/_delete_form.html.twig') }}
+    {% endif %}
+
+
 
     <table class="table my-5">
         <tbody>
             <tr>
-                <th class="align-middle">Id</th>
-                <td class="align-middle">{{ admin.id }}</td>
-            </tr>
-            <tr>
-                <th class="align-middle">Firstname</th>
+                <th class="align-middle">Prénom</th>
                 <td class="align-middle">{{ admin.firstname }}</td>
             </tr>
             <tr>
-                <th class="align-middle">Lastname</th>
+                <th class="align-middle">Nom</th>
                 <td class="align-middle">{{ admin.lastname }}</td>
             </tr>
             <tr>
@@ -28,14 +44,19 @@
                 <td class="align-middle">{{ admin.email }}</td>
             </tr>
             <tr>
-                <th class="align-middle">Password</th>
+                <th class="align-middle">Mot de passe</th>
                 <td class="align-middle">{{ admin.password }}</td>
             </tr>
             <tr>
-                <th class="align-middle">Role</th>
+                <th class="align-middle">Rôle</th>
                 <td class="align-middle">
+                    {#        Test the roles of the showed user#}
                     {% for roles in admin.roles %}
-                        <p>{{roles}}</p>
+                        {% if roles == ('ROLE_AUTHOR') %}
+                            Auteur
+                        {% elseif roles == ('ROLE_ADMIN') %}
+                            Admin
+                        {% endif %}
                     {% endfor %}
                 </td>
             </tr>
