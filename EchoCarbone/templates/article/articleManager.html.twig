@@ -1,0 +1,90 @@
+{# Création de la variable commune medias #}
+{% set medias = [] %}
+
+{# remplissage de medias #}
+{% for article in articles %}
+    {% set medias = medias | merge ([article])  %}
+{% endfor %}
+
+{% for game in games %}
+    {% set medias = medias | merge ([game])  %}
+{% endfor %}
+
+{% for video in videos %}
+    {% set medias = medias | merge ([video])  %}
+{% endfor %}
+
+{% for quizz in quizzs %}
+    {% set medias = medias | merge ([quizz])  %}
+{% endfor %}
+{# fin de remplissage de médias #}
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des articles{% endblock %}
+
+{% block body %}
+    <div class="container bodyContent">
+        <h1 class="my-5 text-center">
+            {#        Test the roles of logged user#}
+            {% if is_granted('ROLE_ADMIN') %}
+                Gestion des articles du site
+            {% else %}
+                Gestion de mes articles
+            {% endif %}
+        </h1>
+        <a class="btn btn-lg" id="buttonAdd" href="{{ path('article_new') }}">Ajouter un article</a>
+        <table class="table my-5">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Catégories</th>
+                <th>Tranche d'âge</th>
+                <th>Type de média</th>
+                <th>Date de création</th>
+                <th>Date de mise à jour</th>
+                <th>Auteur</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+
+            {% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
+                <tr>
+                    <td class="align-middle">{{ media.title|title }}</td>
+
+                        {# boucle de récupération des catégories #}
+                        {% for category in media.category %}
+                    <td class="align-middle">{{ category.label }}</td>
+                        {% endfor %}
+
+                        {# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
+                        {% for ageRange in media.ageRange %}
+                            {% if ageRange.label != "adulte" %}
+                    <td class="align-middle">{{ageRange.label}}</td>
+                            {% endif %}
+                        {% endfor %}
+
+                    <td class="align-middle">{{media.type}}</td>
+                    <td class="align-middle">{{media.creationDate|date('d/m/Y à H:i')}}</td>
+                    <td class="align-middle">{{media.updateDate|date('d/m/Y à H:i')}}</td>
+                    <td class="align-middle">{{media.author.pseudo}}</td>
+                    <td class="align-middle">
+                        <a href="{{ path('article_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                            <i class="fas fa-pen align-middle"></i>
+                        </a>
+                        <form class="d-inline" action="{{ path('article_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette utilisateur ?');">
+                            <button class="btn btn-sm btn-danger align-middle">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
