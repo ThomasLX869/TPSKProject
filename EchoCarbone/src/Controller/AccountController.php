@@ -18,7 +18,7 @@ class AccountController extends AbstractController
 {
     /**
      * @Route("/account", name="account_index")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(AdminRepository $adminRepository): Response
     {
