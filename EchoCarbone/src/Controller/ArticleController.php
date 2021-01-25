@@ -25,14 +25,15 @@ class ArticleController extends AbstractController
     public function index(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository): Response
     {
         //debug pour récupérer le label de category
+
         //$article = $articleRepository->findOneByTitle("titre de mon article");
         // dump($article->getCategory()[0]->getLabel());
+
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
             'games' => $gameRepository->findAll(),
             'videos' => $videoRepository->findAll(),
             'quizzs' => $quizzRepository->findAll()
-
         ]);
     }
 

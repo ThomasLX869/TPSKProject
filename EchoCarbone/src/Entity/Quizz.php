@@ -6,6 +6,7 @@ use App\Repository\QuizzRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=QuizzRepository::class)
@@ -90,6 +91,16 @@ class Quizz
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    // guarantee all quizz have quizz type
+    private $type = 'quizz';
+
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
 
     public function __construct()
     {
@@ -294,5 +305,10 @@ class Quizz
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

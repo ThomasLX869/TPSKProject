@@ -1,60 +1,79 @@
 {# squelette d'une card #}
 <div class="offset-md-2 col-12 col-md-10 card-body cardradius my-3" id="list-item-1">
-	<div class="cardhead text-center">
-		<h3 class="text-center cardtitle">{{media.title|title}}
-		</h3>
-		<hr class="cardline">
-		<p class="cardsorting text-start">Catégories:
-			<span
-				class="cardlink">
-				{# boucle de récupération des catégories #}
-				{% for category in media.category %}
-					{{ category.label }}
-				{% endfor %}
-			</span>
-				{# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
-				{% for ageRange in media.ageRange %}
-					{% if ageRange.label != "adulte" %}
-						âges:
-						<span class="cardlink">{{ageRange.label}}
-						</span>
-					{% endif %}
-				{% endfor %}
-		</p>
-		<p class="cardintro">{{media.description}}</p>
-		<img class="imgcard" src="{{media.image}}" alt="Card image"/>
-	</div>
-	<div class="cardbody">
-		{% if media.content is defined %}
-			Source:
-			<p class="my-4 cardtext">
-				{{media.content}}
-			</p>
+	<details>
+		<summary>
+			<div class="cardhead text-center">
+				<h3 class="text-center cardtitle">{{media.title|title}}
+				</h3>
+				<hr class="cardline">
+				<div class="d-inline">
+					<p class="cardsorting">Catégories:
+						<a
+							href="#" class="cardlink">
+							{# boucle de récupération des catégories #}
+							{% for category in media.category %}
+								{{ category.label }}
+							{% endfor %}
+						</a>
+						{# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
+						{% for ageRange in media.ageRange %}
+							{% if ageRange.label != "adulte" %}
+								âges:
+								<a href="#" class="cardlink">{{ageRange.label}}
+								</a>
+							{% endif %}
+						{% endfor %}
+						Type de média:
+						<a href="#" class="cardlink">
+							{{media.type}}</a>
+					</p>
+				</div>
+				{% if media.description is defined and not null %}
+					<p class="cardintro">{{media.description}}</p>
+				{% endif %}
+			</div>
+		</summary>
+
+		{% if media.image is defined and media.image is not null %}
+			<div class="d-flex justify-content-center">
+				<img class="imgcard" src="{{media.image}}" alt="Card image"/>
+			</div>
 		{% endif %}
-
-		<div class="my-3 cardfooter">
-			{% if media.source != "" %}
-				Source:
-				<p>{{media.source}}</p>
+		<div class="cardbody">
+			{% if media.content is defined and media.content is not null%}
+				<p class="my-4 cardtext">
+					{{media.content}}
+				</p>
 			{% endif %}
-			{% if media.url != "" %}
-				<iframe id="inlineFrameExample"
-					title="Inline Frame Example"
-					width="700 %"
-					height="700 %"
-					src="{{media.url}}">
-				</iframe>
-			{% endif %}
+			<div class="my-3 cardfooter">
+				{% if media.source is defined and media.source is not null %}
+					Source:
+					<p>{{media.source}}</p>
+				{% endif %}
+				{% if media.url is defined and media.url is not null and media.url != "" %}
+					<div class="d-flex justify-content-center">
+						<iframe id="inlineFrameExample" title="Inline Frame Example" width="600 %" height="600 %" src="{{media.url}}" class="d-flex justify-content-center"></iframe>
+					</div>
+				{% endif %}
+				{% if media.question is defined and media.question is not null %}
+					Question:
+					<p>{{media.question|raw}}</p>
+				{% endif %}
+				{% if media.answer is defined and media.answer is not null %}
+					Réponse:
+					<p>{{media.answer|raw}}</p>
+				{% endif %}
 
-			<p class="text-center">écrit le :
-				{{media.creationDate|date('d/m/Y à H:i')}}
-				- mise à jour le :
-				{{media.updateDate|date('d/m/Y à H:i')}}
-				par :
-
-				<a href="#" class="cardlink">{{media.author.pseudo}}
-				</a>
-			</p>
-		</div>
-</div></div>
+				<p class="text-center">écrit le:
+					{{media.creationDate|date('d/m/Y à H:i')}}
+					- mise à jour le :
+					{{media.updateDate|date('d/m/Y à H:i')}}
+					par:
+					<a href="#" class="cardlink">{{media.author.pseudo}}
+					</a>
+					{# {{ dump(media) }} #}
+				</p>
+			</div>
+		</details>
+	</div>
 
