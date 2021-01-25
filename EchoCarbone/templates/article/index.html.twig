@@ -1,10 +1,23 @@
-{# {% set a1 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
-{% set a2 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
-{% set a3 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
-{% set a4 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
-{% set a5 = {"title":"titre de mon article 1", "description":"Ici l'intro", "content":"Ici le text de l'article", "image":"../assets/img/marty-2020.jpg", "articleCategory":"catégorie de l'article", "articleAgeRange":"adulte", "articleAuthor":"auteur", "creationDate":"2021", "updateDate":"2021", "source":"", "url":""} %}
-{% set articles = {a1, a2, a3, a4, a5}%} #}
+{# Création de la variable commune medias #}
+{% set medias = [] %}
 
+{# remplissage de medias #}
+{% for article in articles %}
+	{% set medias = medias | merge ([article])  %}
+{% endfor %}
+
+{% for game in games %}
+	{% set medias = medias | merge ([game])  %}
+{% endfor %}
+
+{% for video in videos %}
+	{% set medias = medias | merge ([video])  %}
+{% endfor %}
+
+{% for quizz in quizzs %}
+	{% set medias = medias | merge ([quizz])  %}
+{% endfor %}
+{# fin de remplissage de médias #}
 
 {% extends 'base.html.twig' %}
 
@@ -12,7 +25,6 @@
 {% endblock %}
 
 {% block body %}
-
 
 	<div class="container mb-5 px-5">
 		<nav aria-label="breadcrumb row" class="my-3 ">
@@ -33,13 +45,8 @@
 
 
 			<div>
-				{% for article in articles %}
+				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
 					{% include "partials/card.content.html.twig" %}
-				{% endfor %}
-
-
-				{% for game in games %}
-					{% include "partials/game.card.content.html.twig" %}
 				{% endfor %}
 
 			</div>
@@ -60,5 +67,4 @@
 
 		</div>
 	</div>
-
 {% endblock %}
