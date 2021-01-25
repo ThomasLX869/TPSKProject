@@ -112,6 +112,10 @@ class Article
      */
     private $author;
 
+    // guarantee all article have article type
+    private $type = 'article';
+
+
     /**
      * Génère la date automatiquement
      * 
@@ -318,5 +322,10 @@ class Article
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

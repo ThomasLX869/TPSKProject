@@ -45,7 +45,8 @@
 
 
 
-			<div>
+			<div class="w-100">
+
 				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
 					{% include "partials/card.content.html.twig" %}
 				{% endfor %}
