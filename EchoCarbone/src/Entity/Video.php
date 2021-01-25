@@ -77,6 +77,7 @@ class Video
     /**
      * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
      */
+    
     private $ageRange;
 
     /**
@@ -247,13 +248,13 @@ class Video
      */
     public function getAgeRange(): Collection
     {
-        return $this->AgeRange;
+        return $this->ageRange;
     }
 
     public function addAgeRange(AgeRange $ageRange): self
     {
-        if (!$this->AgeRange->contains($ageRange)) {
-            $this->AgeRange[] = $ageRange;
+        if (!$this->ageRange->contains($ageRange)) {
+            $this->ageRange[] = $ageRange;
         }
 
         return $this;
@@ -261,7 +262,7 @@ class Video
 
     public function removeAgeRange(AgeRange $ageRange): self
     {
-        $this->AgeRange->removeElement($ageRange);
+        $this->ageRange->removeElement($ageRange);
 
         return $this;
     }

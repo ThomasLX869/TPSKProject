@@ -22,9 +22,34 @@ class VideoType extends AbstractType
             ->add('content')
             ->add('nbLike')
             ->add('nbDislike')
-            ->add('category')
-            ->add('ageRange')
-            ->add('author')
+            // ->add('category')
+            // ->add('ageRange')
+            // ->add('author')
+            ->add(
+                'category',
+                EntityType::class,
+                [
+                    // looks for choices from this entity
+                    'class' => Category::class, 'choice_label' => 'label', 'multiple' => true,
+                    'expanded' => true
+                ]
+            )
+            ->add(
+                'ageRange',
+                EntityType::class,
+                [
+                    'class' => AgeRange::class, 'choice_label' => 'label',
+                    'expanded' => true,
+                    'multiple' => true
+                ]
+            )
+            ->add(
+                'author',
+                EntityType::class,
+                [
+                    'class' => Admin::class, 'choice_label' => 'pseudo'
+                ]
+            )
         ;
     }
 

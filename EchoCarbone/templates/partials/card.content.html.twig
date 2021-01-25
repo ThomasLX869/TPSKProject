@@ -12,41 +12,48 @@
 					{{ category.label }}
 				{% endfor %}
 			</span>
-
-
-			{# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
-			{% for ageRange in media.ageRange %}
-				{% if ageRange.label != "adulte" %}
-					ages:
-					<span class="cardlink">{{ageRange.label}}
-					</span>
-				{% endif %}
-			{% endfor %}
+				{# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
+				{% for ageRange in media.ageRange %}
+					{% if ageRange.label != "adulte" %}
+						âges:
+						<span class="cardlink">{{ageRange.label}}
+						</span>
+					{% endif %}
+				{% endfor %}
 		</p>
-	</p>
-	<p class="cardintro">{{media.description}}</p>
-	<img class="imgcard" src="{{media.image}}" alt="Card image"/>
-</div>
-<div class="cardbody">
-	<p class="my-4 cardtext">{{media.content}}</p>
-	<div class="my-3 cardfooter">
-		{% if media.source != "" %}
-			Source:
-			<p>{{media.source}}</p>
-		{% endif %}
-		{% if media.url != "" %}
-			Url:
-			<p>{{media.url}}</p>
-		{% endif %}
-
-		<p class="text-center">écrit le:
-			{{media.creationDate|date('d/m/Y à H:i')}}
-			- mise à jour le :
-			{{media.updateDate|date('d/m/Y à H:i')}}
-			par:
-			<a href="#" class="cardlink">{{media.author.pseudo}}
-			</a>
-		</p>
-
+		<p class="cardintro">{{media.description}}</p>
+		<img class="imgcard" src="{{media.image}}" alt="Card image"/>
 	</div>
+	<div class="cardbody">
+		{% if media.content is defined %}
+			Source:
+			<p class="my-4 cardtext">
+				{{media.content}}
+			</p>
+		{% endif %}
+
+		<div class="my-3 cardfooter">
+			{% if media.source != "" %}
+				Source:
+				<p>{{media.source}}</p>
+			{% endif %}
+			{% if media.url != "" %}
+				<iframe id="inlineFrameExample"
+					title="Inline Frame Example"
+					width="700 %"
+					height="700 %"
+					src="{{media.url}}">
+				</iframe>
+			{% endif %}
+
+			<p class="text-center">écrit le:
+				{{media.creationDate|date('d/m/Y à H:i')}}
+				- mise à jour le :
+				{{media.updateDate|date('d/m/Y à H:i')}}
+				par:
+				<a href="#" class="cardlink">{{media.author.pseudo}}
+				</a>
+			</p>
+		</div>
 </div></div>
+
