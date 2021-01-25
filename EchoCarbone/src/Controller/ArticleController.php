@@ -25,13 +25,13 @@ class ArticleController extends AbstractController
     {
         //debug pour récupérer le label de category
         // $article = $articleRepository->findOneByTitle("Test de Category"); 
-        // dump($article->getCategory()[0]->getLabel());                      
+        // dump($article->getCategory()[0]->getLabel());       
+
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
             'games' => $gameRepository->findAll(),
             'videos' => $videoRepository->findAll(),
             'quizzs' => $quizzRepository->findAll()
-
         ]);
     }
 

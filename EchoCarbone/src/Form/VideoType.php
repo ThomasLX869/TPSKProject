@@ -2,9 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Admin;
 use App\Entity\Video;
+use App\Entity\AgeRange;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class VideoType extends AbstractType
@@ -49,8 +53,7 @@ class VideoType extends AbstractType
                 [
                     'class' => Admin::class, 'choice_label' => 'pseudo'
                 ]
-            )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

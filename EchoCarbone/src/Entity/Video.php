@@ -6,6 +6,7 @@ use App\Repository\VideoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VideoRepository::class)
@@ -77,7 +78,7 @@ class Video
     /**
      * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
      */
-    
+
     private $ageRange;
 
     /**
@@ -86,10 +87,20 @@ class Video
      */
     private $author;
 
+    // guarantee all video have video type
+    private $type = 'video';
+
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
-        $this->AgeRange = new ArrayCollection();
+        $this->ageRange = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -277,5 +288,10 @@ class Video
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }
