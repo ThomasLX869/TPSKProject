@@ -27,31 +27,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-
-//    /**
-//     * @Route("/login", name="account_login")
-//     * @return Response
-//     */
-//    public function login(AuthenticationUtils $utils): Response
-//    {
-//
-//        $error = $utils->getLastAuthenticationError();
-//        $username = $utils->getLastUsername();
-//
-//
-//        return $this->render('account/login.html.twig', [
-//            'hasError' => $error !== null,
-//            'username' => $username,
-//            'error'=> $utils->getLastAuthenticationError()
-//        ]);
-//
-//    }
-//        public function login(): Response
-//        {
-//            return $this->render("account/login.html.twig");
-//        }
-
-
     /**
      * @Route("/account/new", name="account_create")
      */
