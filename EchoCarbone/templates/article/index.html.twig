@@ -16,6 +16,17 @@
 	{% set medias = medias | merge ([game])  %}
 {% endfor %}
 
+{% for video in videos %}
+	{% set medias = medias | merge ([video])  %}
+{% endfor %}
+
+
+{% for quizz in quizzs %}
+	{% set medias = medias | merge ([quizz])  %}
+{% endfor %}
+
+
+
 
 {% extends 'base.html.twig' %}
 
@@ -58,9 +69,9 @@
 
 					{% for media in medias %}
 
-				{% include "partials/card.content.html.twig" %}
+						{% include "partials/card.content.html.twig" %}
 
-			{% endfor %}
+					{% endfor %}
 
 
 			</div>
