@@ -103,12 +103,12 @@ class ArticleController extends AbstractController
     public function show(Article $article): Response
     {
 
-//        EN COURS DE TRAVAIL, REVENEZ PLUS TARD ;) (TLX)
-
+////        EN COURS DE TRAVAIL, REVENEZ PLUS TARD ;) (TLX)
+//
 //        $articleAuthor = $article->getAuthor();
 //        $user = $this->getUser();
-
-//      Give access to all articles for admins or just access of his own articles for author
+//
+////      Give access to all articles for admins or just access of his own articles for author
 //        foreach($user->getRoles() as $role) {
 //            if (($role !== 'ROLE_ADMIN') && ($articleAuthor =! $user )){
 //                $this->addFlash('danger',
