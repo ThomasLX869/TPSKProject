@@ -119,7 +119,7 @@ class Quizz
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="quizzs")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
 
     private $author;

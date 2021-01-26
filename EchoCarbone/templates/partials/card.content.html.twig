@@ -74,8 +74,12 @@
 				- mise à jour le :
 				{{media.updateDate|date('d/m/Y à H:i')}}
 				par :
-				<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}
-				</a>
+
+				{% if media.author.pseudo is defined%}
+					<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}</a>
+				{% else %}
+					Utilisateur supprimé
+				{% endif %}
 			</p>
 		</div>
 	</details>

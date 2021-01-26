@@ -70,7 +70,13 @@
                     <td class="align-middle">{{media.type}}</td>
                     <td class="align-middle">{{media.creationDate|date('d/m/Y à H:i')}}</td>
                     <td class="align-middle">{{media.updateDate|date('d/m/Y à H:i')}}</td>
-                    <td class="align-middle">{{media.author.pseudo}}</td>
+
+                    {% if media.author.pseudo is defined%}
+                        <td class="align-middle">{{media.author.pseudo}}</td>
+                    {% else %}
+                        <td> Utilisateur supprimé </td>
+                    {% endif %}
+
                     <td class="align-middle">
                         <a href="{{ path('article_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
                             <i class="fas fa-pen align-middle"></i>

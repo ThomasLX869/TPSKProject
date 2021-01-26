@@ -64,7 +64,7 @@ class Glossary
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="glossaries")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 
