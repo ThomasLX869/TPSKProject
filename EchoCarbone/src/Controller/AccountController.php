@@ -29,7 +29,6 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/new", name="account_create")
-     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -47,8 +46,7 @@ class AccountController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            $this->addFlash('success',
-                "Bienvenue <strong>{$user->getPseudo()}</strong> !");
+            $this->addFlash('success',"Bienvenue <strong>{$user->getPseudo()}</strong> !");
 
             return $this->redirectToRoute('home_index');
         }
@@ -76,23 +74,37 @@ class AccountController extends AbstractController
      */
     public function edit(Request $request, Admin $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
-        $form = $this->createForm(AdminType::class, $user);
 
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
 
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
+        $currentUser = $this->getUser();
 
-            $manager->flush();
+//      Give access to user update form for admins or to the owner account
+        foreach($currentUser->getRoles() as $role) {
+            if (($role !== 'ROLE_ADMIN') && ($user !== $currentUser )){
+                $this->addFlash('danger',
+                    "Vous n'avez pas les droits pour accéder à ce formulaire !");
+                return $this->redirectToRoute('home_index');
+            }else{
+                $form = $this->createForm(AdminType::class, $user);
 
-            $this->addFlash('info',
-                "<strong>{$user->getPseudo()}</strong> votre profil a bien été modifié");
+                $form->handleRequest($request);
 
-            return $this->redirectToRoute('account_profil' , [
-                'slug' => $user->getSlug()
-            ]);
+                if ($form->isSubmitted() && $form->isValid()) {
+
+                    $hash = $encoder->encodePassword($user, $user->getPassword());
+                    $user->setPassword($hash);
+
+                    $manager->flush();
+
+                    $this->addFlash('info',
+                        "<strong>{$user->getPseudo()}</strong> votre profil a bien été modifié");
+
+                    return $this->redirectToRoute('account_profil' , [
+                        'slug' => $user->getSlug()
+                    ]);
+                }
+            }
         }
 
         return $this->render('account/edit.html.twig', [

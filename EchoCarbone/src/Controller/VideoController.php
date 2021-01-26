@@ -41,6 +41,7 @@ class VideoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($video);
             $entityManager->flush();
+            $this->addFlash('success',"La vidéo a bien été ajoutée !");
 
             return $this->redirectToRoute('video_index');
         }
@@ -73,7 +74,7 @@ class VideoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success',"La vidéo a bien été modifiée !");
             return $this->redirectToRoute('video_index');
         }
 
@@ -92,6 +93,7 @@ class VideoController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$video->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($video);
+            $this->addFlash('danger',"La vidéo a bien été supprimée !");
             $entityManager->flush();
         }
 
