@@ -16,16 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class VideoController extends AbstractController
 {
-    /**
-     * @Route("/", name="video_index", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function index(VideoRepository $videoRepository): Response
-    {
-        return $this->render('video/index.html.twig', [
-            'videos' => $videoRepository->findAll(),
-        ]);
-    }
+//    /**
+//     * @Route("/", name="video_index", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function index(VideoRepository $videoRepository): Response
+//    {
+//        return $this->render('video/index.html.twig', [
+//            'videos' => $videoRepository->findAll(),
+//        ]);
+//    }
 
     /**
      * @Route("/new", name="video_new", methods={"GET","POST"})
@@ -52,16 +52,16 @@ class VideoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="video_show", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function show(Video $video): Response
-    {
-        return $this->render('video/show.html.twig', [
-            'video' => $video,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="video_show", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function show(Video $video): Response
+//    {
+//        return $this->render('video/show.html.twig', [
+//            'video' => $video,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="video_edit", methods={"GET","POST"})

@@ -115,7 +115,7 @@ class Video
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="videos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 

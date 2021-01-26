@@ -16,16 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class GameController extends AbstractController
 {
-    /**
-     * @Route("/", name="game_index", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function index(GameRepository $gameRepository): Response
-    {
-        return $this->render('game/index.html.twig', [
-            'games' => $gameRepository->findAll(),
-        ]);
-    }
+//    /**
+//     * @Route("/", name="game_index", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function index(GameRepository $gameRepository): Response
+//    {
+//        return $this->render('game/index.html.twig', [
+//            'games' => $gameRepository->findAll(),
+//        ]);
+//    }
 
     /**
      * @Route("/new", name="game_new", methods={"GET","POST"})
@@ -52,16 +52,16 @@ class GameController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="game_show", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function show(Game $game): Response
-    {
-        return $this->render('game/show.html.twig', [
-            'game' => $game,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="game_show", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function show(Game $game): Response
+//    {
+//        return $this->render('game/show.html.twig', [
+//            'game' => $game,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="game_edit", methods={"GET","POST"})

@@ -21,8 +21,6 @@ class GameType extends AbstractType
             ->add('url')
             ->add('image')
             ->add('description')
-            ->add('updateDate')
-            ->add('creationDate')
             ->add('content')
             ->add(
                 'category',

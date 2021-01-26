@@ -16,16 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuizzController extends AbstractController
 {
-    /**
-     * @Route("/", name="quizz_index", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function index(QuizzRepository $quizzRepository): Response
-    {
-        return $this->render('quizz/index.html.twig', [
-            'quizzs' => $quizzRepository->findAll(),
-        ]);
-    }
+//    /**
+//     * @Route("/", name="quizz_index", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function index(QuizzRepository $quizzRepository): Response
+//    {
+//        return $this->render('quizz/index.html.twig', [
+//            'quizzs' => $quizzRepository->findAll(),
+//        ]);
+//    }
 
     /**
      * @Route("/new", name="quizz_new", methods={"GET","POST"})
@@ -51,16 +51,16 @@ class QuizzController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="quizz_show", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function show(Quizz $quizz): Response
-    {
-        return $this->render('quizz/show.html.twig', [
-            'quizz' => $quizz,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="quizz_show", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function show(Quizz $quizz): Response
+//    {
+//        return $this->render('quizz/show.html.twig', [
+//            'quizz' => $quizz,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="quizz_edit", methods={"GET","POST"})

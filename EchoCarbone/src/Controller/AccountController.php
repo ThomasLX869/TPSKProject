@@ -22,6 +22,9 @@ class AccountController extends AbstractController
      */
     public function index(AdminRepository $adminRepository): Response
     {
+
+        dump($admin = $adminRepository->findAll());
+
         return $this->render('account/index.html.twig', [
             'admins' => $adminRepository->findAll()
         ]);
@@ -29,6 +32,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/new", name="account_create")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
