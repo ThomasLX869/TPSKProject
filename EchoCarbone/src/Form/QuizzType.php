@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Admin;
-use App\Entity\Quizz;
 use App\Entity\AgeRange;
 use App\Entity\Category;
+use App\Entity\Quizz;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,12 +21,8 @@ class QuizzType extends AbstractType
             ->add('url')
             ->add('image')
             ->add('description')
-            ->add('updateDate')
-            ->add('creationDate')
             ->add('question')
             ->add('answer')
-            ->add('nbLike')
-            ->add('nbDislike')
             ->add(
                 'category',
                 EntityType::class,
@@ -51,8 +47,7 @@ class QuizzType extends AbstractType
                 [
                     'class' => Admin::class, 'choice_label' => 'pseudo'
                 ]
-            )
-        ;
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

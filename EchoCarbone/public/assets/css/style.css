@@ -132,8 +132,9 @@ span {
 }
 
 .btn-ecogreen {
-  background-color: #0c3121;
+  background-color: #388863;
   color: white;
+  margin-bottom: 5%;
 }
 
 footer {
@@ -205,6 +206,37 @@ a[class=active] {
   font-size: 2em;
   font-weight: bolder;
   background: #388863;
+}
+
+#buttonAdd,
+#admin_Ajouter,
+#buttonUpdate,
+#admin_Inscription {
+  background-color: #388863;
+  border-color: #0c3121;
+  color: white;
+}
+
+#iconUpdate {
+  background-color: #388863;
+  border-color: #388863;
+}
+
+.avatar {
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.buttonUpdate {
+  width: 7.9rem;
+}
+
+.buttonAdd {
+  width: 20rem;
+}
+
+.bodyContent {
+  margin-bottom: 5%;
 }
 
 /*# sourceMappingURL=style.css.map */

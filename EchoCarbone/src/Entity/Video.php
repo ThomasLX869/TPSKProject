@@ -107,7 +107,7 @@ class Video
     /**
      * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
      */
-    
+
     private $ageRange;
 
     /**
@@ -115,6 +115,16 @@ class Video
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    // guarantee all video have video type
+    private $type = 'video';
+
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
 
     public function __construct()
     {
@@ -307,5 +317,10 @@ class Video
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

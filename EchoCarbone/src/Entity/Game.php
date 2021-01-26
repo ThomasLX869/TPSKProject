@@ -57,7 +57,7 @@ class Game
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
-    */
+     */
 
     private $description;
 
@@ -105,7 +105,15 @@ class Game
      */
     private $author;
 
-    
+    // guarantee all game have game type
+    private $type = "game";
+
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
 
     public function __construct()
     {
@@ -298,5 +306,12 @@ class Game
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+
+        $type = 'game';
+        return $this->type;
     }
 }
