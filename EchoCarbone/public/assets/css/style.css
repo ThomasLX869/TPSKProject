@@ -208,6 +208,10 @@ a[class=active] {
   background: #388863;
 }
 
+#end {
+  font-weight: bolder;
+}
+
 #buttonAdd,
 #admin_Ajouter,
 #buttonUpdate,
@@ -237,6 +241,6 @@ a[class=active] {
 
 .bodyContent {
   margin-bottom: 5%;
-}
+
 
 /*# sourceMappingURL=style.css.map */

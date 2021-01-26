@@ -87,6 +87,8 @@ class ArticleController extends AbstractController
             $entityManager->persist($article);
             $entityManager->flush();
 
+            $this->addFlash('success',"Nouvel article <strong>{$article->getTitle()}</strong> créé !");
+
             return $this->redirectToRoute('article_index');
         }
 
@@ -103,23 +105,17 @@ class ArticleController extends AbstractController
     public function show(Article $article): Response
     {
 
-////        EN COURS DE TRAVAIL, REVENEZ PLUS TARD ;) (TLX)
-//
-//        $articleAuthor = $article->getAuthor();
-//        $user = $this->getUser();
-//
-////      Give access to all articles for admins or just access of his own articles for author
-//        foreach($user->getRoles() as $role) {
-//            if (($role !== 'ROLE_ADMIN') && ($articleAuthor =! $user )){
-//                $this->addFlash('danger',
-//                    "Vous n'avez pas les droits pour accéder à cet article !");
-//                return $this->redirectToRoute('article_index');
-//            }
-//
-//        }
+        $articleAuthor = $article->getAuthor();
+        $user = $this->getUser();
 
+//      Give access to all articles for admins or just access of his own articles for author
+        foreach($user->getRoles() as $role) {
+            if (($role !== 'ROLE_ADMIN') && ($articleAuthor !== $user )){
+                $this->addFlash('danger',"Vous n'avez pas les droits pour accéder à cet article !");
+                return $this->redirectToRoute('article_index');
+            }
 
-
+        }
 
         return $this->render('article/show.html.twig', [
             'article' => $article,
@@ -139,6 +135,7 @@ class ArticleController extends AbstractController
             $article->setAuthor($user);
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success',"L'article <strong>{$article->getTitle()}</strong> créé !");
             return $this->redirectToRoute('article_index');
         }
 
@@ -158,6 +155,7 @@ class ArticleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
+            $this->addFlash('danger',"L'article a bien été supprimé !");
         }
 
         return $this->redirectToRoute('article_index');
