@@ -8,12 +8,6 @@ let tabJeu = [
 [0,0,0,0]
 ];
 
-// let tabResultat = [
-// [7,8,5,1],
-// [4,2,4,3],
-// [2,6,8,6],
-// [3,1,7,5]
-// ];
 
 let tabResultat = genereTableauAleatoire();
 
@@ -31,10 +25,10 @@ function afficherTableau(){
     txt += "<div>";
     for(let j=0; j < tabJeu[i].length ; j++){
       if(tabJeu[i][j] === 0){
-        txt +="<button class='btn btn-vert m-2' style='width:100px;height:100px' onClick = 'verif (\""+i+"-"+j+"\")'><span>?</span></button>";
+        txt +="<button class='img-fluid col-2 btn btn-vert mx-2 my-3 h-100 px-3' onClick = 'verif (\""+i+"-"+j+"\")'><span>?</span></button>";
       }
       else {
-        txt += "<img src='"+getImage(tabJeu[i][j])+"' style='width:100px;height:100px' class='m-2'>";
+        txt += "<img src='"+getImage(tabJeu[i][j])+"' style='width:6.23vh;height:6.23vh' class='m-3'>";
       }
     }
   }
@@ -92,12 +86,12 @@ function verif(bouton){
        ready = true;
        nbAffiche = 0;
        oldSelection = [ligne,colonne];
-
      },500)
 
     } else {
 
       oldSelection = [ligne,colonne];
+      
     }
 
 
@@ -130,6 +124,7 @@ function genereTableauAleatoire(){
     tab.push(ligne);
   }
   return tab;
+  
 }
 
 

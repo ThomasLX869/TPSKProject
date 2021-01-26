@@ -2,14 +2,15 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\VideoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=VideoRepository::class)
+ * @ORM\HasLifecycleCallbacks // utilisé pour gérer les dates de création 
  */
 class Video
 {
@@ -22,26 +23,48 @@ class Video
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 4,
+     * max = 255,
+     * minMessage = "Pour ce titre il faut au moins {{ limit }} caractères",
+     * maxMessage = "Max {{ limit }} caractères",
+     * allowEmptyString = false
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $source;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
+
     private $image;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $description;
 
@@ -57,7 +80,12 @@ class Video
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     * min = 10,
+     * minMessage = "L'intro doit faire au moins {{ limit }} caractères",
+     * allowEmptyString = false)
      */
+
     private $content;
 
     /**
@@ -68,6 +96,7 @@ class Video
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
+    
     private $nbDislike;
 
     /**

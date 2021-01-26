@@ -2,9 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Admin;
-use App\Entity\AgeRange;
-use App\Entity\Category;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\GameRepository;
@@ -31,33 +28,37 @@ class Game
      * max = 255,
      * minMessage = "Un titre aussi court?Minimum {{ limit }} caractères requis",
      * maxMessage = "Un titre de moins de  {{ limit }} caractères est requis",
-     * allowEmptyString = false
-     * )
+     * allowEmptyString = false)
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
      * @Assert\Length(
-     * max = 255,
-     * maxMessage = "Un titre de moins de  {{ limit }} caractères est requis",
-     * ) 
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",) 
      */
     private $source;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
+
     private $description;
 
     /**
@@ -71,8 +72,10 @@ class Game
     private $creationDate;
 
     /**
-     * @ORM\Column(type="text"
-     * , nullable=true)
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     * min = 10,
+     * minMessage = "{{ limit }} caractères minimum",) 
      */
     private $content;
 
