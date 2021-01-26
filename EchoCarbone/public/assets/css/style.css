@@ -241,6 +241,12 @@ a[class=active] {
 
 .bodyContent {
   margin-bottom: 5%;
+}
 
+.icons {
+  margin-top: 15%;
+  display: flex;
+  justify-content: space-evenly;
+}
 
 /*# sourceMappingURL=style.css.map */
