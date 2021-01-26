@@ -46,7 +46,7 @@ class AgeRange
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="ageRanges")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 
