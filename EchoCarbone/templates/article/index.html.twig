@@ -33,7 +33,6 @@
 			</ol>
 		</nav>
 
-
 		<div class="row mb-4">
 
 			<div id="list-example" class="scrollcont list-group col-2">
@@ -43,14 +42,11 @@
 				<a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
 			</div>
 
-
-			<div>
+			<div class="w-100">
 				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
 					{% include "partials/card.content.html.twig" %}
 				{% endfor %}
-
 			</div>
-
 
 			<style>
 				.example-wrapper {
@@ -64,7 +60,10 @@
 					padding: 2px 6px;
 				}
 			</style>
-
 		</div>
 	</div>
 {% endblock %}
+
+
+
+

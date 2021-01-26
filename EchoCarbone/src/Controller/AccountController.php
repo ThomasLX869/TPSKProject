@@ -29,6 +29,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/new", name="account_create")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -71,6 +72,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/{slug}/edit", name="account_edit")
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Admin $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -102,6 +104,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/{slug}/delete", name="account_delete")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(EntityManagerInterface $manager, Admin $user)
     {

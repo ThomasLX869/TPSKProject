@@ -24,11 +24,11 @@ class Article
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(
-     *      min = 4,
-     *      max = 255,
-     *      minMessage = "Pour ce titre il faut au moins {{ limit }} caractères",
-     *      maxMessage = "Max {{ limit }} caractères",
-     *      allowEmptyString = false
+     * min = 4,
+     * max = 255,
+     * minMessage = "Pour ce titre il faut au moins {{ limit }} caractères",
+     * maxMessage = "Max {{ limit }} caractères",
+     * allowEmptyString = false
      * )
      */
     private $title;
@@ -36,8 +36,8 @@ class Article
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
      * @Assert\Length(
-     *      max = 1000,
-     *      maxMessage = "Max {{ limit }} caractères",
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",
      * )
      */
     private $source;
@@ -58,11 +58,9 @@ class Article
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
      * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "Max {{ limit }} caractères",
-     * )
-
-     */
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
+    */
     private $description;
 
     /**
@@ -73,16 +71,15 @@ class Article
     /**
      * @ORM\Column(type="datetime")
      */
+
     private $creationDate;
 
-
     /**
-     * @ORM\Column(type="text")
+    * @ORM\Column(type="text")
      * @Assert\Length(
-     *      min = 10,
-     *      minMessage = "L'intro doit faire au moins {{ limit }} caractères",
-     *      allowEmptyString = false
-     * )
+     * min = 10,
+     * minMessage = "L'intro doit faire au moins {{ limit }} caractères",
+     * allowEmptyString = false)
      */
     private $content;
 
@@ -111,6 +108,10 @@ class Article
      * @ORM\JoinColumn(nullable=false)
      */
     private $author;
+
+    // guarantee all article have article type
+    private $type = 'article';
+
 
     /**
      * Génère la date automatiquement
@@ -318,5 +319,10 @@ class Article
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }
