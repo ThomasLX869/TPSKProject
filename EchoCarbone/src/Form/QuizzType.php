@@ -3,13 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Admin;
-
 use App\Entity\AgeRange;
 use App\Entity\Category;
 use App\Entity\Quizz;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class QuizzType extends AbstractType
@@ -22,15 +21,8 @@ class QuizzType extends AbstractType
             ->add('url')
             ->add('image')
             ->add('description')
-            ->add('updateDate')
-            ->add('creationDate')
             ->add('question')
             ->add('answer')
-//            ->add('nbLike')
-//            ->add('nbDislike')
-            // ->add('category')
-            // ->add('ageRange')
-            // ->add('author')
             ->add(
                 'category',
                 EntityType::class,
