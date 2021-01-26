@@ -1,13 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Admin{% endblock %}
+{% block title %}Ajouter un utilisateur !{% endblock %}
 
 {% block body %}
-    <h1>Edit Admin</h1>
+    <div class="container bodyContent">
+        <h1 class="my-5 text-center">Modifier un utilisateur !</h1>
 
-    {{ include('account/_form.html.twig', {'button_label': 'Update'}) }}
+        <div class="col-8 m-auto">
+            {{ include('account/_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('account_index') }}">back to list</a>
+    </div>
 
-    {{ include('account/_delete_form.html.twig') }}
+    {#Manage disabled/enabled of checkbox#}
+    <script>
+        let checkbox0 = document.getElementById("admin_roles_0");
+        let checkbox1 = document.getElementById("admin_roles_1");
+
+        checkbox0.addEventListener('change', function() {
+            if (this.checked) {
+                checkbox1.setAttribute("disabled", "");
+            }else{
+                checkbox1.removeAttribute("disabled");
+            }
+        });
+
+        checkbox1.addEventListener('change', function() {
+            if (this.checked) {
+                checkbox0.setAttribute("disabled", "");
+            }else{
+                checkbox0.removeAttribute("disabled");
+            }
+        });
+    </script>
+
 {% endblock %}

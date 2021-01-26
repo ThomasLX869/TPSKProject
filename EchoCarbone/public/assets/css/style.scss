@@ -144,8 +144,9 @@ span {
   justify-content: center;
 }
 .btn-ecogreen {
-  background-color: $color-2;
+  background-color: $color-3;
   color: white;
+  margin-bottom: 5%;
 }
 // OTHERS END
 
@@ -229,3 +230,38 @@ a[class="active"] {
 }
 
 // END YOUTH PAGE
+
+
+// CRUD ADMIN/USER
+#buttonAdd,
+#admin_Ajouter,
+#buttonUpdate,
+#admin_Inscription{
+  background-color: $color-3;
+  border-color: $color-2;
+  color: white;
+}
+
+#iconUpdate{
+  background-color: $color-3;
+  border-color: $color-3;
+}
+
+.avatar{
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.buttonUpdate{
+    width: 7.9rem;
+}
+
+.buttonAdd{
+  width: 20rem;
+}
+
+.bodyContent{
+  margin-bottom: 5%;
+}
+
+// END CRUD ADMIN/USER

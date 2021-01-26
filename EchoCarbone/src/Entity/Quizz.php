@@ -124,6 +124,16 @@ class Quizz
 
     private $author;
 
+    // guarantee all quizz have quizz type
+    private $type = 'quizz';
+
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -327,5 +337,10 @@ class Quizz
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }
