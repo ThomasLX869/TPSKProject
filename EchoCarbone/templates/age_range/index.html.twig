@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgeRange index{% endblock %}
+
+{% block body %}
+    <h1>AgeRange index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for age_range in age_ranges %}
+            <tr>
+                <td>{{ age_range.id }}</td>
+                <td>{{ age_range.label }}</td>
+                <td>
+                    <a href="{{ path('age_range_show', {'id': age_range.id}) }}">show</a>
+                    <a href="{{ path('age_range_edit', {'id': age_range.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('age_range_new') }}">Create new</a>
+{% endblock %}
