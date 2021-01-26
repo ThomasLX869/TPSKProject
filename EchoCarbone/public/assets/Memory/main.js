@@ -8,12 +8,6 @@ let tabJeu = [
 [0,0,0,0]
 ];
 
-// let tabResultat = [
-// [7,8,5,1],
-// [4,2,4,3],
-// [2,6,8,6],
-// [3,1,7,5]
-// ];
 
 let tabResultat = genereTableauAleatoire();
 
@@ -31,7 +25,7 @@ function afficherTableau(){
     txt += "<div>";
     for(let j=0; j < tabJeu[i].length ; j++){
       if(tabJeu[i][j] === 0){
-        txt +="<button class='btn btn-vert m-2' style='width:100px;height:100px' onClick = 'verif (\""+i+"-"+j+"\")'><span>?</span></button>";
+        txt +="<button class='col-2 btn btn-vert mx-3 my-3' style='width:100px;height:100px' onClick = 'verif (\""+i+"-"+j+"\")'><span>?</span></button>";
       }
       else {
         txt += "<img src='"+getImage(tabJeu[i][j])+"' style='width:100px;height:100px' class='m-2'>";
@@ -131,6 +125,7 @@ function genereTableauAleatoire(){
   }
   return tab;
 }
+
 
 
 
