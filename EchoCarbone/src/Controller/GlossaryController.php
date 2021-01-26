@@ -38,7 +38,7 @@ class GlossaryController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($glossary);
             $entityManager->flush();
-
+            $this->addFlash('success',"L'élément a bien été ajouté !");
             return $this->redirectToRoute('glossary_index');
         }
 
@@ -68,7 +68,7 @@ class GlossaryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success',"L'élément a bien été modifié !");
             return $this->redirectToRoute('glossary_index');
         }
 
@@ -87,6 +87,7 @@ class GlossaryController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($glossary);
             $entityManager->flush();
+            $this->addFlash('danger',"L'élément a bien été supprimé !");
         }
 
         return $this->redirectToRoute('glossary_index');

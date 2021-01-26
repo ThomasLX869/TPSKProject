@@ -16,16 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class VideoController extends AbstractController
 {
-    /**
-     * @Route("/", name="video_index", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function index(VideoRepository $videoRepository): Response
-    {
-        return $this->render('video/index.html.twig', [
-            'videos' => $videoRepository->findAll(),
-        ]);
-    }
+//    /**
+//     * @Route("/", name="video_index", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function index(VideoRepository $videoRepository): Response
+//    {
+//        return $this->render('video/index.html.twig', [
+//            'videos' => $videoRepository->findAll(),
+//        ]);
+//    }
 
     /**
      * @Route("/new", name="video_new", methods={"GET","POST"})
@@ -41,6 +41,7 @@ class VideoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($video);
             $entityManager->flush();
+            $this->addFlash('success',"La vidéo a bien été ajoutée !");
 
             return $this->redirectToRoute('video_index');
         }
@@ -51,16 +52,16 @@ class VideoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="video_show", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function show(Video $video): Response
-    {
-        return $this->render('video/show.html.twig', [
-            'video' => $video,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="video_show", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function show(Video $video): Response
+//    {
+//        return $this->render('video/show.html.twig', [
+//            'video' => $video,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="video_edit", methods={"GET","POST"})
@@ -73,7 +74,7 @@ class VideoController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success',"La vidéo a bien été modifiée !");
             return $this->redirectToRoute('video_index');
         }
 
@@ -92,6 +93,7 @@ class VideoController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$video->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($video);
+            $this->addFlash('danger',"La vidéo a bien été supprimée !");
             $entityManager->flush();
         }
 

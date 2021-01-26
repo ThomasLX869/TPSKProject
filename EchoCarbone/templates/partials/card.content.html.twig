@@ -1,7 +1,7 @@
 {# squelette d'une card #}
 <div class="offset-md-2 col-12 col-md-10 card-body cardradius my-3" id="list-item-1">
 	<details>
-		<summary>
+		<summary style="outline: none;">
 			<div class="cardhead text-center">
 				<h3 class="text-center cardtitle">{{media.title|title}}
 				</h3>
@@ -54,7 +54,7 @@
 			{% endif %}
 			{% if media.url is defined and media.url is not null and media.url != "" %}
 				<div class="d-flex justify-content-center">
-					<iframe class="col-12 img-fluid min-vh-100" id="inlineFrameExample"
+					<iframe class="col-12 img-fluid min-vh-100" style="border:none;" id="inlineFrameExample"
 						title="InlineFrameExample"
 						src="{{media.url}}">
 					</iframe>
@@ -74,8 +74,12 @@
 				- mise à jour le :
 				{{media.updateDate|date('d/m/Y à H:i')}}
 				par :
-				<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}
-				</a>
+
+				{% if media.author.pseudo is defined%}
+					<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}</a>
+				{% else %}
+					Utilisateur supprimé
+				{% endif %}
 			</p>
 		</div>
 	</details>

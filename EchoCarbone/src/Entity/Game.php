@@ -101,7 +101,7 @@ class Game
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="games")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 

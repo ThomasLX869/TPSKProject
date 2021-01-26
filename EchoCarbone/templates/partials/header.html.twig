@@ -19,9 +19,11 @@
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="{{ path('account_profil' , {'slug': app.user.slug } ) }}">Mon Profil</a>
 								<a class="dropdown-item" href="{{ path('article_new') }}">Ecrire un article</a>
-								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% if is_granted('ROLE_ADMIN') %}
-									<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Les articles</a>
+								<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
+								{% else %}
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% endif %}
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
@@ -31,16 +33,16 @@
 
 
 					<li class="nav-item">
-						<a class="nav-link text-nowrap" href="#">Eco-gestes</a>
+						<a class="nav-link text-nowrap" href="{{ path('article_index') }}">Tout le contenu</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('home_youth')}}">Jeunesse</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Calculateur</a>
+						<a class="nav-link" href="{{ path('home_calc') }}">Calculateur</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Ecolexique</a>
+						<a class="nav-link" href="{{ path('glossary_index') }}">Ecolexique</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link text-nowrap" href="#">Qui sommes-nous ?</a>

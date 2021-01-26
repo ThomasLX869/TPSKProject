@@ -105,7 +105,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 

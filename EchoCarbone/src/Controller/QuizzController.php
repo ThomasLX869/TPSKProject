@@ -16,16 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuizzController extends AbstractController
 {
-    /**
-     * @Route("/", name="quizz_index", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function index(QuizzRepository $quizzRepository): Response
-    {
-        return $this->render('quizz/index.html.twig', [
-            'quizzs' => $quizzRepository->findAll(),
-        ]);
-    }
+//    /**
+//     * @Route("/", name="quizz_index", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function index(QuizzRepository $quizzRepository): Response
+//    {
+//        return $this->render('quizz/index.html.twig', [
+//            'quizzs' => $quizzRepository->findAll(),
+//        ]);
+//    }
 
     /**
      * @Route("/new", name="quizz_new", methods={"GET","POST"})
@@ -41,7 +41,7 @@ class QuizzController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($quizz);
             $entityManager->flush();
-
+            $this->addFlash('success',"Le quizz a bien été ajouté !");
             return $this->redirectToRoute('quizz_index');
         }
 
@@ -51,16 +51,16 @@ class QuizzController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="quizz_show", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function show(Quizz $quizz): Response
-    {
-        return $this->render('quizz/show.html.twig', [
-            'quizz' => $quizz,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="quizz_show", methods={"GET"})
+//     * @IsGranted("ROLE_AUTHOR")
+//     */
+//    public function show(Quizz $quizz): Response
+//    {
+//        return $this->render('quizz/show.html.twig', [
+//            'quizz' => $quizz,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="quizz_edit", methods={"GET","POST"})
@@ -73,7 +73,7 @@ class QuizzController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success',"Le quizz a bien été modifié !");
             return $this->redirectToRoute('quizz_index');
         }
 
@@ -93,6 +93,7 @@ class QuizzController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($quizz);
             $entityManager->flush();
+            $this->addFlash('danger',"Le quizz a bien été supprimé !");
         }
 
         return $this->redirectToRoute('quizz_index');

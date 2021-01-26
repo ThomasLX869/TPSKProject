@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AgeRange{% endblock %}
+
+{% block body %}
+    <h1>AgeRange</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ age_range.id }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ age_range.label }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('age_range_index') }}">back to list</a>
+
+    <a href="{{ path('age_range_edit', {'id': age_range.id}) }}">edit</a>
+
+    {{ include('age_range/_delete_form.html.twig') }}
+{% endblock %}
