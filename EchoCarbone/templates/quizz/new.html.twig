@@ -3,8 +3,13 @@
 {% block title %}Quizz{% endblock %}
 
 {% block body %}
-    <h1>Création d'un nouveau quizz</h1>
 
-    {{ include('quizz/_form.html.twig') }}
+    <div class="container bodyContent">
+
+        <h1 class="my-5 text-center">Création d'un nouveau quizz</h1>
+        <div class="col-8 m-auto">
+        {{ include('quizz/_form.html.twig') }}
+        </div>
+    </div>
 
 {% endblock %}
