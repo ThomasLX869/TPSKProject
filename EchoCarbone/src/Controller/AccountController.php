@@ -72,7 +72,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/{slug}/edit", name="account_edit")
-     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Admin $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {

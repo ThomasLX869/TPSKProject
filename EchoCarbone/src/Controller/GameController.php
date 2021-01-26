@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Game;
 use App\Form\GameType;
 use App\Repository\GameRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,6 +18,7 @@ class GameController extends AbstractController
 {
     /**
      * @Route("/", name="game_index", methods={"GET"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function index(GameRepository $gameRepository): Response
     {
@@ -27,6 +29,7 @@ class GameController extends AbstractController
 
     /**
      * @Route("/new", name="game_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function new(Request $request): Response
     {
@@ -51,6 +54,7 @@ class GameController extends AbstractController
 
     /**
      * @Route("/{id}", name="game_show", methods={"GET"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function show(Game $game): Response
     {
@@ -61,6 +65,7 @@ class GameController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="game_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Game $game): Response
     {
@@ -81,6 +86,7 @@ class GameController extends AbstractController
 
     /**
      * @Route("/{id}", name="game_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Game $game): Response
     {

@@ -10,7 +10,6 @@ use App\Entity\Quizz;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class QuizzType extends AbstractType
@@ -27,8 +26,8 @@ class QuizzType extends AbstractType
             ->add('creationDate')
             ->add('question')
             ->add('answer')
-            ->add('nbLike')
-            ->add('nbDislike')
+//            ->add('nbLike')
+//            ->add('nbDislike')
             // ->add('category')
             // ->add('ageRange')
             // ->add('author')
