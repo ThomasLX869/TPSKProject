@@ -21,12 +21,8 @@ class QuizzType extends AbstractType
             ->add('url')
             ->add('image')
             ->add('description')
-            ->add('updateDate')
-            ->add('creationDate')
             ->add('question')
             ->add('answer')
-            ->add('nbLike')
-            ->add('nbDislike')
             ->add(
                 'category',
                 EntityType::class,
