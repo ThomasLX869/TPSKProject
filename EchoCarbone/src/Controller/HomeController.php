@@ -27,7 +27,8 @@ class HomeController extends AbstractController
             'controller_name' => 'CalcHomeController',
         ]);
     }
-  
+
+    /**  
      * @Route("/home/rgpd", name="rgpd_view")
      */
     public function rgpd(): Response
