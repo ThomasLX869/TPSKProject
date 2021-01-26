@@ -17,4 +17,14 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
+
+    /**
+     * @Route("/calc", name="home_calc")
+     */
+    public function displayCalc(): Response
+    {
+        return $this->render('calc_home/index.html.twig', [
+            'controller_name' => 'CalcHomeController',
+        ]);
+    }
 }
