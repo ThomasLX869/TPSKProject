@@ -41,7 +41,7 @@ class QuizzController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($quizz);
             $entityManager->flush();
-
+            $this->addFlash('success',"Le quizz a bien été ajouté !");
             return $this->redirectToRoute('quizz_index');
         }
 
@@ -73,7 +73,7 @@ class QuizzController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success',"Le quizz a bien été modifié !");
             return $this->redirectToRoute('quizz_index');
         }
 
@@ -93,6 +93,7 @@ class QuizzController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($quizz);
             $entityManager->flush();
+            $this->addFlash('danger',"Le quizz a bien été supprimé !");
         }
 
         return $this->redirectToRoute('quizz_index');

@@ -19,6 +19,15 @@ class HomeController extends AbstractController
     }
 
     /**
+     * @Route("/calc", name="home_calc")
+     */
+    public function displayCalc(): Response
+    {
+        return $this->render('calc_home/index.html.twig', [
+            'controller_name' => 'CalcHomeController',
+        ]);
+    }
+  
      * @Route("/home/rgpd", name="rgpd_view")
      */
     public function rgpd(): Response
@@ -44,6 +53,5 @@ class HomeController extends AbstractController
     {
         return $this->render('home/contact.html.twig');
     }
-
-
+  
 }
