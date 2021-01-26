@@ -38,12 +38,16 @@
 				<p>{{media.source}}</p>
 			{% endif %}
 			{% if media.url != "" %}
-				<iframe id="inlineFrameExample"
-					title="Inline Frame Example"
-					width="700 %"
-					height="700 %"
+			<details>
+				<iframe class="col-12 img-fluid min-vh-100" id="inlineFrameExample"
+					title="InlineFrameExample"
 					src="{{media.url}}">
 				</iframe>
+				<summary>
+				</summary>
+			</details>
+
+
 			{% endif %}
 
 			<p class="text-center">écrit le:
