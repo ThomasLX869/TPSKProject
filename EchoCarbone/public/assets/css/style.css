@@ -87,8 +87,8 @@ header {
   z-index: 3;
 }
 
-.list-to-move {
-  margin-left: 19vw;
+.dropdown-item {
+  color: black !important;
 }
 
 .navbar,
@@ -98,6 +98,7 @@ header {
 
 nav div a {
   font-size: 1.3rem;
+  color: white !important;
 }
 
 .link-nav {
@@ -111,9 +112,14 @@ nav div a:hover {
   color: #388863 !important;
   font-weight: bold;
 }
-nav div a:hover nav div div ul li {
+
+nav div div ul li {
   display: inline-block;
   margin-left: 1.5em;
+}
+
+.dropdown-item {
+  color: black !important;
 }
 
 .logo {
@@ -162,6 +168,15 @@ footer {
 footer a,
 li {
   color: white;
+}
+
+.iconFooter {
+  font-size: 1.3rem;
+}
+
+.iconFooter:hover {
+  font-weight: bold;
+  color: #388863;
 }
 
 .breadcrumb {

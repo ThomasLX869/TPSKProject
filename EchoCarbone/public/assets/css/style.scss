@@ -92,8 +92,8 @@ header {
   z-index: 3;
 }
 
-.list-to-move {
-  margin-left: 19vw;
+.dropdown-item {
+  color: black !important;
 }
 
 .navbar,
@@ -103,6 +103,7 @@ header {
 
 nav div a {
   font-size: 1.3rem;
+  color: white !important;
 }
 
 .link-nav {
@@ -115,11 +116,15 @@ nav div a:hover {
   align-items: center;
   color: $color-3 !important;
   font-weight: bold;
+}
 
-  nav div div ul li {
-    display: inline-block;
-    margin-left: 1.5em;
-  }
+nav div div ul li {
+  display: inline-block;
+  margin-left: 1.5em;
+}
+
+.dropdown-item {
+  color: black !important;
 }
 
 // HEADER END
@@ -179,6 +184,15 @@ li {
   color: white;
 }
 
+.iconFooter {
+  font-size: 1.3rem;
+}
+
+.iconFooter:hover {
+  font-weight: bold;
+  color: $color-3;
+}
+
 // FOOTER END
 
 // BREADCRUMB
@@ -207,12 +221,15 @@ li {
 .maintest {
   position: relative;
 }
+
 .list-group-item {
   max-width: 70% !important;
 }
+
 a[class="active"] {
   background-color: $color-3 !important;
 }
+
 .scrollcont {
   position: fixed;
   top: 25vh;
@@ -240,6 +257,7 @@ a[class="active"] {
   padding: 30px;
   font-weight: bolder;
 }
+
 .card-text {
   font-family: $font-2-youth;
   font-size: 2em;
@@ -308,11 +326,4 @@ a[class="active"] {
 .example-wrapper code {
   background: #f5f5f5;
   padding: 2px 6px;
-}
-
-// BUTTONS
-.icons {
-  margin-top: 15%;
-  display: flex;
-  justify-content: space-evenly;
 }
