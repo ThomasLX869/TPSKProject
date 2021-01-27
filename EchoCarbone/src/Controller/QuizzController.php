@@ -42,7 +42,7 @@ class QuizzController extends AbstractController
             $entityManager->persist($quizz);
             $entityManager->flush();
             $this->addFlash('success',"Le quizz a bien été ajouté !");
-            return $this->redirectToRoute('quizz_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('quizz/new.html.twig', [
@@ -51,19 +51,9 @@ class QuizzController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="quizz_show", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function show(Quizz $quizz): Response
-//    {
-//        return $this->render('quizz/show.html.twig', [
-//            'quizz' => $quizz,
-//        ]);
-//    }
 
     /**
-     * @Route("/{id}/edit", name="quizz_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="quizz_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Quizz $quizz): Response
@@ -74,7 +64,7 @@ class QuizzController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"Le quizz a bien été modifié !");
-            return $this->redirectToRoute('quizz_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('quizz/edit.html.twig', [
@@ -96,6 +86,6 @@ class QuizzController extends AbstractController
             $this->addFlash('danger',"Le quizz a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('quizz_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

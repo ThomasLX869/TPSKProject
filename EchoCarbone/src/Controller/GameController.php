@@ -43,7 +43,7 @@ class GameController extends AbstractController
             $entityManager->persist($game);
             $entityManager->flush();
             $this->addFlash('success',"Le jeu a bien été ajouté !");
-            return $this->redirectToRoute('game_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('game/new.html.twig', [
@@ -52,19 +52,9 @@ class GameController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="game_show", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function show(Game $game): Response
-//    {
-//        return $this->render('game/show.html.twig', [
-//            'game' => $game,
-//        ]);
-//    }
 
     /**
-     * @Route("/{id}/edit", name="game_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="game_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Game $game): Response
@@ -75,7 +65,7 @@ class GameController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"Le jeu a bien été modifié !");
-            return $this->redirectToRoute('game_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('game/edit.html.twig', [
@@ -97,6 +87,6 @@ class GameController extends AbstractController
             $this->addFlash('danger',"Le jeu a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('game_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

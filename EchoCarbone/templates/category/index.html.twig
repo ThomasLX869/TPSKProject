@@ -1,20 +1,73 @@
+{# Création de la variable commune catégories & ageRange #}
+{% set allCategories = [] %}
+
+{# remplissage de medias #}
+{% for category in categories %}
+    {% set allCategories = allCategories | merge ([category])  %}
+{% endfor %}
+
+{% for ageRange in ageRanges %}
+    {% set allCategories = allCategories | merge ([ageRange])  %}
+{% endfor %}
+{# fin de remplissage de allCategories #}
+
+
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategoryController!{% endblock %}
+{% block title %}Liste des catégories de contenu et d'âge{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<div class="container bodycontent">
+    <h1 class="my-5 text-center">
+        Liste des catégories de contenu et d'âge
+    </h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Sonia/Desktop/projet_soutenance/TPSKProject/EchoCarbone/src/Controller/CategoryController.php'|file_link(0) }}">src/Controller/CategoryController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Sonia/Desktop/projet_soutenance/TPSKProject/EchoCarbone/templates/category/index.html.twig'|file_link(0) }}">templates/category/index.html.twig</a></code></li>
-    </ul>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for category in allCategories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.label }}</td>
+            
+                {# Test if the object is AgeRange or Category type #}
+                {% if category.testForDisplay is defined %}
+                    <td>
+                        <a href="{{ path('age_range_edit', {'id': category.id}) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                            <i class="fas fa-pen align-middle"></i>
+                        </a>
+                        <form class="d-inline" action="{{ path('age_range_delete', {'id': category.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer cette catégorie age ?');">
+                            <button class="btn btn-sm btn-danger align-middle">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                {% else %}
+                    <td>
+                        <a href="{{ path('category_edit', {'id': category.id}) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                            <i class="fas fa-pen align-middle"></i>
+                        </a>
+                        <form class="d-inline" action="{{ path('category_delete', {'id': category.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer cette catégorie ?');">
+                            <button class="btn btn-sm btn-danger align-middle">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                {% endif %}
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de données</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
+
 {% endblock %}

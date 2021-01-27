@@ -34,7 +34,22 @@
                 Gestion de mes articles
             {% endif %}
         </h1>
-        <a class="btn btn-lg" id="buttonAdd" href="{{ path('article_new') }}">Ajouter un article</a>
+
+
+        <div class="dropdown">
+            <button class="btn btn-lg dropdown-toggle" type="button" id="buttonAdd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Ajouter un contenu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{ path('article_new') }}">Nouvel Article</a>
+                <a class="dropdown-item" href="{{ path('video_new') }}">Nouvelle Vidéo</a>
+                <a class="dropdown-item" href="{{ path('game_new') }}">Nouveau jeu</a>
+                <a class="dropdown-item" href="{{ path('quizz_new') }}">Nouveau quizz</a>
+            </div>
+        </div>
+
+
+
         <table class="table my-5">
             <thead>
             <tr>
@@ -49,27 +64,36 @@
             </tr>
             </thead>
             <tbody>
-
-
             {% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
                 <tr>
                     <td class="align-middle">{{ media.title|title }}</td>
 
-                        {# boucle de récupération des catégories #}
-                        {% for category in media.category %}
-                    <td class="align-middle">{{ category.label }}</td>
-                        {% endfor %}
+                    {# boucle de récupération des catégories #}
+                    {% if media.category is defined%}
+                        <td class="align-middle">
+                            {% for category in media.category %}
+                                {{ category.label }}
+                            {% endfor %}
+                        </td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
 
-                        {# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
-                        {% for ageRange in media.ageRange %}
-                            {% if ageRange.label != "adulte" %}
-                    <td class="align-middle">{{ageRange.label}}</td>
-                            {% endif %}
-                        {% endfor %}
+                    {# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
+                    {% for ageRange in media.ageRange %}
+                        <td class="align-middle">{{ageRange.label}}</td>
+                    {% endfor %}
 
                     <td class="align-middle">{{media.type}}</td>
                     <td class="align-middle">{{media.creationDate|date('d/m/Y à H:i')}}</td>
-                    <td class="align-middle">{{media.updateDate|date('d/m/Y à H:i')}}</td>
+
+
+                    {% if media.updateDate is defined%}
+                        <td class="align-middle">{{media.updateDate|date('d/m/Y à H:i')}}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+
 
                     {% if media.author.pseudo is defined%}
                         <td class="align-middle">{{media.author.pseudo}}</td>
@@ -78,14 +102,44 @@
                     {% endif %}
 
                     <td class="align-middle">
-                        <a href="{{ path('article_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
-                            <i class="fas fa-pen align-middle"></i>
-                        </a>
-                        <form class="d-inline" action="{{ path('article_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette utilisateur ?');">
-                            <button class="btn btn-sm btn-danger align-middle">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                        </form>
+
+                        {% if media.type == "article"%}
+                            <a href="{{ path('article_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pen align-middle"></i>
+                            </a>
+                            <form class="d-inline" action="{{ path('article_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                                <button class="btn btn-sm btn-danger align-middle">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        {% elseif media.type == "game"%}
+                            <a href="{{ path('game_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pen align-middle"></i>
+                            </a>
+                            <form class="d-inline" action="{{ path('game_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                                <button class="btn btn-sm btn-danger align-middle">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        {% elseif media.type == "video"%}
+                            <a href="{{ path('video_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pen align-middle"></i>
+                            </a>
+                            <form class="d-inline" action="{{ path('video_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                                <button class="btn btn-sm btn-danger align-middle">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        {% elseif media.type == "quizz"%}
+                            <a href="{{ path('quizz_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pen align-middle"></i>
+                            </a>
+                            <form class="d-inline" action="{{ path('quizz_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                                <button class="btn btn-sm btn-danger align-middle">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        {% endif %}
                     </td>
                 </tr>
             {% endfor %}

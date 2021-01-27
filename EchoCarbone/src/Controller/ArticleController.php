@@ -25,11 +25,6 @@ class ArticleController extends AbstractController
      */
     public function index(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository): Response
     {
-        //debug pour récupérer le label de category
-
-        //$article = $articleRepository->findOneByTitle("titre de mon article");
-        // dump($article->getCategory()[0]->getLabel());
-
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findAll(),
             'games' => $gameRepository->findAll(),
@@ -89,7 +84,7 @@ class ArticleController extends AbstractController
 
             $this->addFlash('success',"Nouvel article <strong>{$article->getTitle()}</strong> créé !");
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('article/new.html.twig', [
@@ -98,32 +93,9 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="article_show", methods={"GET"})
-     * @IsGranted("ROLE_AUTHOR")
-     */
-    public function show(Article $article): Response
-    {
-
-        $articleAuthor = $article->getAuthor();
-        $user = $this->getUser();
-
-//      Give access to all articles for admins or just access of his own articles for author
-        foreach($user->getRoles() as $role) {
-            if (($role !== 'ROLE_ADMIN') && ($articleAuthor !== $user )){
-                $this->addFlash('danger',"Vous n'avez pas les droits pour accéder à cet article !");
-                return $this->redirectToRoute('article_index');
-            }
-
-        }
-
-        return $this->render('article/show.html.twig', [
-            'article' => $article,
-        ]);
-    }
 
     /**
-     * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="article_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Article $article, UserInterface $user): Response
@@ -136,7 +108,7 @@ class ArticleController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success',"L'article <strong>{$article->getTitle()}</strong> créé !");
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('article/edit.html.twig', [
@@ -144,6 +116,9 @@ class ArticleController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+
 
     /**
      * @Route("/{id}", name="article_delete", methods={"DELETE"})
@@ -158,6 +133,6 @@ class ArticleController extends AbstractController
             $this->addFlash('danger',"L'article a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('article_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

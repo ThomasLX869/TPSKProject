@@ -43,7 +43,7 @@ class VideoController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success',"La vidéo a bien été ajoutée !");
 
-            return $this->redirectToRoute('video_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('video/new.html.twig', [
@@ -51,20 +51,10 @@ class VideoController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-//    /**
-//     * @Route("/{id}", name="video_show", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function show(Video $video): Response
-//    {
-//        return $this->render('video/show.html.twig', [
-//            'video' => $video,
-//        ]);
-//    }
+    
 
     /**
-     * @Route("/{id}/edit", name="video_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="video_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Video $video): Response
@@ -75,7 +65,7 @@ class VideoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"La vidéo a bien été modifiée !");
-            return $this->redirectToRoute('video_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('video/edit.html.twig', [
@@ -97,6 +87,6 @@ class VideoController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('video_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

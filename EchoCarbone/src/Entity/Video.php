@@ -64,7 +64,7 @@ class Video
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000,)
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
@@ -82,13 +82,12 @@ class Video
     private $creationDate;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      * min = 10,
      * minMessage = "L'intro doit faire au moins {{ limit }} caractères",
      * allowEmptyString = false)
      */
-
     private $content;
 
     /**

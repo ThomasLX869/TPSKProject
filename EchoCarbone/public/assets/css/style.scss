@@ -245,7 +245,7 @@ a[class="active"] {
 #admin_Ajouter,
 #buttonUpdate,
 #admin_Inscription{
-  background-color: $color-3;
+  background-color: $color-3 !important;
   border-color: $color-2;
   color: white;
 }
@@ -268,8 +268,9 @@ a[class="active"] {
   width: 20rem;
 }
 
-.bodyContent{
+.bodycontent{
   margin-bottom: 5%;
+  min-height: 48vh !important;
 }
 
 // END CRUD ADMIN/USER
