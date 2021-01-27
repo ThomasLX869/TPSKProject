@@ -51,17 +51,7 @@ class VideoController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-//    /**
-//     * @Route("/{id}", name="video_show", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function show(Video $video): Response
-//    {
-//        return $this->render('video/show.html.twig', [
-//            'video' => $video,
-//        ]);
-//    }
+    
 
     /**
      * @Route("/{id}", name="video_edit", methods={"GET","POST"})
