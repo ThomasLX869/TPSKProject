@@ -107,7 +107,7 @@
                             <a href="{{ path('article_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
                                 <i class="fas fa-pen align-middle"></i>
                             </a>
-                            <form class="d-inline" action="{{media.id}}delete" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                            <form class="d-inline" action="{{ path('article_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
                                 <button class="btn btn-sm btn-danger align-middle">
                                     <i class="fa fa-trash"></i>
                                 </button>
@@ -125,11 +125,26 @@
                             <a href="{{ path('video_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
                                 <i class="fas fa-pen align-middle"></i>
                             </a>
-                            <form class="d-inline" action="{{ path('video_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
-                                <button class="btn btn-sm btn-danger align-middle">
+
+
+
+
+
+                            <form class="d-inline" method="POST" action="{{ path('video_delete' , {'id': media.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ media.id) }}">
+                                <button type="submit" class="btn btn-sm btn-danger align-middle">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </form>
+
+
+
+
+
+
+
+
+
                         {% elseif media.type == "quizz"%}
                             <a href="{{ path('quizz_edit' , {'id': media.id } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
                                 <i class="fas fa-pen align-middle"></i>
