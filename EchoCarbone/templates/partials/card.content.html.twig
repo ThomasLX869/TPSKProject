@@ -59,6 +59,9 @@
 
 					</div>
 					<div class="modal-body">
+						{% if media.description is defined and not null %}
+							<p class="cardintro">{{media.description}}</p>
+						{% endif %}
 						{% if media.image is defined and media.image is not null %}
 							<div class="d-flex justify-content-center">
 								<img class="imgcard" src="{{media.image}}" alt="Card image"/>

@@ -2,8 +2,8 @@
 {% set medias = [] %}
 
 {# remplissage de medias #}
-{% for article in articles %}
-	{% set medias = medias | merge ([article])  %}
+{% for game in games %}
+	{% set medias = medias | merge ([game])  %}
 {% endfor %}
 {# fin de remplissage de médias #}
 

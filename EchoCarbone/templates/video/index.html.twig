@@ -5,6 +5,18 @@
 {% for article in articles %}
 	{% set medias = medias | merge ([article])  %}
 {% endfor %}
+
+{% for game in games %}
+	{% set medias = medias | merge ([game])  %}
+{% endfor %}
+
+{% for video in videos %}
+	{% set medias = medias | merge ([video])  %}
+{% endfor %}
+
+{% for quizz in quizzs %}
+	{% set medias = medias | merge ([quizz])  %}
+{% endfor %}
 {# fin de remplissage de médias #}
 
 {% extends 'base.html.twig' %}
