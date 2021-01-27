@@ -72,7 +72,7 @@ class Video
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $updateDate;
 
@@ -82,13 +82,12 @@ class Video
     private $creationDate;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      * min = 10,
      * minMessage = "L'intro doit faire au moins {{ limit }} caractères",
      * allowEmptyString = false)
      */
-
     private $content;
 
     /**
