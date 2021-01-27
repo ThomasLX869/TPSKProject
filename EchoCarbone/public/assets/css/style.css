@@ -208,11 +208,15 @@ a[class=active] {
   background: #388863;
 }
 
+#end {
+  font-weight: bolder;
+}
+
 #buttonAdd,
 #admin_Ajouter,
 #buttonUpdate,
 #admin_Inscription {
-  background-color: #388863;
+  background-color: #388863 !important;
   border-color: #0c3121;
   color: white;
 }
@@ -235,8 +239,15 @@ a[class=active] {
   width: 20rem;
 }
 
-.bodyContent {
+.bodycontent {
   margin-bottom: 5%;
+  min-height: 48vh !important;
+}
+
+.icons {
+  margin-top: 15%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .example-wrapper {

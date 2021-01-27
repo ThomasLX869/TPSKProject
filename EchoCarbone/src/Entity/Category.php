@@ -51,7 +51,7 @@ class Category
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="categories")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 

@@ -53,16 +53,16 @@ class Game
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
      */
-
     private $description;
 
+
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $updateDate;
 
@@ -80,7 +80,7 @@ class Game
     private $content;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $nbLike;
 
@@ -101,7 +101,7 @@ class Game
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="games")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 

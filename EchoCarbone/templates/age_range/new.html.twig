@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AgeRange{% endblock %}
+
+{% block body %}
+    <h1>Create new AgeRange</h1>
+
+    {{ include('age_range/_form.html.twig') }}
+
+    <a href="{{ path('age_range_index') }}">back to list</a>
+{% endblock %}

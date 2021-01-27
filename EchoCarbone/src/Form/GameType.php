@@ -10,20 +10,41 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class GameType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('source')
-            ->add('url')
-            ->add('image')
-            ->add('description')
-            ->add('updateDate')
-            ->add('creationDate')
-            ->add('content')
+            ->add('title', TextType::class, [
+                "label" => "Titre",
+                "attr" => ["placeholder" => "Insérez un titre"]
+            ])
+            ->add('source', TextType::class, [
+                "label" => "Source",
+                "attr" => ["placeholder" => "Insérez une source"],
+                'required' => false
+            ])
+            ->add('url', UrlType::class, [
+                "label" => "URL",
+                "attr" => ["placeholder" => "Insérez une Url"]
+            ])
+            ->add('image', UrlType::class, [
+                'label' => 'Lien de votre image',
+                'attr'  => ['placeholder' => "Insérez l'image"],
+                'required' => false
+            ])
+            ->add('description', TextType::class, [
+                "label" => "Description",
+                "attr"  => ["placeholder" => "Ajoutez une description"],
+            ])
+            ->add('content', TextType::class, [
+                "label" => "Contenu",
+                "attr"  => ["placeholder" => "Ajoutez un contenu"],
+                'required' => false
+            ])
             ->add(
                 'category',
                 EntityType::class,
@@ -49,7 +70,7 @@ class GameType extends AbstractType
                     'class' => Admin::class, 'choice_label' => 'pseudo'
                 ]
             );
-    }
+    }   
 
     public function configureOptions(OptionsResolver $resolver)
     {

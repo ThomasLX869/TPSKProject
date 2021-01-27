@@ -56,7 +56,7 @@ class Article
 
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
@@ -64,7 +64,7 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $updateDate;
 
@@ -84,7 +84,7 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $nbLike;
 
@@ -105,7 +105,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
 

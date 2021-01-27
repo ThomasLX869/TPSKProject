@@ -3,11 +3,12 @@
 {% block title %}Edit Glossary{% endblock %}
 
 {% block body %}
-    <h1>Edit Glossary</h1>
+    <div class="container bodyContent">
+        <h1 class="my-5 text-center">Modifier le glossaire !</h1>
 
-    {{ include('glossary/_form.html.twig', {'button_label': 'Update'}) }}
+        <div class="col-8 m-auto">
+            {{ include('glossary/_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('glossary_index') }}">back to list</a>
-
-    {{ include('glossary/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

@@ -1,7 +1,7 @@
 <header>
 	<nav class="navbar navbar-expand-xl navbar-dark bg-light position-fixed w-100">
 		<div class="container-fluid">
-			<a href="{{ path('home_index')}}"><img class="logo" src="../assets/img/logo.png"></a>
+			<a href="{{ path('home_index')}}"><img class="logo" src="../../assets/img/logo.png"></a>
 			<button class="navbar-toggler burger" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -18,10 +18,12 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="{{ path('account_profil' , {'slug': app.user.slug } ) }}">Mon Profil</a>
-								<a class="dropdown-item" href="{{ path('article_new') }}">Ecrire un article</a>
-								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% if is_granted('ROLE_ADMIN') %}
-									<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
+								<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Gestion articles</a>
+								<a class="dropdown-item" href="{{ path('category_index') }}">Gestion catégories</a>
+								{% else %}
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% endif %}
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
@@ -31,19 +33,16 @@
 
 
 					<li class="nav-item">
-						<a class="nav-link text-nowrap" href="#">Eco-gestes</a>
+						<a class="nav-link text-nowrap" href="{{ path('article_index') }}">Tout le contenu</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('home_youth')}}">Jeunesse</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Calculateur</a>
+						<a class="nav-link" href="{{ path('home_calc') }}">Calculateur</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Ecolexique</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-nowrap" href="#">Qui sommes-nous ?</a>
+						<a class="nav-link" href="{{ path('glossary_index') }}">Ecolexique</a>
 					</li>
 					<form class="d-flex">
 						<input class="form-control mx-3" type="search" placeholder="Rechercher" aria-label="Rechercher">

@@ -32,8 +32,8 @@
                     <td class="align-middle">{{ admin.lastname }}</td>
                     <td class="align-middle">{{ admin.email }}</td>
                     <td class="align-middle">
-                        {% for roles in admin.roles %}
-                            <p>{{roles}}</p>
+                        {% for role in admin.roles %}
+                            <p>{{role}}</p>
                         {% endfor %}
                     </td>
                     <td class="align-middle"><img class="avatar" src="{{ admin.image }}" alt="avatar {{ admin.pseudo }}"></td>
