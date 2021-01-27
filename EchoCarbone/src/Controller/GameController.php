@@ -75,7 +75,7 @@ class GameController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="game_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="game_delete", methods={"POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Game $game): Response

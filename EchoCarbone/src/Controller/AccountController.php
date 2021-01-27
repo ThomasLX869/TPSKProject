@@ -22,7 +22,7 @@ class AccountController extends AbstractController
      */
     public function index(AdminRepository $adminRepository): Response
     {
-        
+
         return $this->render('account/index.html.twig', [
             'admins' => $adminRepository->findAll()
         ]);

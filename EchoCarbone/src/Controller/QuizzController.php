@@ -74,7 +74,7 @@ class QuizzController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="quizz_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="quizz_delete", methods={"POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Quizz $quizz): Response

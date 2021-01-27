@@ -119,6 +119,15 @@ class Video
     // guarantee all video have video type
     private $type = 'video';
 
+
+    /**
+     * Génère la date automatiquement
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
     public function updateDate()
     {
         if (empty($this->creationDate)) {
