@@ -204,14 +204,24 @@ li {
 // BREADCRUMB
 .breadcrumb {
   background-color: $color-1;
-}
-.breadcrumb-item {
-  margin-left: 1.5em;
+  padding-left: 0;
+  font-size: large;
+  font-style: italic;
+  color: $color-3 !important;
 }
 
-.breadcrumb-item a {
+.breadcrumb-item.active{
+  color: $color-3 !important;
   text-decoration: none;
   font-size: 1.3rem;
+  font-weight: bold;
+
+}
+
+.inactive {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: $color-3 !important;
 }
 
 .breadcrumb-item:hover {
