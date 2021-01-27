@@ -21,7 +21,7 @@
 								{% if is_granted('ROLE_ADMIN') %}
 								<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
 								<a class="dropdown-item" href="{{ path("article_manager") }}">Gestion articles</a>
-								<a class="dropdown-item" href="#">Gestion catégories</a>
+								<a class="dropdown-item" href="{{ path('category_index') }}">Gestion catégories</a>
 								{% else %}
 								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% endif %}
