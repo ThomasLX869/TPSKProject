@@ -18,7 +18,7 @@
 {% block title %}Liste des catégories de contenu et d'âge{% endblock %}
 
 {% block body %}
-<div class="container bodycontent">
+<div class="container bodycontent text-center">
     <h1 class="my-5 text-center">
         Liste des catégories de contenu et d'âge
     </h1>
@@ -28,7 +28,7 @@
             <tr>
                 <th>Id</th>
                 <th>Label</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.label }}</td>
-            
+
                 {# Test if the object is AgeRange or Category type #}
                 {% if category.testForDisplay is defined %}
                     <td>

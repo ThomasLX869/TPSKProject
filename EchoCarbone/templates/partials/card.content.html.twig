@@ -1,87 +1,104 @@
 {# squelette d'une card #}
-<div class="offset-md-2 col-12 col-md-10 card-body cardradius my-3" id="list-item-1">
-	<details>
-		<summary style="outline: none;">
-			<div class="cardhead text-center">
-				<h3 class="text-center cardtitle">{{media.title|title}}
-				</h3>
-				<hr class="cardline">
-				<div class="d-inline">
-					<p class="cardsorting">Catégories:
-						<a
-							href="#" class="cardlink">
-							{# boucle de récupération des catégories #}
-							{% for category in media.category %}
-								{{ category.label }}
+<div class="media-shape {{media.type}} category{% for category in media.category %}{{category.id}}{% endfor %} {% for ageRange in media.ageRange %}ageRange{{ageRange.id}}{% endfor %} offset-md-2 col-12 col-md-10 card-body cardradius my-3" id="list-item-1">
+	<div class="h-auto">
+		<div>
+			<div>
+				<div class="cardhead text-center">
+					<h3 class="text-center cardtitle">{{media.title|title}}
+					</h3>
+					<hr class="cardline">
+					<div class="d-inline">
+						<p class="cardsorting">Catégories:
+							<a
+								href="#" class="cardlink">
+								{# boucle de récupération des catégories #}
+								{% for category in media.category %}
+									{{ category.label }}
+								{% endfor %}
+							</a>
+							{# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
+							{% for ageRange in media.ageRange %}
+								{% if ageRange.label != "adulte" %}
+									âges:
+									<a href="#" class="cardlink">{{ageRange.label}}
+									</a>
+								{% endif %}
 							{% endfor %}
-						</a>
-						{# boucle de récupération des ages si celles-ci sont différentes du label adulte #}
-						{% for ageRange in media.ageRange %}
-							{% if ageRange.label != "adulte" %}
-								âges:
-								<a href="#" class="cardlink">{{ageRange.label}}
-								</a>
+							Type de média:
+							<a href="#" class="cardlink">
+								{{media.type}}</a>
+						</p>
+					</div>
+					{% if media.description is defined and not null %}
+						<p class="cardintro">{{media.description}}</p>
+					{% endif %}
+				</div>
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop{{media.type}}{{media.id}}">
+					Launch static backdrop modal
+				</button>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="staticBackdrop{{media.type}}{{media.id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="staticBackdropLabel">{{media.title|title}}</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							{% if media.image is defined and media.image is not null %}
+								<div class="d-flex justify-content-center">
+									<img class="imgcard" src="{{media.image}}" alt="Card image"/>
+								</div>
 							{% endif %}
-						{% endfor %}
-						Type de média:
-						<a href="#" class="cardlink">
-							{{media.type}}</a>
-					</p>
+
+							<div class="cardbody">
+								{% if media.content is defined and media.content is not null%}
+									<p class="my-4 cardtext">
+										{{media.content}}
+									</p>
+								{% endif %}
+
+								<div class="my-3 cardfooter">
+									{% if media.source is defined and media.source is not null %}
+										Source :
+										<p>{{media.source}}</p>
+									{% endif %}
+									{% if media.url is defined and media.url is not null and media.url != "" %}
+										<div class="d-flex justify-content-center">
+											<iframe class="col-12 img-fluid min-vh-100" id="inlineFrameExample" title="InlineFrameExample" src="{{media.url}}"></iframe>
+										</div>
+									{% endif %}
+									{% if media.question is defined and media.question is not null %}
+										Question :
+										<p>{{media.question|raw}}</p>
+									{% endif %}
+									{% if media.answer is defined and media.answer is not null %}
+										Réponse :
+										<p>{{media.answer|raw}}</p>
+									{% endif %}
+
+									<p class="text-center">écrit le :
+										{{media.creationDate|date('d/m/Y à H:i')}}
+										- mise à jour le :
+										{{media.updateDate|date('d/m/Y à H:i')}}
+										par :
+										<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				{% if media.description is defined and not null %}
-					<p class="cardintro">{{media.description}}</p>
-				{% endif %}
-			</div>
-		</summary>
-
-		{% if media.image is defined and media.image is not null %}
-			<div class="d-flex justify-content-center">
-				<img class="imgcard" src="{{media.image}}" alt="Card image"/>
-			</div>
-		{% endif %}
-
-		<div class="cardbody">
-		{% if media.content is defined and media.content is not null%}
-			<p class="my-4 cardtext">
-				{{media.content}}
-			</p>
-		{% endif %}
-
-		<div class="my-3 cardfooter">
-			{% if media.source is defined and media.source is not null %}
-				Source :
-				<p>{{media.source}}</p>
-			{% endif %}
-			{% if media.url is defined and media.url is not null and media.url != "" %}
-				<div class="d-flex justify-content-center">
-					<iframe class="col-12 img-fluid min-vh-100" style="border:none;" id="inlineFrameExample"
-						title="InlineFrameExample"
-						src="{{media.url}}">
-					</iframe>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
-			{% endif %}
-			{% if media.question is defined and media.question is not null %}
-				Question :
-				<p>{{media.question|raw}}</p>
-			{% endif %}
-			{% if media.answer is defined and media.answer is not null %}
-				Réponse :
-				<p>{{media.answer|raw}}</p>
-			{% endif %}
-
-			<p class="text-center">écrit le :
-				{{media.creationDate|date('d/m/Y à H:i')}}
-				- mise à jour le :
-				{{media.updateDate|date('d/m/Y à H:i')}}
-				par :
-
-				{% if media.author.pseudo is defined %}
-					<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}</a>
-				{% else %}
-					Utilisateur supprimé
-				{% endif %}
-			</p>
+			</div>
 		</div>
-	</details>
+	</div>
 </div>
-
