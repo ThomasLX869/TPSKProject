@@ -64,7 +64,7 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime")
      */
     private $updateDate;
 
@@ -84,7 +84,7 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="integer")
      */
     private $nbLike;
 
