@@ -120,9 +120,6 @@ class ArticleController extends AbstractController
         ]);
     }
 
-
-
-
     /**
      * @Route("/{id}", name="article_delete", methods={"DELETE"})
      * @IsGranted("ROLE_AUTHOR")
