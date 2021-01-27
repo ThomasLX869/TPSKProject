@@ -52,16 +52,6 @@ class GameController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="game_show", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function show(Game $game): Response
-//    {
-//        return $this->render('game/show.html.twig', [
-//            'game' => $game,
-//        ]);
-//    }
 
     /**
      * @Route("/{id}", name="game_edit", methods={"GET","POST"})
