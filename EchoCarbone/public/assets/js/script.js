@@ -133,7 +133,7 @@ var $grid = $(".grid").isotope({
 // store filter for each group
 var filters = {};
 
-$(".filters").on("click", ".button", function (event) {
+$(".filters").on("click", ".option", function (event) {
   var $button = $(event.currentTarget);
   // get group key
   var $buttonGroup = $button.parents(".button-group");
@@ -149,7 +149,7 @@ $(".filters").on("click", ".button", function (event) {
 // change is-checked class on buttons
 $(".button-group").each(function (i, buttonGroup) {
   var $buttonGroup = $(buttonGroup);
-  $buttonGroup.on("click", "button", function (event) {
+  $buttonGroup.on("click", "option", function (event) {
     $buttonGroup.find(".is-checked").removeClass("is-checked");
     var $button = $(event.currentTarget);
     $button.addClass("is-checked");

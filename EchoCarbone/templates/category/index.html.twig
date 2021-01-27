@@ -23,7 +23,18 @@
         Liste des catégories de contenu et d'âge
     </h1>
 
-    <table class="table">
+    <div class="dropdown d-flex">
+        <button class="btn btn-lg dropdown-toggle" type="button" id="buttonAdd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ajouter une catégorie
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{ path('category_new') }}">Nouvelle catégorie de contenu</a>
+            <a class="dropdown-item" href="{{ path('age_range_new') }}">Nouvelle catégorie d'âge</a>
+        </div>
+    </div>
+
+
+    <table class="table my-5">
         <thead>
             <tr>
                 <th>Id</th>

@@ -60,11 +60,10 @@ class Video
      * maxMessage = "Max {{ limit }} caractères",)
      * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
-
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000,)
+     * @ORM\Column(type="string", length=1000)
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
@@ -72,7 +71,7 @@ class Video
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updateDate;
 
@@ -98,7 +97,6 @@ class Video
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    
     private $nbDislike;
 
     /**

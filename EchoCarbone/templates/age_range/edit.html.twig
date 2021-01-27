@@ -3,11 +3,10 @@
 {% block title %}Edit AgeRange{% endblock %}
 
 {% block body %}
-    <h1>Edit AgeRange</h1>
-
-    {{ include('age_range/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('age_range_index') }}">back to list</a>
-
-    {{ include('age_range/_delete_form.html.twig') }}
+    <div class="container bodycontent">
+        <h1 class="my-5 text-center">Modifier une catégorie d'âge !</h1>
+        <div class="col-8 m-auto">
+            {{ include('category/_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}
