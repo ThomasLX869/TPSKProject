@@ -37,7 +37,6 @@ class Quizz
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
      */
-
     private $source;
 
     /**
@@ -60,19 +59,16 @@ class Quizz
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
      */
-
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
-
     private $updateDate;
 
     /**
      * @ORM\Column(type="datetime")
      */
-
     private $creationDate;
 
     /**
@@ -81,7 +77,6 @@ class Quizz
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
      */
-
     private $question;
 
     /**
@@ -90,38 +85,32 @@ class Quizz
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
      */
-
     private $answer;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-
     private $nbLike;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-
     private $nbDislike;
 
     /**
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="quizzs")
      */
-
     private $category;
 
     /**
      * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="quizzs")
      */
-
     private $ageRange;
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="quizzs")
      * @ORM\JoinColumn
      */
-
     private $author;
 
     // guarantee all quizz have quizz type
