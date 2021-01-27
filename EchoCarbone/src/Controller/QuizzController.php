@@ -51,16 +51,6 @@ class QuizzController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="quizz_show", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function show(Quizz $quizz): Response
-//    {
-//        return $this->render('quizz/show.html.twig', [
-//            'quizz' => $quizz,
-//        ]);
-//    }
 
     /**
      * @Route("/{id}", name="quizz_edit", methods={"GET","POST"})

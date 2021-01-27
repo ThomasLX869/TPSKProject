@@ -16,16 +16,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/sort")
+ * @IsGranted("ROLE_ADMIN")
  */
 class CategoryController extends AbstractController
 {
     /**
      * @Route("/", name="category_index", methods={"GET"})
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(CategoryRepository $categoryRepository,AgeRangeRepository $ageRangeRepository): Response
     {
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll(),
         ]);
     }
 

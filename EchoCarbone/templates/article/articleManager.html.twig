@@ -64,8 +64,6 @@
             </tr>
             </thead>
             <tbody>
-
-
             {% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
                 <tr>
                     <td class="align-middle">{{ media.title|title }}</td>
