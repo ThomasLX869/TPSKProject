@@ -88,7 +88,6 @@ class Video
      * minMessage = "L'intro doit faire au moins {{ limit }} caractères",
      * allowEmptyString = false)
      */
-
     private $content;
 
     /**

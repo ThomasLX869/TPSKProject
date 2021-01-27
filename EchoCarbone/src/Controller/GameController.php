@@ -64,7 +64,7 @@ class GameController extends AbstractController
 //    }
 
     /**
-     * @Route("/{id}/edit", name="game_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="game_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Game $game): Response

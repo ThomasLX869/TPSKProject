@@ -18,10 +18,10 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-right">
 								<a class="dropdown-item" href="{{ path('account_profil' , {'slug': app.user.slug } ) }}">Mon Profil</a>
-								<a class="dropdown-item" href="{{ path('article_new') }}">Ecrire un article</a>
 								{% if is_granted('ROLE_ADMIN') %}
-								<a class="dropdown-item" href="{{ path("article_manager") }}">Les articles</a>
 								<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Gestion articles</a>
+								<a class="dropdown-item" href="#">Gestion catégories</a>
 								{% else %}
 								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
 								{% endif %}

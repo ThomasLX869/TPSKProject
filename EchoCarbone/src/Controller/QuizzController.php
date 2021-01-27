@@ -63,7 +63,7 @@ class QuizzController extends AbstractController
 //    }
 
     /**
-     * @Route("/{id}/edit", name="quizz_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="quizz_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Quizz $quizz): Response

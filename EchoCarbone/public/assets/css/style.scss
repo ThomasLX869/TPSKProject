@@ -245,7 +245,7 @@ a[class="active"] {
 #admin_Ajouter,
 #buttonUpdate,
 #admin_Inscription{
-  background-color: $color-3;
+  background-color: $color-3 !important;
   border-color: $color-2;
   color: white;
 }
