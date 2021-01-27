@@ -59,6 +59,7 @@ body {
 
 // HEADER
 
+
 header {
   color: white;
   margin-top: 0;
@@ -75,7 +76,7 @@ header {
 }
 
 .list-to-move {
-  margin-left: 19vw;
+  margin-left: 40vw;
 }
 
 .navbar,
@@ -85,6 +86,7 @@ header {
 
 nav div a {
   font-size: 1.3rem;
+  color : white !important;
 }
 
 .link-nav {
@@ -280,7 +282,6 @@ a[class="active"] {
   margin-top: 15%;
   display:flex;
   justify-content: space-evenly
-  
 }
 
 

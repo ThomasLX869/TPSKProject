@@ -5,8 +5,8 @@
 			<button class="navbar-toggler burger" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-			<div class="collapse navbar-collapse justify-content-end mx-4" id="navbarScroll">
-				<ul class="list-to-move navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll align-items-center align-middle" style="max-height: 100px;">
+			<div class="collapse navbar-collapse mx-4" id="navbarScroll">
+				<ul class="list-to-move navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
 
 
 
@@ -20,20 +20,28 @@
 								<a class="dropdown-item" href="{{ path('account_profil' , {'slug': app.user.slug } ) }}">Mon Profil</a>
 								{% if is_granted('ROLE_ADMIN') %}
 								<a class="dropdown-item" href="{{ path('account_index')}}">Espace Admin</a>
-								<a class="dropdown-item" href="{{ path("article_manager") }}">Gestion articles</a>
-								<a class="dropdown-item" href="{{ path('category_index') }}">Gestion catégories</a>
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Gestion Articles</a>
+								<a class="dropdown-item" href="{{ path('category_index') }}">Gestion Catégories</a>
 								{% else %}
-								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes articles</a>
+								<a class="dropdown-item" href="{{ path("article_manager") }}">Mes Articles</a>
 								{% endif %}
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
 							</div>
 						</li>
+					{% else %}
+						<li class="nav-item dropdown invisible">
+							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+								<i class="fa fa-user"></i>
+								Connection
+							</a>
+						</li>
+
 					{% endif %}
 
 
 					<li class="nav-item">
-						<a class="nav-link text-nowrap" href="{{ path('article_index') }}">Tout le contenu</a>
+						<a class="nav-link text-nowrap" href="{{ path('article_index') }}">Nos Articles</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('home_youth')}}">Jeunesse</a>
@@ -44,15 +52,16 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('glossary_index') }}">Ecolexique</a>
 					</li>
-					<form class="d-flex">
-						<input class="form-control mx-3" type="search" placeholder="Rechercher" aria-label="Rechercher">
-						<button class="btn btn-outline-success" type="submit">
-							<i class="fas fa-search text-light"></i>
-						</button>
-					</form>
+{#					<form class="d-flex">#}
+{#						<input class="form-control mx-3" type="search" placeholder="Rechercher" aria-label="Rechercher">#}
+{#						<button class="btn btn-outline-success" type="submit">#}
+{#							<i class="fas fa-search text-light"></i>#}
+{#						</button>#}
+{#					</form>#}
 				</ul>
 			</div>
 		</div>
+	</nav>
 	</nav>
 </header>
 

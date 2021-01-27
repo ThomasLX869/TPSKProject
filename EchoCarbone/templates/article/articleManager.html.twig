@@ -25,7 +25,7 @@
 {% block title %}Liste des articles{% endblock %}
 
 {% block body %}
-    <div class="container bodyContent">
+    <div class="container bodycontent">
         <h1 class="my-5 text-center">
             {#        Test the roles of logged user#}
             {% if is_granted('ROLE_ADMIN') %}
@@ -43,8 +43,8 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="{{ path('article_new') }}">Nouvel Article</a>
                 <a class="dropdown-item" href="{{ path('video_new') }}">Nouvelle Vidéo</a>
-                <a class="dropdown-item" href="{{ path('game_new') }}">Nouveau jeu</a>
-                <a class="dropdown-item" href="{{ path('quizz_new') }}">Nouveau quizz</a>
+                <a class="dropdown-item" href="{{ path('game_new') }}">Nouveau Jeu</a>
+                <a class="dropdown-item" href="{{ path('quizz_new') }}">Nouveau Quizz</a>
             </div>
         </div>
 
