@@ -8,12 +8,14 @@ use App\Repository\GameRepository;
 use App\Repository\QuizzRepository;
 use App\Repository\VideoRepository;
 use App\Repository\ArticleRepository;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\AgeRangeRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/article")
@@ -23,7 +25,7 @@ class ArticleController extends AbstractController
     /**
      * @Route("/", name="article_index", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository): Response
+    public function index(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
     {
         //debug pour récupérer le label de category
 
@@ -34,7 +36,9 @@ class ArticleController extends AbstractController
             'articles' => $articleRepository->findAll(),
             'games' => $gameRepository->findAll(),
             'videos' => $videoRepository->findAll(),
-            'quizzs' => $quizzRepository->findAll()
+            'quizzs' => $quizzRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
         ]);
     }
 
@@ -46,14 +50,14 @@ class ArticleController extends AbstractController
     {
         $user = $this->getUser();
 
-//      Give access to all articles for admins or just access of his own articles for author
-        foreach($user->getRoles() as $role){
-            if($role == 'ROLE_ADMIN'){
-                    $articles = $articleRepository->findAll();
-                    $games= $gameRepository->findAll();
-                    $videos = $videoRepository->findAll();
-                    $quizz = $quizzRepository->findAll();
-            }else{
+        //      Give access to all articles for admins or just access of his own articles for author
+        foreach ($user->getRoles() as $role) {
+            if ($role == 'ROLE_ADMIN') {
+                $articles = $articleRepository->findAll();
+                $games = $gameRepository->findAll();
+                $videos = $videoRepository->findAll();
+                $quizz = $quizzRepository->findAll();
+            } else {
                 $articles = $articleRepository->findByAuthor($user->getId());
                 $games = $gameRepository->findByAuthor($user->getId());
                 $videos = $videoRepository->findByAuthor($user->getId());
@@ -103,20 +107,20 @@ class ArticleController extends AbstractController
     public function show(Article $article): Response
     {
 
-////        EN COURS DE TRAVAIL, REVENEZ PLUS TARD ;) (TLX)
-//
-//        $articleAuthor = $article->getAuthor();
-//        $user = $this->getUser();
-//
-////      Give access to all articles for admins or just access of his own articles for author
-//        foreach($user->getRoles() as $role) {
-//            if (($role !== 'ROLE_ADMIN') && ($articleAuthor =! $user )){
-//                $this->addFlash('danger',
-//                    "Vous n'avez pas les droits pour accéder à cet article !");
-//                return $this->redirectToRoute('article_index');
-//            }
-//
-//        }
+        ////        EN COURS DE TRAVAIL, REVENEZ PLUS TARD ;) (TLX)
+        //
+        //        $articleAuthor = $article->getAuthor();
+        //        $user = $this->getUser();
+        //
+        ////      Give access to all articles for admins or just access of his own articles for author
+        //        foreach($user->getRoles() as $role) {
+        //            if (($role !== 'ROLE_ADMIN') && ($articleAuthor =! $user )){
+        //                $this->addFlash('danger',
+        //                    "Vous n'avez pas les droits pour accéder à cet article !");
+        //                return $this->redirectToRoute('article_index');
+        //            }
+        //
+        //        }
 
 
 
