@@ -64,7 +64,7 @@ class VideoController extends AbstractController
 //    }
 
     /**
-     * @Route("/{id}/edit", name="video_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="video_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Video $video): Response
