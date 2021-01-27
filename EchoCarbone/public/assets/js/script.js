@@ -136,7 +136,7 @@ var filters = {};
 $(".filters").on("click", ".option", function (event) {
   var $button = $(event.currentTarget);
   // get group key
-  var $buttonGroup = $button.parents(".custom-select");
+  var $buttonGroup = $button.parents(".button-group");
   var filterGroup = $buttonGroup.attr("data-filter-group");
   // set filter for group
   filters[filterGroup] = $button.attr("data-filter");
