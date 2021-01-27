@@ -79,7 +79,7 @@ class GlossaryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="glossary_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="glossary_delete", methods={"POST"})
      */
     public function delete(Request $request, Glossary $glossary): Response
     {

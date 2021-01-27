@@ -44,7 +44,6 @@ class VideoType extends AbstractType
             ->add('content', TextType::class, [
                 "label" => "Contenu",
                 "attr"  => ["placeholder" => "Ajoutez un contenu"],
-                'required' => false
             ])
             ->add(
                 'category',
