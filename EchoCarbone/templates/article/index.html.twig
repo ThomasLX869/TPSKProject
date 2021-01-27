@@ -33,8 +33,51 @@
 			</ol>
 		</nav>
 
-		<div class="row mb-4">
+		<div class="row">
+			<div class="filters offset-2 col-12 d-flex justify-content-end">
+				<div class="ui-group mx-2">
+					<p>Médias</p>
+					<div class="button-group js-radio-button-group" data-filter-group="media">
+						<select name="my_html_select_box">
+							<option class="button is-checked" data-filter="">tous les médias</option>
+							<option class="button" data-filter=".article">les articles</option>
+							<option class="button" data-filter=".game">les jeux</option>
+							<option class="button" data-filter=".video">les vidéos</option>
+							<option class="button" data-filter=".quizz">les quizz</option>
+						</select>
+					</div>
+				</div>
+				<div class="ui-group mx-2">
+					<p>Catégories</p>
+					<div class="button-group js-radio-button-group" data-filter-group="categorie">
+						<select name="my_html_select_box">
+							<option class=" button is-checked" data-filter="">voir toutes les catégories</option>
+							{% for category in categories %}
+								<option class="button" data-filter=".category{{category.id}}">{{category.label}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				<div class="ui-group mx-2">
+					<p>Age</p>
+					<div class="button-group js-radio-button-group" data-filter-group="age">
+						<select name="my_html_select_box">
+							<option class="button is-checked" data-filter="">voir toutes les classes d'âges</option>
+							{% for ageRange in ageRanges %}
+								<option class="button" data-filter=".ageRange{{ageRange.id}}">{{ageRange.label}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
 
+
+			{# récupération du nombre de categories et d'age pour le js#}
+			<div id="lengthCategory" class="display-none {{categories|length}}"></div>
+			<div id="lengthAgeRange" class="display-none {{ageRanges|length}}"></div>
+			{# fin de la récupération #}
+		</div>
+		<div class="row mb-4">
 			<div id="list-example" class="scrollcont list-group col-2">
 				<a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
 				<a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
@@ -42,28 +85,11 @@
 				<a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
 			</div>
 
-			<div class="w-100">
+			<div class="w-100 grid">
 				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
 					{% include "partials/card.content.html.twig" %}
 				{% endfor %}
 			</div>
-
-			<style>
-				.example-wrapper {
-					margin: 1em auto;
-					max-width: 800px;
-					width: 95%;
-					font: 18px / 1.5 sans-serif;
-				}
-				.example-wrapper code {
-					background: #F5F5F5;
-					padding: 2px 6px;
-				}
-			</style>
 		</div>
 	</div>
 {% endblock %}
-
-
-
-
