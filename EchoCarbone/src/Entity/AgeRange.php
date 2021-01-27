@@ -50,6 +50,8 @@ class AgeRange
      */
     private $author;
 
+    private $testForDisplay;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -193,5 +195,11 @@ class AgeRange
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getTestForDisplay(): ?string
+    {
+        $testForDisplay = 'true';
+        return $this->testForDisplay;
     }
 }

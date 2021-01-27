@@ -31,6 +31,7 @@ class CategoryController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/newcat", name="category_new", methods={"GET","POST"})
      */
@@ -132,7 +133,7 @@ class CategoryController extends AbstractController
             $entityManager->persist($ageRange);
             $entityManager->flush();
             $this->addFlash('success',"La tranche d'âge a bien été ajoutée !");
-            return $this->redirectToRoute('age_range_index');
+            return $this->redirectToRoute('category_index');
         }
 
 
@@ -154,7 +155,7 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"La tranche d'âge a bien été modifiée !");
-            return $this->redirectToRoute('age_range_index');
+            return $this->redirectToRoute('category_index');
         }
 
         return $this->render('age_range/edit.html.twig', [
@@ -176,10 +177,7 @@ class CategoryController extends AbstractController
             $this->addFlash('danger',"La tranche d'âge a bien été supprimée !");
         }
 
-        return $this->redirectToRoute('age_range_index');
+        return $this->redirectToRoute('category_index');
     }
-
-
-
 
 }

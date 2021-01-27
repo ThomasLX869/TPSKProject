@@ -268,8 +268,9 @@ a[class="active"] {
   width: 20rem;
 }
 
-.bodyContent{
+.bodycontent{
   margin-bottom: 5%;
+  min-height: 48vh !important;
 }
 
 // END CRUD ADMIN/USER
