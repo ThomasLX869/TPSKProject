@@ -9,14 +9,9 @@ body {
 
 // bordure des cards
 .cardradius {
-  border: 2px solid;
-  border-radius: 15px;
   align-items: center;
   height: auto;
-
-  border-color: $color-2;
   background-color: white;
-  box-shadow: 0px 0px 15px 7px rgba($color-3, $alpha: 0.2);
 }
 
 // mise en forme de barre sous le titre
@@ -53,6 +48,29 @@ body {
 .cardtext {
   text-align: justify;
   text-indent: 50px;
+}
+
+// modal
+.modal-content {
+  border-radius: 10px;
+  min-width: 350px;
+}
+
+.modal-dialog {
+  width: 60% !important;
+  max-width: 100% !important;
+}
+
+.modal-header {
+  text-align: center !important;
+  display: inline;
+  background-color: $color-3;
+  color: white;
+}
+
+#cardAuthor {
+  color: $color-3;
+  font-weight: bold;
 }
 
 /* CARDS END */

@@ -33,38 +33,36 @@
 			</ol>
 		</nav>
 
-		<div class="row">
-			<div class="filters offset-2 col-12 d-flex justify-content-end">
-				<div class="ui-group mx-2">
-					<p>Médias</p>
-					<div class="button-group js-radio-button-group" data-filter-group="media">
-						<select name="my_html_select_box">
-							<option class="button is-checked" data-filter="">tous les médias</option>
-							<option class="button" data-filter=".article">les articles</option>
-							<option class="button" data-filter=".game">les jeux</option>
-							<option class="button" data-filter=".video">les vidéos</option>
-							<option class="button" data-filter=".quizz">les quizz</option>
+
+		<div class="row my-3 container px-0 d-flex justify-content-around">
+			<div class="filters col-12 offset-md-3 col-md-9 row px-0">
+				<div class="ui-group ml-4 col-12 col-md-3 offset-md-3 px-0">
+					<div data-filter-group="media">
+						<select class="custom-select" id="inputGroupSelect1">
+							<option class="option is-checked" data-filter="" selected>Médias</option>
+							<option class="option" data-filter=".article" value="1">Articles</option>
+							<option class="option" data-filter=".game" value="2">Jeux</option>
+							<option class="option" data-filter=".video" value="3">Vidéos</option>
+							<option class="option" data-filter=".quizz" value="4">Quizzes</option>
 						</select>
 					</div>
 				</div>
-				<div class="ui-group mx-2">
-					<p>Catégories</p>
-					<div class="button-group js-radio-button-group" data-filter-group="categorie">
-						<select name="my_html_select_box">
-							<option class=" button is-checked" data-filter="">voir toutes les catégories</option>
-							{% for category in categories %}
-								<option class="button" data-filter=".category{{category.id}}">{{category.label}}</option>
+				<div class="ui-group ml-4 col-12 col-md-3 px-0">
+					<div data-filter-group="categorie">
+						<select class="custom-select" id="inputGroupSelect2">
+							<option class="option is-checked" data-filter="" selected>Catégories</option>
+							{% for i, category in categories %}
+								<option class="option" data-filter=".category{{category.id}}" value="i">{{category.label}}</option>
 							{% endfor %}
 						</select>
 					</div>
 				</div>
-				<div class="ui-group mx-2">
-					<p>Age</p>
-					<div class="button-group js-radio-button-group" data-filter-group="age">
-						<select name="my_html_select_box">
-							<option class="button is-checked" data-filter="">voir toutes les classes d'âges</option>
-							{% for ageRange in ageRanges %}
-								<option class="button" data-filter=".ageRange{{ageRange.id}}">{{ageRange.label}}</option>
+				<div class="ui-group ml-4 col-12 col-md-3 px-0">
+					<div data-filter-group="age">
+						<select class="custom-select" id="inputGroupSelect3">
+							<option class="option is-checked" data-filter="" selected>Classes d'âges</option>
+							{% for i, ageRange in ageRanges %}
+								<option class="option" data-filter=".ageRange{{ageRange.id}}" value="i">{{ageRange.label}}</option>
 							{% endfor %}
 						</select>
 					</div>
@@ -79,10 +77,11 @@
 		</div>
 		<div class="row mb-4">
 			<div id="list-example" class="scrollcont list-group col-2">
-				<a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-1">Tout le contenu</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-2">Articles</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-3">Jeux</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-4">Vidéos</a>
+				<a class="list-group-item list-group-item-action" href="#list-item-5">Quiz</a>
 			</div>
 
 			<div class="w-100 grid">
