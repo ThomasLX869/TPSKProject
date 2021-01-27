@@ -1,10 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Video{% endblock %}
+{% block title %}Vidéo
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Video</h1>
-
-    {{ include('video/_form.html.twig') }}
-
+	<div class="container bodyContent">
+		<h1 class="my-5 text-center">Création d'une nouvelle vidéo</h1>
+		<div class="col-8 m-auto">
+		{{ include('video/_form.html.twig') }}
+		</div>
+	</div>
+	
 {% endblock %}
+
