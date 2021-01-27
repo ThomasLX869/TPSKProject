@@ -29,6 +29,10 @@ body {
   opacity: 1;
 }
 
+iframe {
+  border: none !important;
+}
+
 .cardsorting {
   font-style: italic;
 }

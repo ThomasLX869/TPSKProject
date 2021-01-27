@@ -63,7 +63,7 @@ class Video
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000,)
+     * @ORM\Column(type="string", length=1000)
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
