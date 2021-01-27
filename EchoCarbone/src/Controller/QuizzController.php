@@ -42,7 +42,7 @@ class QuizzController extends AbstractController
             $entityManager->persist($quizz);
             $entityManager->flush();
             $this->addFlash('success',"Le quizz a bien été ajouté !");
-            return $this->redirectToRoute('quizz_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('quizz/new.html.twig', [
@@ -64,7 +64,7 @@ class QuizzController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"Le quizz a bien été modifié !");
-            return $this->redirectToRoute('quizz_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('quizz/edit.html.twig', [
@@ -86,6 +86,6 @@ class QuizzController extends AbstractController
             $this->addFlash('danger',"Le quizz a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('quizz_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

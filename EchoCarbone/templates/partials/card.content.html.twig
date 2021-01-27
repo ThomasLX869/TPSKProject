@@ -75,7 +75,7 @@
 				{{media.updateDate|date('d/m/Y à H:i')}}
 				par :
 
-				{% if media.author.pseudo is defined%}
+				{% if media.author.pseudo is defined %}
 					<a href="{{ path('account_profil' , {'slug': media.author.slug } ) }}" class="cardlink">{{media.author.pseudo}}</a>
 				{% else %}
 					Utilisateur supprimé

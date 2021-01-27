@@ -84,7 +84,7 @@ class ArticleController extends AbstractController
 
             $this->addFlash('success',"Nouvel article <strong>{$article->getTitle()}</strong> créé !");
 
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('article/new.html.twig', [
@@ -108,7 +108,7 @@ class ArticleController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success',"L'article <strong>{$article->getTitle()}</strong> créé !");
-            return $this->redirectToRoute('article_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('article/edit.html.twig', [
@@ -133,6 +133,6 @@ class ArticleController extends AbstractController
             $this->addFlash('danger',"L'article a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('article_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

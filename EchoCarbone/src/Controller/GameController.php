@@ -43,7 +43,7 @@ class GameController extends AbstractController
             $entityManager->persist($game);
             $entityManager->flush();
             $this->addFlash('success',"Le jeu a bien été ajouté !");
-            return $this->redirectToRoute('game_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('game/new.html.twig', [
@@ -65,7 +65,7 @@ class GameController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"Le jeu a bien été modifié !");
-            return $this->redirectToRoute('game_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('game/edit.html.twig', [
@@ -87,6 +87,6 @@ class GameController extends AbstractController
             $this->addFlash('danger',"Le jeu a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('game_index');
+        return $this->redirectToRoute('article_manager');
     }
 }
