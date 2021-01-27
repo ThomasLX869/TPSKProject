@@ -43,7 +43,7 @@ class VideoController extends AbstractController
             $entityManager->flush();
             $this->addFlash('success',"La vidéo a bien été ajoutée !");
 
-            return $this->redirectToRoute('video_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('video/new.html.twig', [
@@ -65,7 +65,7 @@ class VideoController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success',"La vidéo a bien été modifiée !");
-            return $this->redirectToRoute('video_index');
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('video/edit.html.twig', [
@@ -87,6 +87,6 @@ class VideoController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('video_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

@@ -54,5 +54,14 @@ class HomeController extends AbstractController
     {
         return $this->render('home/contact.html.twig');
     }
+
+
+     /**
+     * @Route("/home/cgu", name="cgu_view")
+     */
+    public function cgu(): Response
+    {
+        return $this->render('home/cgu.html.twig');
+    }
   
 }
