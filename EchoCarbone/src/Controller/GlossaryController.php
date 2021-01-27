@@ -48,15 +48,15 @@ class GlossaryController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="glossary_show", methods={"GET"})
-     */
-    public function show(Glossary $glossary): Response
-    {
-        return $this->render('glossary/show.html.twig', [
-            'glossary' => $glossary,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="glossary_show", methods={"GET"})
+//     */
+//    public function show(Glossary $glossary): Response
+//    {
+//        return $this->render('glossary/show.html.twig', [
+//            'glossary' => $glossary,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="glossary_edit", methods={"GET","POST"})
