@@ -15,18 +15,19 @@
   
             // ajoute un bouton radio html
             answers.push(
-              `<label>
+
+              `<p><label>
                 <input type="radio" name="question${questionNumber}" value="${letter}">
                 ${letter} :
                 ${currentQuestion.answers[letter]}
-              </label>`
+              </label></p>`
             );
           }
   
-          // ajoute une question et ses reponses
+          // ajoute une question et ses réponses
           output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join('')} </div><br><br>`
+            `<div class="question"> ${currentQuestion.question} </div><br>
+            <div class="answers ml-3"> ${answers.join('')} </div><br>`
           );
         }
       );
@@ -79,94 +80,94 @@
 
         
         answers: {
-          a: "Des armoires",
-          b: "Des instruments de musique",
-          c: "D'autres bouteilles"
+          A: "Des armoires",
+          B: "Des instruments de musique",
+          C: "D'autres bouteilles"
         },
-        correctAnswer: "c"
+        correctAnswer: "C"
       },
       {
         question: "2- Où finissent la plupart de nos déchets ?",
 
         
         answers: {
-          a: "Dans l'océan",
-          b: "Dans l'espace",
-          c: "Dans les caniveaux"
+          A: "Dans l'océan",
+          B: "Dans l'espace",
+          C: "Dans les caniveaux"
         },
-        correctAnswer: "a"
+        correctAnswer: "A"
       },
       {
         question: "3- Pour réduire les déchets, il vaut mieux:",
         answers: {
-          a: "Des produits sans emballage",
-          b: "Des lingettes",
-          c: "Des verres en plastique"
+          A: "Des produits sans emballage",
+          B: "Des lingettes",
+          C: "Des verres en plastique"
         },
-        correctAnswer: "a"
+        correctAnswer: "A"
       },
       {
         question: "4- Parmi ces déchets, lequel est biodégradable?",
         answers: {
-          a: "Le reste de purée",
-          b: "Un chewin-gum",
-          c: "Un stylo-bille"
+          A: "Le reste de purée",
+          B: "Un chewin-gum",
+          C: "Un stylo-bille"
         },
-        correctAnswer: "a"
+        correctAnswer: "A"
       },
       {
         question: "5- Au lieu de jeter les jouets dont tu ne te sers plus, tu peux: ",
         answers: {
-          a: "Les donner",
-          b: "Les brûler",
-          c: "Les mettre au grenier"
+          A: "Les donner",
+          B: "Les brûler",
+          C: "Les mettre au grenier"
         },
-        correctAnswer: "a"
+        correctAnswer: "A"
       },
       {
         question: "6- Parmi ces déchets, lequel n'est pas recyclable?",
         answers: {
-          a: "Un sac plastique",
-          b: "Une bouteille de shampoing",
-          c: "Un emballage en carton de céréales"
+          A: "Un sac plastique",
+          B: "Une bouteille de shampoing",
+          C: "Un emballage en carton de céréales"
         },
-        correctAnswer: "a"
+        correctAnswer: "A"
       },
       {
         question: "7- Qu'est-ce que le compostage?",
         answers: {
-          a: "Un service de la poste pour transporter le courrier rapidement",
-          b: "L'utilisation de déchets pour enrichir les terres",
-          c: "Le fait de poinçonner son ticket de métro ou de bus"
+          A: "Un service de la poste pour transporter le courrier rapidement",
+          B: "L'utilisation de déchets pour enrichir les terres",
+          C: "Le fait de poinçonner son ticket de métro ou de bus"
         },
-        correctAnswer: "b"
+        correctAnswer: "B"
       },
       {
         question: "8- Comment appelle-t-on les gros déchets comme les télés, les frigos, les ordinateurs?",
         answers: {
-          a: "Les gênants",
-          b: "Les encombrants",
-          c: "Les embêtants"
+          A: "Les gênants",
+          B: "Les encombrants",
+          C: "Les embêtants"
         },
-        correctAnswer: "b"
+        correctAnswer: "B"
       },
       {
         question: "9- Parmi ces pays, lequel produit le plus de déchets?",
         answers: {
-          a: "La France",
-          b: "La Roumanie",
-          c: "Le Danemark"
+          A: "La France",
+          B: "La Roumanie",
+          C: "Le Danemark"
         },
-        correctAnswer: "c"
+        correctAnswer: "C"
       },
       {
         question: "10- Il existe dans l'océan Pacifique une immense nappe de déchets, elle fait la taille: ",
         answers: {
-          a: "D'un stade de foot",
-          b: "De la France",
-          c: "De l'Europe"
+          A: "D'un stade de foot",
+          B: "De la France",
+          C: "De l'Europe"
         },
-        correctAnswer: "b"
+        correctAnswer: "B"
       }
     ];
   
