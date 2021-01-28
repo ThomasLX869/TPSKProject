@@ -189,6 +189,10 @@ footer {
   color: white;
 }
 
+footer {
+  color: white;
+}
+
 footer a,
 li {
   color: white;
@@ -242,6 +246,22 @@ li {
   position: relative;
 }
 
+a.list-group-item.list-group-item-action.bgscroll.active{
+  background-color: $color-2;
+  border-color: $color-2;
+}
+
+.bgscroll{
+  background-color: $color-3;
+  color : white;
+}
+
+.bgscroll:hover{
+  font-weight: bold;
+  background-color: $color-2;
+  color:white;
+}
+
 .list-group-item {
   max-width: 70% !important;
 }
@@ -252,7 +272,7 @@ a[class="active"] {
 
 .scrollcont {
   position: fixed;
-  top: 34vh;
+  top: 33.5vh;
   left: 8vw;
   min-height: 100% !important;
 }
@@ -264,6 +284,11 @@ a[class="active"] {
   overflow: auto;
 }
 
+@media (max-width: 900px) {
+  .scrollcont {
+    visibility: hidden !important;
+  }
+}
 // SCROLLSPY END
 
 // YOUTH PAGE

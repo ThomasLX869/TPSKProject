@@ -169,6 +169,10 @@ footer {
   color: white;
 }
 
+footer {
+  color: white;
+}
+
 footer a,
 li {
   color: white;
@@ -214,6 +218,22 @@ li {
   position: relative;
 }
 
+a.list-group-item.list-group-item-action.bgscroll.active {
+  background-color: #0c3121;
+  border-color: #0c3121;
+}
+
+.bgscroll {
+  background-color: #388863;
+  color: white;
+}
+
+.bgscroll:hover {
+  font-weight: bold;
+  background-color: #0c3121;
+  color: white;
+}
+
 .list-group-item {
   max-width: 70% !important;
 }
@@ -224,7 +244,7 @@ a[class=active] {
 
 .scrollcont {
   position: fixed;
-  top: 34vh;
+  top: 33.5vh;
   left: 8vw;
   min-height: 100% !important;
 }
@@ -236,6 +256,11 @@ a[class=active] {
   overflow: auto;
 }
 
+@media (max-width: 900px) {
+  .scrollcont {
+    visibility: hidden !important;
+  }
+}
 .h3 {
   font-family: "cursive", sans-serif;
   display: flex;
