@@ -12,6 +12,8 @@ body {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   height: auto;
 
   border-color: $color-2;
@@ -95,6 +97,8 @@ nav div a {
 
 nav div a:hover {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   color: $color-3 !important;
   font-weight: bold;
 
@@ -128,6 +132,9 @@ h1 {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
+
   height: 18em;
 }
 
@@ -142,6 +149,8 @@ p {
 span {
   display: flex;
   justify-content: center;
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
 }
 .btn-ecogreen {
   background-color: $color-3;
@@ -178,6 +187,8 @@ li {
 
 .breadcrumb-item:hover {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   color: $color-3 !important;
   font-weight: bold;
 }
@@ -217,6 +228,8 @@ a[class="active"] {
   font-family: $font-1-youth;
   display: flex;
   justify-content: center;
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
   border: 2px black solid;
   border-radius: 15px;
   padding: 30px;
@@ -275,12 +288,13 @@ a[class="active"] {
 
 // END CRUD ADMIN/USER
 
-// BUTTONS
-.icons{
-  margin-top: 15%;
+
+// GLOSSARY
+
+h2{
   display:flex;
-  justify-content: space-evenly
-  
+  justify-content: center;
+  font-size: 2.5em;
 }
 
 
