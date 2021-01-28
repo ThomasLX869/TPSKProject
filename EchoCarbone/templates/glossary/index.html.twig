@@ -8,8 +8,7 @@
 		<nav aria-label="breadcrumb row" class="my-3 ">
 			<ol class="breadcrumb col-12 col-md-10 offset-md-2">
 
-				<li class="breadcrumb-item active" aria-current="page"></li>
-
+				<li class="breadcrumb-item " aria-current="page"><a class="inactive" href="{{ path('home_index')}}">Accueil</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Eco-lexique</li>
 
 			</ol>
@@ -74,7 +73,9 @@
 			</div>
 
 
-			<div class="offset-2 col-10"> #}
+
+			{# <div class="offset-2 col-10"> #}
+
 
 
 				{# {% for glossary in glossaries %}
