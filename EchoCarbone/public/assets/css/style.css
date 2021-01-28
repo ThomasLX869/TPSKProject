@@ -14,6 +14,8 @@ body {
 /* CARDS */
 .cardradius {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   height: auto;
   background-color: white;
 }
@@ -114,6 +116,8 @@ nav div a {
 
 nav div a:hover {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   color: #388863 !important;
   font-weight: bold;
 }
@@ -144,6 +148,8 @@ h1 {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   height: 18em;
 }
 
@@ -158,12 +164,18 @@ p {
 span {
   display: flex;
   justify-content: center;
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
 }
 
 .btn-ecogreen {
   background-color: #388863;
   color: white;
   margin-bottom: 5%;
+}
+
+footer {
+  color: white;
 }
 
 footer a,
@@ -182,25 +194,51 @@ li {
 
 .breadcrumb {
   background-color: #e6f3e2;
+  padding-left: 0;
+  font-size: large;
+  font-style: italic;
+  color: #388863 !important;
 }
 
-.breadcrumb-item {
-  margin-left: 1.5em;
-}
-
-.breadcrumb-item a {
+.breadcrumb-item.active {
+  color: #388863 !important;
   text-decoration: none;
   font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.inactive {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #388863 !important;
 }
 
 .breadcrumb-item:hover {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   color: #388863 !important;
   font-weight: bold;
 }
 
 .maintest {
   position: relative;
+}
+
+a.list-group-item.list-group-item-action.bgscroll.active {
+  background-color: #0c3121;
+  border-color: #0c3121;
+}
+
+.bgscroll {
+  background-color: #388863;
+  color: white;
+}
+
+.bgscroll:hover {
+  font-weight: bold;
+  background-color: #0c3121;
+  color: white;
 }
 
 .list-group-item {
@@ -213,8 +251,8 @@ a[class=active] {
 
 .scrollcont {
   position: fixed;
-  top: 25vh;
-  left: 3vw;
+  top: 33.5vh;
+  left: 8vw;
   min-height: 100% !important;
 }
 
@@ -249,13 +287,21 @@ a[class=active] {
   flex: none;
 }
 
+@media (max-width: 900px) {
+  .scrollcont {
+    visibility: hidden !important;
+  }
+}
+
 .h3 {
-  font-family: "cursive", sans-serif;
+  font-family: $font-1-youth;
   font-size: 3rem;
   display: flex;
   color: beige;
-  justify-content: center;
   border: 2px #0c3121 solid;
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  border: 2px black solid;
   border-radius: 15px;
   padding: 30px;
   font-weight: bolder;
@@ -318,6 +364,12 @@ a[class=active] {
 .bodycontent {
   margin-bottom: 5%;
   min-height: 48vh !important;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+  font-size: 2.5em;
 }
 
 .example-wrapper {

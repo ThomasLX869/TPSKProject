@@ -39,6 +39,7 @@ class QuizzType extends AbstractType
         ->add('description', TextType::class, [
             "label" => "Description",
             "attr"  => ["placeholder" => "Ajoutez une description"],
+            'required' => false
         ])
         ->add('question', TextType::class, [
             "label" => "Question",

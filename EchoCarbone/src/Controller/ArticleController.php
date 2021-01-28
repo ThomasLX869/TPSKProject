@@ -23,15 +23,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/", name="article_index", methods={"GET"})
+     * @Route("/", name="article_index_global", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    public function indexGlobal(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
     {
-        return $this->render('article/index.html.twig', [
+        return $this->render('article/indexGlobal.html.twig', [
             'articles' => $articleRepository->findAll(),
             'games' => $gameRepository->findAll(),
             'videos' => $videoRepository->findAll(),
             'quizzs' => $quizzRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/index", name="article_index", methods={"GET"})
+     */
+    public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    {
+        return $this->render('article/index.html.twig', [
+            'articles' => $articleRepository->findAll(),
             'categories' => $categoryRepository->findAll(),
             'ageRanges' => $ageRangeRepository->findAll()
         ]);
@@ -121,7 +133,7 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="article_delete", methods={"POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Article $article): Response
