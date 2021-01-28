@@ -49,7 +49,6 @@ class Video
      * @Assert\Length(
      * max = 1000,
      * maxMessage = "Max {{ limit }} caractères",)
-     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $url;
 
@@ -107,7 +106,6 @@ class Video
     /**
      * @ORM\ManyToMany(targetEntity=AgeRange::class, inversedBy="videos")
      */
-
     private $ageRange;
 
     /**

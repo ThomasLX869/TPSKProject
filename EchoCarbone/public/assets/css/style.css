@@ -224,8 +224,8 @@ a[class=active] {
 
 .scrollcont {
   position: fixed;
-  top: 25vh;
-  left: 3vw;
+  top: 34vh;
+  left: 8vw;
   min-height: 100% !important;
 }
 

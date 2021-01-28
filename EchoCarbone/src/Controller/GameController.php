@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Game;
 use App\Form\GameType;
+use App\Repository\AgeRangeRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,16 +18,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class GameController extends AbstractController
 {
-//    /**
-//     * @Route("/", name="game_index", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function index(GameRepository $gameRepository): Response
-//    {
-//        return $this->render('game/index.html.twig', [
-//            'games' => $gameRepository->findAll(),
-//        ]);
-//    }
+    /**
+     * @Route("/", name="game_index", methods={"GET"})
+     */
+    public function index(GameRepository $gameRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    {
+        return $this->render('game/index.html.twig', [
+            'games' => $gameRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
+        ]);
+    }
 
     /**
      * @Route("/new", name="game_new", methods={"GET","POST"})
