@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New AgeRange{% endblock %}
+
+{% block body %}
+    <div class="container bodycontent">
+        <h1 class="my-5 text-center">Création d'une nouvelle catégorie d'âge</h1>
+        <div class="col-8 m-auto">
+            {{ include('age_range/_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

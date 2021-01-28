@@ -5,10 +5,16 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\GameRepository;
+use App\Repository\QuizzRepository;
+use App\Repository\VideoRepository;
 use App\Repository\ArticleRepository;
+use App\Repository\AgeRangeRepository;
+use App\Repository\CategoryRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -17,24 +23,68 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class ArticleController extends AbstractController
 {
     /**
-     * @Route("/", name="article_index", methods={"GET"})
+     * @Route("/", name="article_index_global", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository, GameRepository $gameRepository): Response
-    {   
-        //debug pour récupérer le label de category
-        // $article = $articleRepository->findOneByTitle("Test de Category"); 
-        // dump($article->getCategory()[0]->getLabel());                      
-        return $this->render('article/index.html.twig', [
+    public function indexGlobal(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    {
+        return $this->render('article/indexGlobal.html.twig', [
             'articles' => $articleRepository->findAll(),
             'games' => $gameRepository->findAll(),
-        
+            'videos' => $videoRepository->findAll(),
+            'quizzs' => $quizzRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/index", name="article_index", methods={"GET"})
+     */
+    public function index(ArticleRepository $articleRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    {
+        return $this->render('article/index.html.twig', [
+            'articles' => $articleRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
+        ]);
+    }
+
+    /**
+     * @Route("/manager", name="article_manager")
+     * @IsGranted("ROLE_AUTHOR")
+     */
+    public function articleManager(ArticleRepository $articleRepository, GameRepository $gameRepository, VideoRepository $videoRepository, QuizzRepository $quizzRepository): Response
+    {
+        $user = $this->getUser();
+
+        //      Give access to all articles for admins or just access of his own articles for author
+        foreach ($user->getRoles() as $role) {
+            if ($role == 'ROLE_ADMIN') {
+                $articles = $articleRepository->findAll();
+                $games = $gameRepository->findAll();
+                $videos = $videoRepository->findAll();
+                $quizz = $quizzRepository->findAll();
+            } else {
+                $articles = $articleRepository->findByAuthor($user->getId());
+                $games = $gameRepository->findByAuthor($user->getId());
+                $videos = $videoRepository->findByAuthor($user->getId());
+                $quizz = $quizzRepository->findByAuthor($user->getId());
+            }
+        }
+
+        return $this->render('article/articleManager.html.twig', [
+            'articles' => $articles,
+            'games' => $games,
+            'videos' => $videos,
+            'quizzs' => $quizz
         ]);
     }
 
     /**
      * @Route("/new", name="article_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserInterface $user): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
@@ -44,11 +94,13 @@ class ArticleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            // $article->setAuthor($this->getUser());
+            $article->setAuthor($user);
             $entityManager->persist($article);
             $entityManager->flush();
 
-            return $this->redirectToRoute('article_index');
+            $this->addFlash('success',"Nouvel article <strong>{$article->getTitle()}</strong> créé !");
+
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('article/new.html.twig', [
@@ -58,27 +110,20 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article_show", methods={"GET"})
+     * @Route("/{id}", name="article_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
-    public function show(Article $article): Response
-    {
-        return $this->render('article/show.html.twig', [
-            'article' => $article,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Article $article): Response
+    public function edit(Request $request, Article $article, UserInterface $user): Response
     {
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setAuthor($user);
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('article_index');
+            $this->addFlash('success',"L'article <strong>{$article->getTitle()}</strong> créé !");
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('article/edit.html.twig', [
@@ -88,7 +133,8 @@ class ArticleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="article_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="article_delete", methods={"POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Article $article): Response
     {
@@ -96,8 +142,9 @@ class ArticleController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($article);
             $entityManager->flush();
+            $this->addFlash('danger',"L'article a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('article_index');
+        return $this->redirectToRoute('article_manager');
     }
 }

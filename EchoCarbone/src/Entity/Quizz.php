@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\QuizzRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\QuizzRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=QuizzRepository::class)
@@ -21,27 +22,41 @@ class Quizz
 
     /**
      * @ORM\Column(type="string", length=255)
+     * min = 4,
+     * max = 255,
+     * minMessage = "Pour ce titre il faut au moins {{ limit }} caractères",
+     * maxMessage = "Max {{ limit }} caractères",
+     * allowEmptyString = false
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $image;
 
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $description;
 
@@ -57,11 +72,17 @@ class Quizz
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $question;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $answer;
 
@@ -87,9 +108,27 @@ class Quizz
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="quizzs")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
+
+    // guarantee all quizz have quizz type
+    private $type = 'quizz';
+
+    /**
+     * Génère la date automatiquement
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
 
     public function __construct()
     {
@@ -294,5 +333,10 @@ class Quizz
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

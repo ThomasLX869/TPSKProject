@@ -1,45 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin index{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>Admin index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-                <th>Role</th>
-                <th>Image</th>
-                <th>Pseudo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for admin in admins %}
-            <tr>
-                <td>{{ admin.id }}</td>
-                <td>{{ admin.firstname }}</td>
-                <td>{{ admin.lastname }}</td>
-                <td>{{ admin.email }}</td>
-                <td>{{ admin.role }}</td>
-                <td>{{ admin.image }}</td>
-                <td>{{ admin.pseudo }}</td>
-                <td>
-{#                    <a href="{{ path('admin_show', {'id': admin.id}) }}">show</a>#}
-{#                    <a href="{{ path('admin_edit', {'id': admin.id}) }}">edit</a>#}
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container bodyContent">
+        <h1 class="my-5 text-center">Liste des utilisateurs</h1>
+        <a class="btn btn-lg" id="buttonAdd" href="{{ path('account_create') }}">Ajouter un utilisateur</a>
+        <table class="table my-5">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Rôle</th>
+                    <th>Image</th>
+                    <th>Pseudo</th>
 
-{#    <a href="{{ path('admin_new') }}">Create new</a>#}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th>Actions</th>
+                    {% endif %}
+
+                </tr>
+            </thead>
+            <tbody>
+            {% for admin in admins %}
+                <tr>
+                    <td class="align-middle">{{ admin.id }}</td>
+                    <td class="align-middle">{{ admin.firstname }}</td>
+                    <td class="align-middle">{{ admin.lastname }}</td>
+                    <td class="align-middle">{{ admin.email }}</td>
+                    <td class="align-middle">
+                        {% for role in admin.roles %}
+                            <p>{{role}}</p>
+                        {% endfor %}
+                    </td>
+                    <td class="align-middle"><img class="avatar" src="{{ admin.image }}" alt="avatar {{ admin.pseudo }}"></td>
+                    <td class="align-middle">{{ admin.pseudo }}</td>
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td class="align-middle">
+                            <a href="{{ path('account_profil' , {'slug': admin.slug } ) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
+                                <i class="fas fa-pen align-middle"></i>
+                            </a>
+                            <form class="d-inline" action="{{ path('account_delete' , {'slug': admin.slug } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette utilisateur ?');">
+                                <button class="btn btn-sm btn-danger align-middle">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    {% endif %}
+
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">Aucun utilisateur</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
 {% endblock %}
+

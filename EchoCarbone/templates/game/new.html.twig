@@ -1,11 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Game{% endblock %}
+{% block title %}Jeu
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Game</h1>
-
-    {{ include('game/_form.html.twig') }}
-
-    <a href="{{ path('game_index') }}">back to list</a>
+	<div class="container bodyContent">
+		<h1 class="my-5 text-center">Création d'un nouveau jeu</h1>
+		<div class="col-8 m-auto">
+		{{ include('game/_form.html.twig') }}
+		</div>
+	</div>
 {% endblock %}

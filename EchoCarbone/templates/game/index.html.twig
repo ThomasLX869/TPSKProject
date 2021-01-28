@@ -1,50 +1,86 @@
+{# Création de la variable commune medias #}
+{% set medias = [] %}
+
+{# remplissage de medias #}
+{% for game in games %}
+	{% set medias = medias | merge ([game])  %}
+{% endfor %}
+{# fin de remplissage de médias #}
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Jeux
+{% block title %}Eco-gestes
 {% endblock %}
 
 {% block body %}
 
-
-	<div class="container mb-5 px-5">
+	<div class="container bodycontent mb-5 px-5">
 		<nav aria-label="breadcrumb row" class="my-3 ">
 			<ol class="breadcrumb col-12 col-md-10 offset-md-2">
-				<li class="breadcrumb-item active" aria-current="page">Jeux</li>
+				<li class="breadcrumb-item " aria-current="page"><a class="inactive" href="{{ path('home_index')}}">Accueil</a></li>
+				<li class="breadcrumb-item " aria-current="page"><a class="inactive" href="{{ path('article_index_global')}}">Les articles</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Nos jeux</li>
 			</ol>
 		</nav>
 
 
-		<div class="row mb-4">
-
-			<div id="list-example" class="scrollcont list-group col-2">
-				<a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+		<div class="row my-3 container px-0 d-flex justify-content-around">
+			<div class="filters col-12 offset-md-3 col-md-9 row px-0">
+				<div class="ui-group ml-4 col-12 col-md-3 offset-md-3 px-0">
+					<div data-filter-group="media" class="button-group d-none">
+						<select class="custom-select" id="inputGroupSelect1">
+							<option class="option is-checked" data-filter="" selected>Médias</option>
+							<option class="option" data-filter=".article" value="1">Articles</option>
+							<option class="option" data-filter=".game" value="2">Jeux</option>
+							<option class="option" data-filter=".video" value="3">Vidéos</option>
+							<option class="option" data-filter=".quizz" value="4">Quizzes</option>
+						</select>
+					</div>
+				</div>
+				<div class="ui-group ml-4 col-12 col-md-3 px-0">
+					<div data-filter-group="categorie" class="button-group">
+						<select class="custom-select" id="inputGroupSelect2">
+							<option class="option is-checked" data-filter="" selected>Catégories</option>
+							{% for i, category in categories %}
+								<option class="option" data-filter=".category{{category.id}}" value="i">{{category.label}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+				<div class="ui-group ml-4 col-12 col-md-3 px-0">
+					<div data-filter-group="age" class="button-group">
+						<select class="custom-select" id="inputGroupSelect3">
+							<option class="option is-checked" data-filter="" selected>Classes d'âges</option>
+							{% for i, ageRange in ageRanges %}
+								<option class="option" data-filter=".ageRange{{ageRange.id}}" value="i">{{ageRange.label}}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
 			</div>
 
 
-			<div>
-				{% for game in games %}
-					{% include "partials/game.card.content.html.twig" %}
+			{# récupération du nombre de categories et d'age pour le js#}
+			<div id="lengthCategory" class="display-none {{categories|length}}"></div>
+			<div id="lengthAgeRange" class="display-none {{ageRanges|length}}"></div>
+			{# fin de la récupération #}
+		</div>
+		<div class="row mb-4">
+			<div id="list-example" class="scrollcont list-group col-2">
+				<div class="position-sticky">
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('article_index_global') }}">Tout le contenu</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('article_index') }}">Articles</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('game_index') }}">Jeux</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('video_index') }}">Vidéos</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('quizz_index') }}">Quizz</a>
+				</div>
+			</div>
+
+			<div class="w-100 grid">
+				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
+					{% include "partials/card.content.html.twig" %}
 				{% endfor %}
 			</div>
-
-
-			<style>
-				.example-wrapper {
-					margin: 1em auto;
-					max-width: 800px;
-					width: 95%;
-					font: 18px / 1.5 sans-serif;
-				}
-				.example-wrapper code {
-					background: #F5F5F5;
-					padding: 2px 6px;
-				}
-			</style>
-
 		</div>
 	</div>
-
 {% endblock %}

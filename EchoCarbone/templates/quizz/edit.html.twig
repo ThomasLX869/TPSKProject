@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Quizz{% endblock %}
+
+{% block body %}
+    <div class="container bodyContent">
+        <h1 class="my-5 text-center">Modifier un quizz !</h1>
+        <div class="col-8 m-auto">
+            {{ include('quizz/_form.html.twig') }}
+        </div>
+    </div>
+    
+{% endblock %}

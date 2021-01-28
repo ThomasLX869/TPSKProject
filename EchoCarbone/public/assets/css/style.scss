@@ -9,14 +9,11 @@ body {
 
 // bordure des cards
 .cardradius {
-  border: 2px solid;
-  border-radius: 15px;
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   height: auto;
-
-  border-color: $color-2;
-  background-color: $color-1;
-  box-shadow: 0px 0px 15px 7px rgba($color-3, $alpha: 0.2);
+  background-color: white;
 }
 
 // mise en forme de barre sous le titre
@@ -25,6 +22,10 @@ body {
   border-radius: 2px;
   height: 2px !important;
   opacity: 1;
+}
+
+iframe {
+  border: none !important;
 }
 
 //mise en forme des critères de trie (catégories et ages)
@@ -55,12 +56,36 @@ body {
   text-indent: 50px;
 }
 
+// modal
+.modal-content {
+  border-radius: 10px;
+  min-width: 350px;
+}
+
+.modal-dialog {
+  width: 60% !important;
+  max-width: 100% !important;
+}
+
+.modal-header {
+  text-align: center !important;
+  display: inline;
+  background-color: $color-3;
+  color: white;
+}
+
+#cardAuthor {
+  color: $color-3;
+  font-weight: bold;
+}
+
 /* CARDS END */
 
 // HEADER
 
-header {
+header, footer {
   color: white;
+  font-family:"Prata", sans-serif !important; ;
   margin-top: 0;
 }
 
@@ -74,8 +99,8 @@ header {
   z-index: 3;
 }
 
-.list-to-move {
-  margin-left: 19vw;
+.dropdown-item {
+  color: black !important;
 }
 
 .navbar,
@@ -85,6 +110,7 @@ header {
 
 nav div a {
   font-size: 1.3rem;
+  color: white !important;
 }
 
 .link-nav {
@@ -95,16 +121,24 @@ nav div a {
 
 nav div a:hover {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   color: $color-3 !important;
   font-weight: bold;
+}
 
-  nav div div ul li {
-    display: inline-block;
-    margin-left: 1.5em;
-  }
+nav div div ul li {
+  display: inline-block;
+  margin-left: 1.5em;
+}
+
+.dropdown-item {
+  color: black !important;
 }
 
 // HEADER END
+
+//
 
 //LOGO
 .logo {
@@ -128,7 +162,12 @@ h1 {
   border: 2px solid;
   border-radius: 15px;
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
+
   height: 18em;
+}
+.carousel-inner {
 }
 
 p {
@@ -142,10 +181,17 @@ p {
 span {
   display: flex;
   justify-content: center;
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
 }
 .btn-ecogreen {
-  background-color: $color-2;
+  background-color: $color-3;
   color: white;
+  margin-bottom: 5%;
+}
+
+.filters{
+
 }
 // OTHERS END
 
@@ -160,23 +206,44 @@ li {
   color: white;
 }
 
+.iconFooter {
+  font-size: 1.3rem;
+}
+
+.iconFooter:hover {
+  font-weight: bold;
+  color: $color-3;
+}
+
 // FOOTER END
 
 // BREADCRUMB
 .breadcrumb {
   background-color: $color-1;
-}
-.breadcrumb-item {
-  margin-left: 1.5em;
+  padding-left: 0;
+  font-size: large;
+  font-style: italic;
+  color: $color-3 !important;
 }
 
-.breadcrumb-item a {
+.breadcrumb-item.active{
+  color: $color-3 !important;
   text-decoration: none;
   font-size: 1.3rem;
+  font-weight: bold;
+
+}
+
+.inactive {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: $color-3 !important;
 }
 
 .breadcrumb-item:hover {
   align-items: center;
+  -ms-align-items: center;
+  -webkit-align-items: center;
   color: $color-3 !important;
   font-weight: bold;
 }
@@ -188,16 +255,35 @@ li {
 .maintest {
   position: relative;
 }
+
+a.list-group-item.list-group-item-action.bgscroll.active{
+  background-color: $color-2;
+  border-color: $color-2;
+}
+
+.bgscroll{
+  background-color: $color-3;
+  color : white;
+}
+
+.bgscroll:hover{
+  font-weight: bold;
+  background-color: $color-2;
+  color:white;
+}
+
 .list-group-item {
   max-width: 70% !important;
 }
+
 a[class="active"] {
   background-color: $color-3 !important;
 }
+
 .scrollcont {
   position: fixed;
-  top: 25vh;
-  left: 3vw;
+  top: 33.5vh;
+  left: 8vw;
   min-height: 100% !important;
 }
 
@@ -208,22 +294,142 @@ a[class="active"] {
   overflow: auto;
 }
 
+@media (max-width: 900px) {
+  .scrollcont {
+    visibility: hidden !important;
+  }
+}
 // SCROLLSPY END
+
+//HOME PAGE
+
+.card-text-title {
+  font-family: "Prata", sans-serif !important;
+  font-size: 1.2em !important;
+  color: beige;
+  font-weight: normal;
+  background: $color-3;
+  padding: 1.2rem !important;
+  margin: 1.5rem 0 1.2rem 0 !important;
+}
+
+.card-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  color: beige;
+  font-weight: normal;
+  background: $color-3;
+}
+
+.card-body {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
 
 // YOUTH PAGE
 
 .h3 {
   font-family: $font-1-youth;
+  font-size:3rem;
   display: flex;
+  color: beige;
   justify-content: center;
+
+  border: 2px $color-2 solid;
+
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
   border: 2px black solid;
   border-radius: 15px;
   padding: 30px;
   font-weight: bolder;
+  background: $color-3;
+  
 }
-.card-text {
+
+.card-youth {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+.card-title-youth {
+  font-family: $font-2-youth;
+  font-size: 2.5em;
+  color: beige;
+  font-weight: 600;
+  background: $color-3;
+}
+
+.card-text-youth {
   font-family: $font-2-youth;
   font-size: 2em;
-  font-weight: bolder;
+  color: beige;
+  font-weight: normal;
   background: $color-3;
+}
+
+// END YOUTH PAGE
+
+// RGPD PAGE
+#end {
+  font-weight: bolder;
+}
+
+// END RGPD PAGE
+
+// CRUD ADMIN/USER
+#buttonAdd,
+#admin_Ajouter,
+#buttonUpdate,
+#admin_Inscription {
+  background-color: $color-3 !important;
+  border-color: $color-2;
+  color: white;
+}
+
+#iconUpdate {
+  background-color: $color-3;
+  border-color: $color-3;
+}
+
+.avatar {
+  max-height: 100px;
+  max-width: 100px;
+}
+
+.buttonUpdate {
+  width: 7.9rem;
+}
+
+.buttonAdd {
+  width: 20rem;
+}
+
+.bodycontent {
+  margin-bottom: 5%;
+  min-height: 48vh !important;
+}
+
+// END CRUD ADMIN/USER
+
+// GLOSSARY
+
+h2{
+  display:flex;
+  justify-content: center;
+  font-size: 2.5em;
+}
+
+// scroll
+.example-wrapper {
+  margin: 1em auto;
+  max-width: 800px;
+  width: 95%;
+  font: 18px / 1.5 sans-serif;
+}
+.example-wrapper code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+
 }

@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Page non trouvée {% endblock %}
+
+{% block body %}
+	<div class="container bodycontent">
+        <h1 class="my-5 text-center">{{status_code}} {{status_text}} -  Page non trouvée</h1>
+        <p class="col-8 m-auto text-center">La page que vous cherchez n'a pas été trouvée</p>
+    </div>
+{% endblock %}

@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\VideoRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Admin;
+use App\Entity\AgeRange;
+use App\Entity\Category;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VideoRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=VideoRepository::class)
+ * @ORM\HasLifecycleCallbacks // utilisé pour gérer les dates de création 
  */
 class Video
 {
@@ -21,26 +26,46 @@ class Video
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(
+     * min = 4,
+     * max = 255,
+     * minMessage = "Pour ce titre il faut au moins {{ limit }} caractères",
+     * maxMessage = "Max {{ limit }} caractères",
+     * allowEmptyString = false
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $source;
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $url;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
+     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=1000, nullable=true)
+     * @ORM\Column(type="string", length=1000)
+     * @Assert\Length(
+     * max = 1000,
+     * maxMessage = "Max {{ limit }} caractères",)
      */
     private $description;
 
@@ -55,7 +80,11 @@ class Video
     private $creationDate;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
+     * @Assert\Length(
+     * min = 10,
+     * minMessage = "L'intro doit faire au moins {{ limit }} caractères",
+     * allowEmptyString = false)
      */
     private $content;
 
@@ -81,14 +110,33 @@ class Video
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="videos")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
+
+    // guarantee all video have video type
+    private $type = 'video';
+
+
+    /**
+     * Génère la date automatiquement
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
+    public function updateDate()
+    {
+        if (empty($this->creationDate)) {
+            $this->creationDate = new \DateTime();
+        }
+    }
 
     public function __construct()
     {
         $this->category = new ArrayCollection();
-        $this->AgeRange = new ArrayCollection();
+        $this->ageRange = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -247,13 +295,13 @@ class Video
      */
     public function getAgeRange(): Collection
     {
-        return $this->AgeRange;
+        return $this->ageRange;
     }
 
     public function addAgeRange(AgeRange $ageRange): self
     {
-        if (!$this->AgeRange->contains($ageRange)) {
-            $this->AgeRange[] = $ageRange;
+        if (!$this->ageRange->contains($ageRange)) {
+            $this->ageRange[] = $ageRange;
         }
 
         return $this;
@@ -261,7 +309,7 @@ class Video
 
     public function removeAgeRange(AgeRange $ageRange): self
     {
-        $this->AgeRange->removeElement($ageRange);
+        $this->ageRange->removeElement($ageRange);
 
         return $this;
     }
@@ -276,5 +324,10 @@ class Video
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
     }
 }

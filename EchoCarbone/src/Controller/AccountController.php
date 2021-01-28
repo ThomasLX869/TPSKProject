@@ -22,34 +22,15 @@ class AccountController extends AbstractController
      */
     public function index(AdminRepository $adminRepository): Response
     {
+
         return $this->render('account/index.html.twig', [
             'admins' => $adminRepository->findAll()
         ]);
     }
 
-
-    /**
-     * @Route("/login", name="account_login")
-     */
-    public function login(AuthenticationUtils $utils): Response
-    {
-        $error = $utils->getLastAuthenticationError();
-        $username = $utils->getLastUsername();
-
-        return $this->render('account/login.html.twig', [
-            'hasError' => $error !== null,
-            'username' => $username,
-            'error'=> $utils->getLastAuthenticationError()
-        ]);
-    }
-//        public function login(): Response
-//        {
-//            return $this->render("account/login.html.twig");
-//        }
-
-
     /**
      * @Route("/account/new", name="account_create")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
@@ -67,12 +48,9 @@ class AccountController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
-            $this->addFlash('success',
-                "Bienvenue <strong>{$user->getPseudo()}</strong> !");
+            $this->addFlash('success',"Bienvenue <strong>{$user->getPseudo()}</strong> !");
 
-            return $this->redirectToRoute('account_profil' , [
-                'slug' => $user->getSlug()
-            ]);
+            return $this->redirectToRoute('home_index');
         }
 
         return $this->render('account/create.html.twig', [
@@ -94,26 +72,38 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/{slug}/edit", name="account_edit")
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Admin $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
-        $form = $this->createForm(AdminType::class, $user);
+        $currentUser = $this->getUser();
 
-        $form->handleRequest($request);
+//      Give access to user update form for admins or to the owner account
+        foreach($currentUser->getRoles() as $role) {
+            if (($role !== 'ROLE_ADMIN') && ($user !== $currentUser )){
+                $this->addFlash('danger',
+                    "Vous n'avez pas les droits pour accéder à ce formulaire !");
+                return $this->redirectToRoute('home_index');
+            }else{
+                $form = $this->createForm(AdminType::class, $user);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+                $form->handleRequest($request);
 
-            $hash = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($hash);
+                if ($form->isSubmitted() && $form->isValid()) {
 
-            $manager->flush();
+                    $hash = $encoder->encodePassword($user, $user->getPassword());
+                    $user->setPassword($hash);
 
-            $this->addFlash('info',
-                "<strong>{$user->getPseudo()}</strong> votre profil a bien été modifié");
+                    $manager->flush();
 
-            return $this->redirectToRoute('account_profil' , [
-                'slug' => $user->getSlug()
-            ]);
+                    $this->addFlash('info',
+                        "<strong>{$user->getPseudo()}</strong> votre profil a bien été modifié");
+
+                    return $this->redirectToRoute('account_profil' , [
+                        'slug' => $user->getSlug()
+                    ]);
+                }
+            }
         }
 
         return $this->render('account/edit.html.twig', [
@@ -125,6 +115,7 @@ class AccountController extends AbstractController
 
     /**
      * @Route("/account/{slug}/delete", name="account_delete")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(EntityManagerInterface $manager, Admin $user)
     {
@@ -135,12 +126,6 @@ class AccountController extends AbstractController
 
         return $this->redirectToRoute('home_index');
     }
-
-
-    /**
-     * @Route("/logout", name="account_logout")
-     */
-    public function logout(){}
 
 
 }

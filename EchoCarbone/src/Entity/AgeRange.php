@@ -46,9 +46,11 @@ class AgeRange
 
     /**
      * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="ageRanges")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn
      */
     private $author;
+
+    private $testForDisplay;
 
     public function __construct()
     {
@@ -193,5 +195,11 @@ class AgeRange
         $this->author = $author;
 
         return $this;
+    }
+
+    public function getTestForDisplay(): ?string
+    {
+        $testForDisplay = 'true';
+        return $this->testForDisplay;
     }
 }

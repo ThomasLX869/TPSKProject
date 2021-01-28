@@ -3,7 +3,7 @@
 {% block title %}Ajouter un utilisateur !{% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container bodycontent">
         <h1 class="my-5 text-center">Ajoutez un utilisateur !</h1>
 
         <div class="col-8 m-auto">
@@ -11,6 +11,30 @@
         </div>
 
     </div>
+
+
+    {#Manage disabled/enabled of checkbox#}
+    <script>
+        let checkbox0 = document.getElementById("admin_roles_0");
+        let checkbox1 = document.getElementById("admin_roles_1");
+
+        checkbox0.addEventListener('change', function() {
+            if (this.checked) {
+                checkbox1.setAttribute("disabled", "");
+            }else{
+                checkbox1.removeAttribute("disabled");
+            }
+        });
+
+        checkbox1.addEventListener('change', function() {
+            if (this.checked) {
+                checkbox0.setAttribute("disabled", "");
+            }else{
+                checkbox0.removeAttribute("disabled");
+            }
+        });
+    </script>
+
 
 {% endblock %}
 

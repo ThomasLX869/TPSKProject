@@ -4,7 +4,10 @@ namespace App\Controller;
 
 use App\Entity\Game;
 use App\Form\GameType;
+use App\Repository\AgeRangeRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\GameRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,15 +21,18 @@ class GameController extends AbstractController
     /**
      * @Route("/", name="game_index", methods={"GET"})
      */
-    public function index(GameRepository $gameRepository): Response
+    public function index(GameRepository $gameRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
     {
         return $this->render('game/index.html.twig', [
             'games' => $gameRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
         ]);
     }
 
     /**
      * @Route("/new", name="game_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function new(Request $request): Response
     {
@@ -39,8 +45,8 @@ class GameController extends AbstractController
              // $game->setAuthor($this->getUser());
             $entityManager->persist($game);
             $entityManager->flush();
-
-            return $this->redirectToRoute('game_index');
+            $this->addFlash('success',"Le jeu a bien été ajouté !");
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('game/new.html.twig', [
@@ -49,18 +55,10 @@ class GameController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="game_show", methods={"GET"})
-     */
-    public function show(Game $game): Response
-    {
-        return $this->render('game/show.html.twig', [
-            'game' => $game,
-        ]);
-    }
 
     /**
-     * @Route("/{id}/edit", name="game_edit", methods={"GET","POST"})
+     * @Route("/{id}", name="game_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function edit(Request $request, Game $game): Response
     {
@@ -69,8 +67,8 @@ class GameController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('game_index');
+            $this->addFlash('success',"Le jeu a bien été modifié !");
+            return $this->redirectToRoute('article_manager');
         }
 
         return $this->render('game/edit.html.twig', [
@@ -80,7 +78,8 @@ class GameController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="game_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="game_delete", methods={"POST"})
+     * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Game $game): Response
     {
@@ -88,8 +87,9 @@ class GameController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($game);
             $entityManager->flush();
+            $this->addFlash('danger',"Le jeu a bien été supprimé !");
         }
 
-        return $this->redirectToRoute('game_index');
+        return $this->redirectToRoute('article_manager');
     }
 }
