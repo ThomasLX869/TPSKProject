@@ -115,6 +115,14 @@ class Quizz
     // guarantee all quizz have quizz type
     private $type = 'quizz';
 
+    /**
+     * Génère la date automatiquement
+     *
+     * @ORM\PrePersist
+     * @ORM\PreUpdate
+     *
+     * @return void
+     */
     public function updateDate()
     {
         if (empty($this->creationDate)) {

@@ -1,18 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Eco
+{% block title %}Eco-Lexique
 {% endblock %}
 {% block body %}
 
 	<div class="container bodycontent mb-5 px-5">
 		<nav aria-label="breadcrumb row" class="my-3 ">
 			<ol class="breadcrumb col-12 col-md-10 offset-md-2">
-				<li class="breadcrumb-item active" aria-current="page">Ecolexique</li>
+
+				<li class="breadcrumb-item " aria-current="page"><a class="inactive" href="{{ path('home_index')}}">Accueil</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Eco-lexique</li>
+
 			</ol>
 		</nav>
 
+		<img class="img-fluid w-55 h-55 img-thumbnail"src="../assets/img/glossary.jpg">
+			<div class="glossary text-justify">
+				<h2>Ecolexique</h2>
+				<p>
+					<strong>L’Anthropocène</strong> est l’ère spécifique à partir de laquelle les humains ont commencé à avoir un impact significatif sur la planète.<br>
+					On évalue le début de cette ère à partir de la première révolution industrielle,
+					c’est-à-dire vers le début des années 1700.
+				</p>
 
-		<div class="row mb-4">
+				<p>
+					<strong>Le développement durable</strong> est le terme servant à définir la nécessité de transition et de transformation que requiert la planète et ses habitants afin de vivre dans un monde plus équitable, 
+					plus sain et respectueux de l’environnement.
+				</p>
+
+				<p>
+					<strong>L’empreinte carbone</strong> se réfère à la quantité de gaz à effet de serre – principalement du dioxyde de carbone – libérée dans l’atmosphère par une activité humaine en particulier.
+					L’empreinte carbone peut être une mesure large ou appliquée aux actions d’un individu, d’une famille, d’un évènement, d’une organisation ou même d’un pays. 
+					Elle est habituellement évaluée en tonnes de CO2 produites annuellement.  Les chiffres enregistrés peuvent être complétés par des tonnes de gaz semblables au CO2. 
+					Cela comprend le méthane, l’oxyde nitreux et d’autres gaz à effet de serre.
+				</p>
+
+				<p>
+					<strong>Le recyclage</strong> consiste à traiter tout type de déchets afin de les replacer sur le marché. Le processus permet ainsi de convertir un déchet en matière première prête à l’usage.
+					Afin d’être recyclé, le matériau doit être collecté, trié et puis stocké dans de bonnes conditions dans un conteneur adapté. 
+					En temps normal, le tri sélectif est nécessaire afin d’améliorer considérablement l’opération.  	
+				</p>
+
+				<p>
+					<strong>Le surcyclage</strong> est la procédure visant à récupérer des matériaux ou des équipements dont on n’utilise plus afin de les convertir en produits de qualité ou matériaux d’utilité supérieure.
+					On recycle ainsi “par le haut”.
+				</p>
+
+				<p>
+					<strong>Le Zéro déchet</strong> est une stratégie holistique de réduction de la quantité de déchets produits par la civilisation industrielle. De manière générale, 
+					il s’agit d’une démarche cherchant à diminuer au maximum notre production de déchets. 
+					Il s’agit bien de revoir ses habitudes de consommation afin de générer moins de déchets à la source.
+				</p>
+
+
+			<p>
+				<strong>C’est tout ?</strong> <br>
+				Le glossaire éco responsable est bien évidemment plus élargi.  Le monde est après tout en pleine mutation. Il y a des termes et concepts que nous avons manqués ? (Bien sûr que oui).
+				On vous invite à les partager avec nous!  
+			</p>
+
+		</div>
+
+	
+		{# <div class="row mb-4">
+
 
 			<div id="list-example" class="scrollcont list-group col-2">
 				<a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
@@ -22,9 +73,12 @@
 			</div>
 
 
-			<div class="offset-2 col-10">
 
-				{% for glossary in glossaries %}
+			{# <div class="offset-2 col-10"> #}
+
+
+
+				{# {% for glossary in glossaries %}
 
 					<p>{{ glossary.word }}</p>
 					<p>{{ glossary.definition }}</p>
@@ -33,25 +87,14 @@
 					<p>
 						{% for category in glossary.category %}
 							{{category.label}}
-						{% endfor %}
-					</p>
+						{% endfor %} #}
+					{# </p> #}
 
-				{% endfor %}
+				{# {% endfor %} #}
 
 
 			</div>
-			<style>
-				.example-wrapper {
-					margin: 1em auto;
-					max-width: 800px;
-					width: 95%;
-					font: 18px / 1.5 sans-serif;
-				}
-				.example-wrapper code {
-					background: #F5F5F5;
-					padding: 2px 6px;
-				}
-			</style>
+			
 		</div>
 	</div>
 {% endblock %}

@@ -42,7 +42,6 @@ class Game
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
-     * @Assert\Url(message = "Ce n'est pas une url valide",)
      */
     private $url;
 
@@ -61,9 +60,6 @@ class Game
     private $description;
 
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
     private $updateDate;
 
     /**

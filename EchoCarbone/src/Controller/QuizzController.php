@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Quizz;
 use App\Form\QuizzType;
+use App\Repository\AgeRangeRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\QuizzRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,16 +18,17 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class QuizzController extends AbstractController
 {
-//    /**
-//     * @Route("/", name="quizz_index", methods={"GET"})
-//     * @IsGranted("ROLE_AUTHOR")
-//     */
-//    public function index(QuizzRepository $quizzRepository): Response
-//    {
-//        return $this->render('quizz/index.html.twig', [
-//            'quizzs' => $quizzRepository->findAll(),
-//        ]);
-//    }
+    /**
+     * @Route("/", name="quizz_index", methods={"GET"})
+     */
+    public function index(QuizzRepository $gameRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    {
+        return $this->render('quizz/index.html.twig', [
+            'quizzs' => $gameRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
+        ]);
+    }
 
     /**
      * @Route("/new", name="quizz_new", methods={"GET","POST"})
@@ -74,7 +77,7 @@ class QuizzController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="quizz_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="quizz_delete", methods={"POST"})
      * @IsGranted("ROLE_AUTHOR")
      */
     public function delete(Request $request, Quizz $quizz): Response

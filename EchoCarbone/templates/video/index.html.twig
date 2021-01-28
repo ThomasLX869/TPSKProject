@@ -2,20 +2,8 @@
 {% set medias = [] %}
 
 {# remplissage de medias #}
-{% for article in articles %}
-	{% set medias = medias | merge ([article])  %}
-{% endfor %}
-
-{% for game in games %}
-	{% set medias = medias | merge ([game])  %}
-{% endfor %}
-
 {% for video in videos %}
 	{% set medias = medias | merge ([video])  %}
-{% endfor %}
-
-{% for quizz in quizzs %}
-	{% set medias = medias | merge ([quizz])  %}
 {% endfor %}
 {# fin de remplissage de médias #}
 
@@ -26,10 +14,12 @@
 
 {% block body %}
 
-	<div class="container mb-5 px-5">
+	<div class="container bodycontent mb-5 px-5">
 		<nav aria-label="breadcrumb row" class="my-3 ">
 			<ol class="breadcrumb col-12 col-md-10 offset-md-2">
-				<li class="breadcrumb-item active" aria-current="page">Eco-gestes</li>
+				<li class="breadcrumb-item " aria-current="page"><a class="inactive" href="{{ path('home_index')}}">Accueil</a></li>
+				<li class="breadcrumb-item " aria-current="page"><a class="inactive" href="{{ path('article_index_global')}}">Les articles</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Nos articles vidéo</li>
 			</ol>
 		</nav>
 
@@ -77,13 +67,14 @@
 		</div>
 		<div class="row mb-4">
 			<div id="list-example" class="scrollcont list-group col-2">
-				<a class="list-group-item list-group-item-action" href="#list-item-1">Tout le contenu</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-2">Articles</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-3">Jeux</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-4">Vidéos</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-5">Quiz</a>
+				<div class="position-sticky md-invisible">
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('article_index_global') }}">Tout le contenu</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('article_index') }}">Articles</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('game_index') }}">Jeux</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('video_index') }}">Vidéos</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('quizz_index') }}">Quizz</a>
+				</div>
 			</div>
-
 			<div class="w-100 grid">
 				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
 					{% include "partials/card.content.html.twig" %}

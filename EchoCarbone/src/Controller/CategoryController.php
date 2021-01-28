@@ -46,7 +46,6 @@ class CategoryController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('category_index');
         }
-
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
@@ -63,6 +62,7 @@ class CategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success',"La catégorie a bien été modfiée !");
             return $this->redirectToRoute('category_index');
         }
 
@@ -73,7 +73,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="category_delete", methods={"DELETE"})
+     * @Route("/delcat/{id}", name="category_delete", methods={"POST"})
      */
     public function delete(Request $request, Category $category): Response
     {
@@ -82,7 +82,6 @@ class CategoryController extends AbstractController
             $entityManager->remove($category);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('category_index');
     }
 
@@ -138,7 +137,7 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="age_range_delete", methods={"DELETE"})
+     * @Route("/del/{id}", name="age_range_delete", methods={"POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function deleteAge(Request $request, AgeRange $ageRange): Response
@@ -149,12 +148,9 @@ class CategoryController extends AbstractController
             $entityManager->flush();
             $this->addFlash('danger',"La tranche d'âge a bien été supprimée !");
         }
-
-
-
-
-
         return $this->redirectToRoute('category_index');
     }
+
+
 
 }

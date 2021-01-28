@@ -27,9 +27,10 @@ class GameType extends AbstractType
                 "attr" => ["placeholder" => "Insérez une source"],
                 'required' => false
             ])
-            ->add('url', UrlType::class, [
-                "label" => "URL",
-                "attr" => ["placeholder" => "Insérez une Url"]
+            ->add('url', TextType::class, [
+                "label" => "Url",
+                "attr" => ["placeholder" => "Insérez une Url"],
+                'required' => false
             ])
             ->add('image', UrlType::class, [
                 'label' => 'Lien de votre image',
