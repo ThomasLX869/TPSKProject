@@ -76,8 +76,9 @@ iframe {
 }
 
 /* CARDS END */
-header {
+header, footer {
   color: white;
+  font-family: "Prata", sans-serif !important;
   margin-top: 0;
 }
 
@@ -165,10 +166,6 @@ span {
   margin-bottom: 5%;
 }
 
-footer {
-  color: white;
-}
-
 footer a,
 li {
   color: white;
@@ -228,20 +225,62 @@ a[class=active] {
   overflow: auto;
 }
 
-.h3 {
-  font-family: "cursive", sans-serif;
-  display: flex;
-  justify-content: center;
-  border: 2px black solid;
-  border-radius: 15px;
-  padding: 30px;
-  font-weight: bolder;
+.card-text-title {
+  font-family: "Prata", sans-serif !important;
+  font-size: 1.2em !important;
+  color: beige;
+  font-weight: normal;
+  background: #388863;
+  padding: 1.2rem !important;
+  margin: 1.5rem 0 1.2rem 0 !important;
 }
 
 .card-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  color: beige;
+  font-weight: normal;
+  background: #388863;
+}
+
+.card-body {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+
+.h3 {
+  font-family: "cursive", sans-serif;
+  font-size: 3rem;
+  display: flex;
+  color: beige;
+  justify-content: center;
+  border: 2px #0c3121 solid;
+  border-radius: 15px;
+  padding: 30px;
+  font-weight: bolder;
+  background: #388863;
+}
+
+.card-youth {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+
+.card-title-youth {
+  font-family: "learningCurve", sans-serif;
+  font-size: 2.5em;
+  color: beige;
+  font-weight: 600;
+  background: #388863;
+}
+
+.card-text-youth {
   font-family: "learningCurve", sans-serif;
   font-size: 2em;
-  font-weight: bolder;
+  color: beige;
+  font-weight: normal;
   background: #388863;
 }
 
@@ -291,12 +330,6 @@ a[class=active] {
 .example-wrapper code {
   background: #f5f5f5;
   padding: 2px 6px;
-}
-
-.icons {
-  margin-top: 15%;
-  display: flex;
-  justify-content: space-evenly;
 }
 
 /*# sourceMappingURL=style.css.map */

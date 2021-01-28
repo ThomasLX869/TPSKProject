@@ -22,8 +22,8 @@ body {
   opacity: 1;
 }
 
-iframe{
-  border:none !important
+iframe {
+  border: none !important;
 }
 
 //mise en forme des critères de trie (catégories et ages)
@@ -81,8 +81,9 @@ iframe{
 
 // HEADER
 
-header {
+header, footer {
   color: white;
+  font-family:"Prata", sans-serif !important; ;
   margin-top: 0;
 }
 
@@ -133,6 +134,8 @@ nav div div ul li {
 
 // HEADER END
 
+//
+
 //LOGO
 .logo {
   width: 9.7rem;
@@ -157,7 +160,7 @@ h1 {
   align-items: center;
   height: 18em;
 }
-.carousel-inner{
+.carousel-inner {
 }
 
 p {
@@ -180,11 +183,6 @@ span {
 // OTHERS END
 
 // FOOTER
-
-footer {
-  color: white;
-}
-
 footer a,
 li {
   color: white;
@@ -252,22 +250,66 @@ a[class="active"] {
 
 // SCROLLSPY END
 
+//HOME PAGE
+
+.card-text-title {
+  font-family: "Prata", sans-serif !important;
+  font-size: 1.2em !important;
+  color: beige;
+  font-weight: normal;
+  background: $color-3;
+  padding: 1.2rem !important;
+  margin: 1.5rem 0 1.2rem 0 !important;
+}
+
+.card-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  color: beige;
+  font-weight: normal;
+  background: $color-3;
+}
+
+.card-body {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+
 // YOUTH PAGE
 
 .h3 {
   font-family: $font-1-youth;
+  font-size:3rem;
   display: flex;
+  color: beige;
   justify-content: center;
-  border: 2px black solid;
+  border: 2px $color-2 solid;
   border-radius: 15px;
   padding: 30px;
   font-weight: bolder;
+  background: $color-3;
+  
 }
 
-.card-text {
+.card-youth {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+.card-title-youth {
+  font-family: $font-2-youth;
+  font-size: 2.5em;
+  color: beige;
+  font-weight: 600;
+  background: $color-3;
+}
+
+.card-text-youth {
   font-family: $font-2-youth;
   font-size: 2em;
-  font-weight: bolder;
+  color: beige;
+  font-weight: normal;
   background: $color-3;
 }
 
