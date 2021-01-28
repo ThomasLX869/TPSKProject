@@ -78,8 +78,9 @@ iframe {
 }
 
 /* CARDS END */
-header {
+header, footer {
   color: white;
+  font-family: "Prata", sans-serif !important;
   margin-top: 0;
 }
 
@@ -177,10 +178,6 @@ footer {
   color: white;
 }
 
-footer {
-  color: white;
-}
-
 footer a,
 li {
   color: white;
@@ -266,27 +263,70 @@ a[class=active] {
   overflow: auto;
 }
 
+.card-text-title {
+  font-family: "Prata", sans-serif !important;
+  font-size: 1.2em !important;
+  color: beige;
+  font-weight: normal;
+  background: #388863;
+  padding: 1.2rem !important;
+  margin: 1.5rem 0 1.2rem 0 !important;
+}
+
+.card-text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  color: beige;
+  font-weight: normal;
+  background: #388863;
+}
+
+.card-body {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+
 @media (max-width: 900px) {
   .scrollcont {
     visibility: hidden !important;
   }
 }
+
 .h3 {
-  font-family: "cursive", sans-serif;
+  font-family: $font-1-youth;
+  font-size: 3rem;
   display: flex;
-  justify-content: center;
+  color: beige;
+  border: 2px #0c3121 solid;
   -ms-justify-content: center;
   -webkit-justify-content: center;
   border: 2px black solid;
   border-radius: 15px;
   padding: 30px;
   font-weight: bolder;
+  background: #388863;
 }
 
-.card-text {
+.card-youth {
+  padding: 0.2rem;
+  margin: 0;
+  flex: none;
+}
+
+.card-title-youth {
+  font-family: "learningCurve", sans-serif;
+  font-size: 2.5em;
+  color: beige;
+  font-weight: 600;
+  background: #388863;
+}
+
+.card-text-youth {
   font-family: "learningCurve", sans-serif;
   font-size: 2em;
-  font-weight: bolder;
+  color: beige;
+  font-weight: normal;
   background: #388863;
 }
 
@@ -342,7 +382,6 @@ h2 {
 .example-wrapper code {
   background: #f5f5f5;
   padding: 2px 6px;
-
 }
 
 /*# sourceMappingURL=style.css.map */

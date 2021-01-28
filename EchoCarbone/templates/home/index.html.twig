@@ -7,44 +7,46 @@
 
 
 	{% include "partials/slider.html.twig" %}
+  
 	<div class="row d-flex justify-content-around text-center mx-5 mt-4">
-		<div class="card col-12 col-md-4 my-4">
-			<div class="card-body">
-				<p class="card-text">Articles</p>
-			</div>
-			<a href="{{ path('article_index_global') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecogestes.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<p class="card-text">Accédez à tous nos articles.</p>
-			</div>
-		</div>
-		<div class="card col-12 offset-md-1 col-md-4 my-4">
-			<div class="card-body">
-				<p class="card-text">Jeunesse</p>
-			</div>
-			<a href="{{ path('home_youth')}}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/image-youth.jpeg" alt="Card image"></a>
-			<div class="card-body">
-				<p class="card-text">Accédez au contenu jeunesse.</p>
-			</div>
-		</div>
-
 		<div class="card col-12 col-md-4 my-5">
 			<div class="card-body">
-				<p class="card-text">Calculateur d'empreinte carbone</p>
+				<p class="card-text card-text-title">Articles</p>
 			</div>
-			<a href="{{ path('home_calc') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/calculateur.png" alt="Card image"></a>
+	    <a href="{{ path('article_index_global') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecogestes.jpg" alt="Card image"></a>
+			<div class="card-body my-3">
+				<p class="card-text mb-4 mt-2 py-2">Accédez à tous nos articles.</p>
+			</div>
+		</div>
+		<div class="card col-12 offset-md-1 col-md-4 my-5">
 			<div class="card-body">
-				<p class="card-text">Accédez au calculateur.</p>
+				<p class="card-text card-text-title">Jeunesse</p>
 			</div>
+			<a href="{{ path('home_youth') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/image-youth.jpeg" alt="Card image"></a>
+			<div class="card-body my-3">
+				<p class="card-text py-2">Accédez au contenu jeunesse.</p>
+			</div>
+		</div>
+    
+		<div class="card col-12 col-md-4 my-5">
+			<div class="card-body">
+				<p class="card-text card-text-title text-nowrap">Calculateur d'empreinte carbone</p>
+      </div>
+      <a href="{{ path('home_calc') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/calculateur.png" alt="Card image"></a>
+      <div class="card-body my-3">
+				<p class="card-text py-2">Accédez au calculateur.</p>
+      </div>
 		</div>
 
 		<div class="card col-12 offset-md-1 col-md-4 my-5">
 			<div class="card-body">
-				<p class="card-text">Lexique</p>
+				<p class="card-text card-text-title">Lexique</p>
 			</div>
-			<a href="{{ path('glossary_index') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecolexique.jpg" alt="Card image"></a>
-			<div class="card-body">
-				<p class="card-text">Accédez au lexique.</p>
+      <a href="{{ path('glossary_index') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecolexique.jpg" alt="Card image"></a>
+			<div class="card-body my-3">
+				<p class="card-text py-2">Accédez au lexique.</p>
 			</div>
 		</div>
 	</div>
 {% endblock %}
+
