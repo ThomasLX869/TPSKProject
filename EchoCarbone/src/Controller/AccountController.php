@@ -23,8 +23,6 @@ class AccountController extends AbstractController
     public function index(AdminRepository $adminRepository): Response
     {
 
-        dump($admin = $adminRepository->findAll());
-
         return $this->render('account/index.html.twig', [
             'admins' => $adminRepository->findAll()
         ]);
@@ -78,9 +76,6 @@ class AccountController extends AbstractController
      */
     public function edit(Request $request, Admin $user, EntityManagerInterface $manager, UserPasswordEncoderInterface $encoder)
     {
-
-
-
         $currentUser = $this->getUser();
 
 //      Give access to user update form for admins or to the owner account

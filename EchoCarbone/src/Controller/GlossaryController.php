@@ -60,6 +60,7 @@ class GlossaryController extends AbstractController
     //     ]);
     // }
 
+
     // /**
     //  * @Route("/{id}/edit", name="glossary_edit", methods={"GET","POST"})
     //  */
@@ -80,6 +81,7 @@ class GlossaryController extends AbstractController
     //     ]);
     // }
 
+
     // /**
     //  * @Route("/{id}", name="glossary_delete", methods={"DELETE"})
     //  */
@@ -92,6 +94,5 @@ class GlossaryController extends AbstractController
     //         $this->addFlash('danger',"L'élément a bien été supprimé !");
     //     }
 
-    //     return $this->redirectToRoute('glossary_index');
-    // }
+   
 }

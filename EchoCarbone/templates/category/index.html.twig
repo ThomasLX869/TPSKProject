@@ -18,17 +18,28 @@
 {% block title %}Liste des catégories de contenu et d'âge{% endblock %}
 
 {% block body %}
-<div class="container bodycontent">
+<div class="container bodycontent text-center">
     <h1 class="my-5 text-center">
         Liste des catégories de contenu et d'âge
     </h1>
 
-    <table class="table">
+    <div class="dropdown d-flex">
+        <button class="btn btn-lg dropdown-toggle" type="button" id="buttonAdd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ajouter une catégorie
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="{{ path('category_new') }}">Nouvelle catégorie de contenu</a>
+            <a class="dropdown-item" href="{{ path('age_range_new') }}">Nouvelle catégorie d'âge</a>
+        </div>
+    </div>
+
+
+    <table class="table my-5">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Label</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -36,15 +47,16 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.label }}</td>
-            
+
                 {# Test if the object is AgeRange or Category type #}
                 {% if category.testForDisplay is defined %}
                     <td>
                         <a href="{{ path('age_range_edit', {'id': category.id}) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
                             <i class="fas fa-pen align-middle"></i>
                         </a>
-                        <form class="d-inline" action="{{ path('age_range_delete', {'id': category.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer cette catégorie age ?');">
-                            <button class="btn btn-sm btn-danger align-middle">
+                        <form class="d-inline" method="POST" action="{{ path('age_range_delete' , {'id': category.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+                            <button type="submit" class="btn btn-sm btn-danger align-middle">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </form>
@@ -54,8 +66,9 @@
                         <a href="{{ path('category_edit', {'id': category.id}) }}"  id="iconUpdate" class="btn btn-sm btn-primary">
                             <i class="fas fa-pen align-middle"></i>
                         </a>
-                        <form class="d-inline" action="{{ path('category_delete', {'id': category.id}) }}" onsubmit="return confirm('Etes-vous sur de vouloir supprimer cette catégorie ?');">
-                            <button class="btn btn-sm btn-danger align-middle">
+                        <form class="d-inline" method="POST" action="{{ path('category_delete' , {'id': category.id } ) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce contenu ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id) }}">
+                            <button type="submit" class="btn btn-sm btn-danger align-middle">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </form>

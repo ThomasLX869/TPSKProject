@@ -41,8 +41,7 @@ class Game
     private $source;
 
     /**
-     * @ORM\Column(type="string", length=1000)
-     * @Assert\Url(message = "Ce n'est pas une url valide",)
+     * @ORM\Column(type="string", length=1000, nullable=true)
      */
     private $url;
 
@@ -61,9 +60,6 @@ class Game
     private $description;
 
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
     private $updateDate;
 
     /**
@@ -80,7 +76,7 @@ class Game
     private $content;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $nbLike;
 

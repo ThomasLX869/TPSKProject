@@ -64,14 +64,13 @@ class Article
     private $description;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updateDate;
 
     /**
      * @ORM\Column(type="datetime")
      */
-
     private $creationDate;
 
     /**
@@ -84,7 +83,7 @@ class Article
     private $content;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $nbLike;
 
@@ -121,7 +120,6 @@ class Article
      * 
      * @return void
      */
-
     public function updateDate()
     {
         if (empty($this->creationDate)) {

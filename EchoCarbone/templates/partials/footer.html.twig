@@ -1,46 +1,28 @@
 <footer>
 	<div class="container-fluid footer1 pt-3 bodyContent">
 		<div class="row">
-			<div class="col-12 col-md-4 footer1 mx-2 mt-4">
+			<div class="col-12 col-md-4 footer1 mx-2">
 				<a class="navbar-brand" href="#">
 					<a class="navbar-brand" href="#"><img class="logof" src="../../assets/img/logo.png"></a>
 				</a>
 			</div>
-			<div class="col-6 col-md-3 footer1 my-2 mt-4 text-center text-md-left">
+			<div class="col-6 col-md-3 footer1 mb-2 text-center text-md-left">
 
-				<h3 class="mx-2 mb-4">Echange</h3>
+				<h3 class="mx-2 mb-3">Echange</h3>
 				<ul class="nav d-block justify-content-center">
 					<li>
-						<a class="text-light text-decoration-none" href="{{ path('presentation_view') }}">Qui sommes-nous?</a>
+						<a class="text-light text-decoration-none" href="{{ path('presentation_view') }}">Qui sommes-nous ?</a>
 					</li>
 					<li>
 						<a class="text-light text-decoration-none" href="{{ path('contact_view') }}">Nos contacts</a>
 					</li>
-
-				<div class="icons">
-					<button>
-					<i class="fab fa-facebook"></i>
-					</button>
-
-					<button>
-							<i class="fab fa-twitter"></i>
-					</button>
-
-					<button>
-							<i class="fab fa-linkedin"></i>
-					</button>
-
-				</div>
-
 				</ul>
-
 			</div>
 
-			<div class="col-6 col-md-3 footer1 my-2 mt-4 text-center text-md-left">
+			<div class="col-6 col-md-3 footer1 mb-2 text-center text-md-left">
 
-				<h3 class="mx-2 mb-4">Législation</h3>
+				<h3 class="mx-2 mb-3">Législation</h3>
 				<ul class="nav d-block justify-content-center">
-
 					<li>
 						<a class="text-light text-decoration-none" href="{{ path('rgpd_view') }}">RGPD</a>
 					</li>
@@ -48,14 +30,19 @@
 					<li>
 						<a class="text-light text-decoration-none" href="{{ path('cgu_view') }}">CGU</a>
 					</li>
-					
-					
 				</ul>
 			</div>
 		</div>
-		<hr>
+
+		<div class="text-center mt-2 iconFoot">
+			<a href="https://www.facebook.com/"><i class="mx-4 fab fa-facebook iconFooter"></i></a>
+			<a href="https://twitter.com/"><i class="mx-4 fab fa-twitter iconFooter"></i></a>
+			<a href="https://fr.linkedin.com/"><i class="mx-4 fab fa-linkedin iconFooter"></i></a>
+		</div>
+
+		<hr class="my-1">
 		<!-- Pied de page -->
-		<div class="pb-5" id="footer">
+		<div class="pb-3" id="footer">
 			<span>© Copyright - 2021</span>
 		</div>
 	</div>
