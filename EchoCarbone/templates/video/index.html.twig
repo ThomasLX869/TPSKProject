@@ -67,13 +67,14 @@
 		</div>
 		<div class="row mb-4">
 			<div id="list-example" class="scrollcont list-group col-2">
-				<a class="list-group-item list-group-item-action" href="#list-item-1">Tout le contenu</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-2">Articles</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-3">Jeux</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-4">Vidéos</a>
-				<a class="list-group-item list-group-item-action" href="#list-item-5">Quiz</a>
+				<div class="position-sticky md-invisible">
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('article_index_global') }}">Tout le contenu</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('article_index') }}">Articles</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('game_index') }}">Jeux</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('video_index') }}">Vidéos</a>
+					<a class="list-group-item list-group-item-action bgscroll" href="{{ path('quizz_index') }}">Quizz</a>
+				</div>
 			</div>
-
 			<div class="w-100 grid">
 				{% for media in medias |sort((a, b) => a.creationDate <=> b.creationDate)%}
 					{% include "partials/card.content.html.twig" %}

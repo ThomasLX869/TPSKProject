@@ -7,13 +7,12 @@
 
 
 	{% include "partials/slider.html.twig" %}
-
 	<div class="row d-flex justify-content-around text-center mx-5 mt-4">
 		<div class="card col-12 col-md-4 my-4">
 			<div class="card-body">
 				<p class="card-text">Articles</p>
 			</div>
-			<a href="#"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecogestes.jpg" alt="Card image"></a>
+			<a href="{{ path('article_index_global') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecogestes.jpg" alt="Card image"></a>
 			<div class="card-body">
 				<p class="card-text">Accédez à tous nos articles.</p>
 			</div>
@@ -22,7 +21,7 @@
 			<div class="card-body">
 				<p class="card-text">Jeunesse</p>
 			</div>
-			<a href="#"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/image-youth.jpeg" alt="Card image"></a>
+			<a href="{{ path('home_youth')}}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/image-youth.jpeg" alt="Card image"></a>
 			<div class="card-body">
 				<p class="card-text">Accédez au contenu jeunesse.</p>
 			</div>
@@ -32,7 +31,7 @@
 			<div class="card-body">
 				<p class="card-text">Calculateur d'empreinte carbone</p>
 			</div>
-			<a href="#"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/calculateur.png" alt="Card image"></a>
+			<a href="{{ path('home_calc') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/calculateur.png" alt="Card image"></a>
 			<div class="card-body">
 				<p class="card-text">Accédez au calculateur.</p>
 			</div>
@@ -42,7 +41,7 @@
 			<div class="card-body">
 				<p class="card-text">Lexique</p>
 			</div>
-			<a href="#"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecolexique.jpg" alt="Card image"></a>
+			<a href="{{ path('glossary_index') }}"><img class="img-fluid w-100 h-100 img-thumbnail" src="../assets/img/ecolexique.jpg" alt="Card image"></a>
 			<div class="card-body">
 				<p class="card-text">Accédez au lexique.</p>
 			</div>
