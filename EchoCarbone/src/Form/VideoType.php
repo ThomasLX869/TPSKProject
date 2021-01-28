@@ -28,7 +28,7 @@ class VideoType extends AbstractType
                 "attr" => ["placeholder" => "Insérez une source"],
                 'required' => false
             ])
-            ->add('url', UrlType::class, [
+            ->add('url', TextType::class, [
                 "label" => "URL",
                 "attr" => ["placeholder" => "Insérez une Url"]
             ])

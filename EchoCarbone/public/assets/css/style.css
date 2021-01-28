@@ -185,15 +185,23 @@ li {
 
 .breadcrumb {
   background-color: #e6f3e2;
+  padding-left: 0;
+  font-size: large;
+  font-style: italic;
+  color: #388863 !important;
 }
 
-.breadcrumb-item {
-  margin-left: 1.5em;
-}
-
-.breadcrumb-item a {
+.breadcrumb-item.active {
+  color: #388863 !important;
   text-decoration: none;
   font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.inactive {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #388863 !important;
 }
 
 .breadcrumb-item:hover {
@@ -216,8 +224,8 @@ a[class=active] {
 
 .scrollcont {
   position: fixed;
-  top: 25vh;
-  left: 3vw;
+  top: 34vh;
+  left: 8vw;
   min-height: 100% !important;
 }
 

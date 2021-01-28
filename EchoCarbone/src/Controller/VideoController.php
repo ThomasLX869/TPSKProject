@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Video;
 use App\Form\VideoType;
+use App\Repository\AgeRangeRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\VideoRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,6 +18,19 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class VideoController extends AbstractController
 {
+    /**
+     * @Route("/", name="video_index", methods={"GET"})
+     */
+    public function index(VideoRepository $gameRepository, CategoryRepository $categoryRepository, AgeRangeRepository $ageRangeRepository): Response
+    {
+        return $this->render('video/index.html.twig', [
+            'videos' => $gameRepository->findAll(),
+            'categories' => $categoryRepository->findAll(),
+            'ageRanges' => $ageRangeRepository->findAll()
+        ]);
+    }
+
+
 
     /**
      * @Route("/del/{id}", name="video_delete", methods={"POST"})
