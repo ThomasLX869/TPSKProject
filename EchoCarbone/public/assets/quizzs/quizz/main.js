@@ -1,6 +1,6 @@
 (function(){
     function buildQuiz(){
-      // variable to store the HTML output
+      // variable pour stocker la sortie HTML
       const output = [];
   
       // pour chaque question
