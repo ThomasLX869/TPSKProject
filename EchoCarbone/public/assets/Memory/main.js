@@ -1,6 +1,7 @@
 const divResultat = document.querySelector("#resultat");
 
-
+//création du tableau composé de 8 paires et initialisé à zéro
+//les chiffres correspondront aux index des images
 let tabJeu = [
 [0,0,0,0],
 [0,0,0,0],
@@ -8,6 +9,8 @@ let tabJeu = [
 [0,0,0,0]
 ];
 
+//va générer un tableau aléatoire pour que les image ne soient pas toujours placées au même 
+//index à chaque partie
 
 let tabResultat = genereTableauAleatoire();
 
@@ -36,6 +39,8 @@ function afficherTableau(){
   divResultat.innerHTML = txt;
 }
 {/* <i class="fas fa-recycle"></i> */} 
+
+//on attribue un index entre 1 et 8 pour chaque image
 function getImage(valeur){
   let imgTxt = "image/";
   switch(valeur){
@@ -59,7 +64,7 @@ function getImage(valeur){
 
   }
 
-
+//correspond au chemin de l'image récupérée selon le cas
   return imgTxt;
 }
 
