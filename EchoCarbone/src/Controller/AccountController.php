@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
+
 class AccountController extends AbstractController
 {
     /**
@@ -126,7 +127,6 @@ class AccountController extends AbstractController
 
         return $this->redirectToRoute('home_index');
     }
-
 
 }
 
