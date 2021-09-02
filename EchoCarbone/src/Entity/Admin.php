@@ -29,17 +29,24 @@ class Admin implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas valide.",
+     * )
+     *
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Assert\NotBlank
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank
      */
     private $password;
 
